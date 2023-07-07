@@ -1,0 +1,46 @@
+{% assign retailStores = section.settings.retail_stores | split: ', ' %}
+
+<h2>{{ retailStores.size }} Retail Stores</h2>
+    <ol>
+        {% for store in retailStores %}
+            {% assign storeName = store | split: '\' | first %}
+            {% assign storeDetails = store | split: '\' | last %}
+            {% assign storeLocation = storeDetails | split: '^' | first %}
+            {% assign storeLink = storeDetails | split: '^' | last %}
+            {% if storeLink contains 'http' %}
+                <a href="{{ storeLink }}" target="blank">
+            {% endif %}
+                <li>
+                    <div class="store-name">
+                        {{ storeName }}
+                    </div>
+                    <div class="store-location">
+                        {{ storeLocation }}
+                    </div>
+                </li>
+            {% if storeLink contains 'http' %}
+                </a>
+            {% endif %}
+        {% endfor %}
+    </ol>
+<h2>E-Comm Retailer</h2>
+
+<style>
+    .store-row {
+        display: flex;
+    }
+</style>
+
+{% schema %}
+    {
+        "name": "Retailers",
+        "settings": [
+            {
+                "type": "textarea",
+                "id": "retail_stores",
+                "label": "Retail Stores",
+                "info": "Enter store data in this format: '[STORE NAME]\\[STORE LOCATION]^[STORE LINK], '"
+            }
+        ]
+    }
+{% endschema %}
