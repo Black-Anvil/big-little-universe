@@ -76,6 +76,23 @@
         "autoplay_video": true
       }
     },
+    "16848650424398751a": {
+      "type": "apps",
+      "blocks": {
+        "24602ec9-5bf0-4fcc-9a5c-b88a7b27011e": {
+          "type": "shopify:\/\/apps\/novel-shoppable-video\/blocks\/novel-product\/67e3531b-60c1-40d3-83d1-8f5aba7081ef",
+          "settings": {
+            "journeyid": "{{ product.metafields.custom.novel_journey_id.value }}"
+          }
+        }
+      },
+      "block_order": [
+        "24602ec9-5bf0-4fcc-9a5c-b88a7b27011e"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "add-to-cart-bar": {
       "type": "add-to-cart-bar",
       "settings": {
@@ -527,6 +544,7 @@
   },
   "order": [
     "main",
+    "16848650424398751a",
     "add-to-cart-bar",
     "2878d710-9354-4f36-a9af-11a44d367e17",
     "165159127438e84990",

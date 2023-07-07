@@ -7,7 +7,7 @@
 {%- assign quickview_platform = 'layouthub-quickview' -%}
  
 {%- if shop.metafields.layouthub and shop.metafields.layouthub.app_quickview -%}
-	{%- assign quickview_platform = shop.metafields.layouthub.app_quickview -%}
+	{%- assign quickview_platform = shop.metafields.layouthub.app_quickview.value -%}
 {%- endif -%}
 {%- case quickview_platform -%}
 	{%- when 'none'-%}

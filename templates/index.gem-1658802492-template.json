@@ -11,22 +11,22 @@
             "preheading_line_height": 24,
             "preheading_text_color": "#411196",
             "preheading_type": "h4",
-            "heading": "<p>One Bucket, Infinite Play<\/p>",
+            "heading": "<p>Compact & Carry-On Friendly<\/p>",
             "heading_font_size": 50,
             "heading_line_height": 48,
-            "heading_text_color": "#5b5b5b",
+            "heading_text_color": "#6e6e6e",
             "heading_type": "h1",
-            "subheading": "<p>Encourage outdoor play this summer with buckets perfect for any adventure.<\/p>",
+            "subheading": "<p>Own less that does more. Super lightweight, double sided and oversized for more play space. Adventure indoors or outdoors as a mat or blanket with a smooth, soft to the touch surface that's easy to care for all year round.<\/p>",
             "subheading_font_size": 18,
             "subheading_line_height": 24,
-            "subheading_text_color": "#5b5b5b",
+            "subheading_text_color": "#6e6e6e",
             "subheading_type": "h4",
             "subsubheading": "",
             "subsubheading_font_size": 20,
             "subsubheading_line_height": 25,
-            "subsubheading_text_color": "#5b5b5b",
+            "subsubheading_text_color": "#6e6e6e",
             "subsubheading_type": "h3",
-            "primary_button": "Shop Summer Beach Sets",
+            "primary_button": "Shop Travel Friendly Products",
             "primary_button_url": "shopify:\/\/products\/sand-free-towel",
             "primary_button_background_color": "#e6c057",
             "primary_button_border_color": "#e6c057",
@@ -35,9 +35,9 @@
             "secondary_button_url": "shopify:\/\/collections",
             "secondary_button_background_color": "rgba(0,0,0,0)",
             "secondary_button_border_color": "#000000",
-            "secondary_button_text_color": "#5b5b5b",
+            "secondary_button_text_color": "#6e6e6e",
             "background_color": "#f3f3f3",
-            "image": "shopify:\/\/shop_images\/FallActivity_1_x1440_b398be57-0f5e-4546-9d9f-a0852fecb949.jpg",
+            "image": "shopify:\/\/shop_images\/TOW_SAG_1_10bc1cf0-eb86-4833-b723-bd88c30c355d.jpg",
             "image_format": "default",
             "image_overlay": 60,
             "video": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/c0043121e48545f380b2469b7c580d6a.mp4",
@@ -52,19 +52,19 @@
             "mobile_heading": "",
             "mobile_heading_font_size": 32,
             "mobile_heading_line_height": 32,
-            "mobile_heading_text_color": "#5b5b5b",
+            "mobile_heading_text_color": "#6e6e6e",
             "mobile_heading_type": "h4",
             "mobile_subheading": "",
             "mobile_subheading_font_size": 18,
             "mobile_subheading_line_height": 25,
-            "mobile_subheading_text_color": "#5b5b5b",
+            "mobile_subheading_text_color": "#6e6e6e",
             "mobile_subheading_type": "",
             "mobile_subsubheading": "",
             "mobile_subsubheading_font_size": 20,
             "mobile_subsubheading_line_height": 25,
-            "mobile_subsubheading_text_color": "#5b5b5b",
+            "mobile_subsubheading_text_color": "#6e6e6e",
             "mobile_subsubheading_type": "",
-            "mobile_primary_button": "Shop Summer Beach Sets",
+            "mobile_primary_button": "Shop Travel Friendly Products",
             "mobile_primary_button_url": "shopify:\/\/products\/beach-bucket-set",
             "mobile_primary_button_background_color": "#e6c057",
             "mobile_primary_button_border_color": "#e6c057",
@@ -75,7 +75,7 @@
             "mobile_secondary_button_border_color": "",
             "mobile_secondary_button_text_color": "",
             "mobile_background_color": "#f3f3f3",
-            "mobile_image": "shopify:\/\/shop_images\/FallActivity_1_x1440_b398be57-0f5e-4546-9d9f-a0852fecb949.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/TOW_SAG_1_10bc1cf0-eb86-4833-b723-bd88c30c355d.jpg",
             "mobile_image_format": "fit_full",
             "mobile_image_overlay": 60,
             "mobile_video": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/e9d867feec6445bfa043e24b4b3bd9b9.mp4",
@@ -96,70 +96,21 @@
         "pagination_color": "#5b5b5b"
       }
     },
-    "164859133999877611": {
-      "type": "text-over-image",
+    "1684864200306c1ea8": {
+      "type": "apps",
       "blocks": {
-        "9d0138f8-7f17-4966-93c1-1a127a7b2ee7": {
-          "type": "image_picker",
+        "1730c03c-ed09-45ba-ba16-9ff9ccff702c": {
+          "type": "shopify:\/\/apps\/novel-shoppable-video\/blocks\/novel-product\/67e3531b-60c1-40d3-83d1-8f5aba7081ef",
           "settings": {
-            "image": "shopify:\/\/shop_images\/275968122_498067355115224_2193672230152197612_n.jpg",
-            "image_overlay": false,
-            "url": "https:\/\/www.instagram.com\/biglittleuniverse\/?hl=en",
-            "title": "",
-            "title_type": "h4",
-            "description": "",
-            "text_position": "center",
-            "text_align": "center"
-          }
-        },
-        "6bc25601-7d6e-40fe-be0b-a2d7d9079307": {
-          "type": "image_picker",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/275052511_487631842825442_6116205261268558849_n.jpg",
-            "image_overlay": false,
-            "url": "https:\/\/www.instagram.com\/biglittleuniverse\/?hl=en",
-            "title": "",
-            "title_type": "h4",
-            "description": "",
-            "text_position": "center",
-            "text_align": "center"
-          }
-        },
-        "622fa988-eb24-4cf2-96b0-8b323330805f": {
-          "type": "image_picker",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/MINA_2_225fb631-49d5-4e91-9c1d-cc8bf0f747eb.jpg",
-            "image_overlay": false,
-            "url": "https:\/\/www.instagram.com\/biglittleuniverse\/?hl=en",
-            "title": "",
-            "title_type": "h4",
-            "description": "",
-            "text_position": "center",
-            "text_align": "center"
-          }
-        },
-        "e914262d-725d-418f-83b5-6725933d4706": {
-          "type": "image_picker",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/ISL_SEB_1.jpg",
-            "image_overlay": false,
-            "url": "https:\/\/www.instagram.com\/biglittleuniverse\/?hl=en",
-            "title": "",
-            "title_type": "h4",
-            "description": "",
-            "text_position": "center",
-            "text_align": "center"
+            "journeyid": "646cf734b79c6e0008143852"
           }
         }
       },
       "block_order": [
-        "9d0138f8-7f17-4966-93c1-1a127a7b2ee7",
-        "6bc25601-7d6e-40fe-be0b-a2d7d9079307",
-        "622fa988-eb24-4cf2-96b0-8b323330805f",
-        "e914262d-725d-418f-83b5-6725933d4706"
+        "1730c03c-ed09-45ba-ba16-9ff9ccff702c"
       ],
       "settings": {
-        "horizontally_scrollable_mobile": true
+        "include_margins": false
       }
     },
     "1643928550187e94a1": {
@@ -213,9 +164,9 @@
         "button_url": "shopify:\/\/collections\/all",
         "no_border": false,
         "background_color": "#ffffff",
-        "section_title_color": "#5b5b5b",
-        "section_subtitle_color": "#5b5b5b",
-        "text_color": "#5b5b5b"
+        "section_title_color": "#6e6e6e",
+        "section_subtitle_color": "#6e6e6e",
+        "text_color": "#6e6e6e"
       }
     },
     "1654627689d66c5f5f": {
@@ -255,12 +206,78 @@
         "title": "What Parents Are Remembering",
         "title_type": "h2",
         "description": "Bite-Sized Reminders of the Power of Play",
-        "image": "shopify:\/\/shop_images\/275088333_488249232763703_5835812743759529647_n.jpg",
+        "image": "shopify:\/\/shop_images\/FIN_CRA_3.jpg",
         "background_color": "#ffffff",
-        "section_title_color": "#5b5b5b",
-        "text_color": "#5b5b5b",
-        "rating_color": "#5b5b5b",
-        "border_color": "#5b5b5b"
+        "section_title_color": "#6e6e6e",
+        "text_color": "#6e6e6e",
+        "rating_color": "#6e6e6e",
+        "border_color": "rgba(0,0,0,0)"
+      }
+    },
+    "164936710713f7d333": {
+      "type": "text-over-image",
+      "blocks": {
+        "74de21a5-5de2-4f78-a688-cc9250fed367": {
+          "type": "image_picker",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/TOW_SAG_1_10bc1cf0-eb86-4833-b723-bd88c30c355d.jpg",
+            "image_overlay": false,
+            "url": "https:\/\/www.instagram.com\/biglittleuniverse\/",
+            "title": "",
+            "title_type": "h4",
+            "description": "",
+            "text_position": "center",
+            "text_align": "center"
+          }
+        },
+        "3be80cfc-c2bb-4aec-abb2-361ea10d0517": {
+          "type": "image_picker",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screen_Shot_2021-02-24_at_3.03.56_PM.jpg",
+            "image_overlay": false,
+            "url": "https:\/\/www.instagram.com\/biglittleuniverse\/",
+            "title": "",
+            "title_type": "h4",
+            "description": "",
+            "text_position": "center",
+            "text_align": "center"
+          }
+        },
+        "549c0648-596d-4f60-a691-11d631e890d7": {
+          "type": "image_picker",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/LOV_BUN_2.jpg",
+            "image_overlay": false,
+            "url": "https:\/\/www.instagram.com\/biglittleuniverse\/",
+            "title": "",
+            "title_type": "h4",
+            "description": "",
+            "text_position": "center",
+            "text_align": "center"
+          }
+        },
+        "57da74e8-2014-4812-8cb1-5c54afcfa23f": {
+          "type": "image_picker",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/2T9A5947_copy.jpg",
+            "image_overlay": false,
+            "url": "https:\/\/www.instagram.com\/biglittleuniverse\/",
+            "title": "",
+            "title_type": "h4",
+            "description": "",
+            "text_position": "center",
+            "text_align": "center"
+          }
+        }
+      },
+      "block_order": [
+        "74de21a5-5de2-4f78-a688-cc9250fed367",
+        "3be80cfc-c2bb-4aec-abb2-361ea10d0517",
+        "549c0648-596d-4f60-a691-11d631e890d7",
+        "57da74e8-2014-4812-8cb1-5c54afcfa23f"
+      ],
+      "settings": {
+        "horizontally_scrollable_mobile": true
       }
     },
     "164863940128c29aa2": {
@@ -322,13 +339,13 @@
         "show_view_all": true,
         "no_border": false,
         "background_color": "#fafafa",
-        "section_title_color": "#5b5b5b",
-        "section_description_color": "#5b5b5b",
-        "heading_color": "#5b5b5b",
-        "link_color": "#5b5b5b",
-        "text_color": "#5b5b5b",
+        "section_title_color": "#6e6e6e",
+        "section_description_color": "#6e6e6e",
+        "heading_color": "#6e6e6e",
+        "link_color": "#6e6e6e",
+        "text_color": "#6e6e6e",
         "product_modal_background_color": "#f3f3f3",
-        "product_modal_text_color": "#5b5b5b"
+        "product_modal_text_color": "#6e6e6e"
       }
     },
     "165465022673278400": {
@@ -338,8 +355,8 @@
           "type": "heading",
           "settings": {
             "heading": "We inspire the power of curiosity little ones need to grow up to do big things",
-            "heading_type": "h2",
-            "heading_color": "#ffffff"
+            "heading_type": "h3",
+            "heading_color": "#fafafa"
           }
         },
         "165465022687e71e57-1": {
@@ -367,7 +384,7 @@
       "settings": {
         "full_width": true,
         "height": "margin--small",
-        "background_color": "linear-gradient(89deg, rgba(230, 192, 87, 1) 47%, rgba(107, 152, 205, 1) 100%)"
+        "background_color": "radial-gradient(rgba(159, 174, 164, 1) 21%, rgba(159, 174, 164, 1) 98%, rgba(138, 143, 224, 1) 99%)"
       }
     },
     "1654650378cac58032": {
@@ -455,9 +472,10 @@
   },
   "order": [
     "165454169464a1b59f",
-    "164859133999877611",
+    "1684864200306c1ea8",
     "1643928550187e94a1",
     "1654627689d66c5f5f",
+    "164936710713f7d333",
     "164863940128c29aa2",
     "1654516338e47731b1",
     "165465022673278400",

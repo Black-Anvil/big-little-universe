@@ -356,7 +356,10 @@
     {%- endif -%}
 
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
-  </head>
+  <!--Gem_Page_Header_Script-->
+{% render 'gem-app-header-scripts' %}
+<!--End_Gem_Page_Header_Script-->
+</head>
 
   <body class="page-{{ template.name }} gradient">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
@@ -446,5 +449,8 @@
  
 {% include 'swymSnippet' %}
 
+<!--Gem_Page_Footer_Script-->
+{% render 'gem-app-footer-scripts', GEM_FOOTER_SCRIPT: GEM_FOOTER_SCRIPT %}
+<!--End_Gem_Page_Footer_Script-->
 </body>
 </html>

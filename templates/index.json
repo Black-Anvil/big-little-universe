@@ -26,7 +26,7 @@
             "subsubheading_line_height": 25,
             "subsubheading_text_color": "#6e6e6e",
             "subsubheading_type": "h3",
-            "primary_button": "Shop All Ages",
+            "primary_button": "Shop Travel Friendly Products",
             "primary_button_url": "shopify:\/\/products\/sand-free-towel",
             "primary_button_background_color": "#e6c057",
             "primary_button_border_color": "#e6c057",
@@ -64,7 +64,7 @@
             "mobile_subsubheading_line_height": 25,
             "mobile_subsubheading_text_color": "#6e6e6e",
             "mobile_subsubheading_type": "",
-            "mobile_primary_button": "Shop Summer Beach Sets",
+            "mobile_primary_button": "Shop Travel Friendly Products",
             "mobile_primary_button_url": "shopify:\/\/products\/beach-bucket-set",
             "mobile_primary_button_background_color": "#e6c057",
             "mobile_primary_button_border_color": "#e6c057",
@@ -96,70 +96,21 @@
         "pagination_color": "#5b5b5b"
       }
     },
-    "164859133999877611": {
-      "type": "text-over-image",
+    "1684864200306c1ea8": {
+      "type": "apps",
       "blocks": {
-        "9d0138f8-7f17-4966-93c1-1a127a7b2ee7": {
-          "type": "image_picker",
+        "1730c03c-ed09-45ba-ba16-9ff9ccff702c": {
+          "type": "shopify:\/\/apps\/novel-shoppable-video\/blocks\/novel-product\/67e3531b-60c1-40d3-83d1-8f5aba7081ef",
           "settings": {
-            "image": "shopify:\/\/shop_images\/TOW_SAG_4.png",
-            "image_overlay": false,
-            "url": "https:\/\/www.instagram.com\/biglittleuniverse\/?hl=en",
-            "title": "",
-            "title_type": "h4",
-            "description": "",
-            "text_position": "center",
-            "text_align": "center"
-          }
-        },
-        "6bc25601-7d6e-40fe-be0b-a2d7d9079307": {
-          "type": "image_picker",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/TOW_SAG_3_1b5cf4fc-8cef-412a-97be-c2218b42fd59.jpg",
-            "image_overlay": false,
-            "url": "https:\/\/www.instagram.com\/biglittleuniverse\/?hl=en",
-            "title": "",
-            "title_type": "h4",
-            "description": "",
-            "text_position": "center",
-            "text_align": "center"
-          }
-        },
-        "622fa988-eb24-4cf2-96b0-8b323330805f": {
-          "type": "image_picker",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/TOW_SAG_5.png",
-            "image_overlay": false,
-            "url": "https:\/\/www.instagram.com\/biglittleuniverse\/?hl=en",
-            "title": "",
-            "title_type": "h4",
-            "description": "",
-            "text_position": "center",
-            "text_align": "center"
-          }
-        },
-        "e914262d-725d-418f-83b5-6725933d4706": {
-          "type": "image_picker",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/BUC_DUS_2.jpg",
-            "image_overlay": false,
-            "url": "https:\/\/www.instagram.com\/biglittleuniverse\/?hl=en",
-            "title": "",
-            "title_type": "h4",
-            "description": "",
-            "text_position": "center",
-            "text_align": "center"
+            "journeyid": "646cf734b79c6e0008143852"
           }
         }
       },
       "block_order": [
-        "9d0138f8-7f17-4966-93c1-1a127a7b2ee7",
-        "6bc25601-7d6e-40fe-be0b-a2d7d9079307",
-        "622fa988-eb24-4cf2-96b0-8b323330805f",
-        "e914262d-725d-418f-83b5-6725933d4706"
+        "1730c03c-ed09-45ba-ba16-9ff9ccff702c"
       ],
       "settings": {
-        "horizontally_scrollable_mobile": true
+        "include_margins": false
       }
     },
     "1643928550187e94a1": {
@@ -521,7 +472,7 @@
   },
   "order": [
     "165454169464a1b59f",
-    "164859133999877611",
+    "1684864200306c1ea8",
     "1643928550187e94a1",
     "1654627689d66c5f5f",
     "164936710713f7d333",

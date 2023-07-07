@@ -20,14 +20,14 @@
         "enable_filtering": true,
         "enable_color_swatchees": true,
         "enable_sorting": true,
-        "no_border": true,
+        "no_border": false,
         "filter_bar_background_color": "#eeeeee",
-        "filter_bar_text_color": "#5b5b5b",
+        "filter_bar_text_color": "#6e6e6e",
         "filter_background_color": "#ffffff",
-        "filter_text_color": "#5b5b5b",
+        "filter_text_color": "#6e6e6e",
         "filter_border_color": "#5b5b5b",
         "product_modal_background_color": "#fafafa",
-        "product_modal_text_color": "#5b5b5b"
+        "product_modal_text_color": "#6e6e6e"
       }
     }
   },

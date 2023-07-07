@@ -6,7 +6,7 @@
 {%- endcomment-%}
 {%- assign wishlist_platform = 'layouthub-wishlist' -%}
  {%- if shop.metafields.layouthub and shop.metafields.layouthub.app_wishlist -%}
-	{%- assign wishlist_platform = shop.metafields.layouthub.app_wishlist -%}
+	{%- assign wishlist_platform = shop.metafields.layouthub.app_wishlist.value -%}
 {%- endif -%}
 {%- case wishlist_platform -%}
 	{%- when 'none'-%}

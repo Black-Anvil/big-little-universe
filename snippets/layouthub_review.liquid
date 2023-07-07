@@ -11,7 +11,7 @@
 	form: Show form review
 {% endcomment %}
 {%- if shop.metafields.layouthub and shop.metafields.layouthub.app_review -%}
-	{%- assign review_platform = shop.metafields.layouthub.app_review -%}
+	{%- assign review_platform = shop.metafields.layouthub.app_review.value -%}
 {%- endif -%}
 {%- case review_platform -%}
 	{%- when 'none' -%}
