@@ -1,0 +1,259 @@
+<section class="section-object-over-image section--{{ section.id }}">
+  <div class="page-width">
+    {% if section.settings.section_title != '' %}
+      <div class="section-object-over-image-title {{ section.settings.section_title_type }}">{{ section.settings.section_title }}</div>
+    {% endif %}
+    <div class="objects-over-images">
+      {% for block in section.blocks %}
+        {% if block.settings.product != '' %}
+          {% assign url = block.settings.product.url %}
+          {% assign image = block.settings.product.featured_image.src | image_url: height: 1200 %}
+      	  {% assign title = block.settings.product.title %}
+        {% endif %}
+
+        {% if block.settings.url != null %}
+          {% assign url = block.settings.url %}
+        {% endif %}
+        {% if block.settings.image != null %}
+          {% assign image = block.settings.image | image_url: height: 1200 %}
+        {% endif %}
+      	{% if block.settings.title != '' %}
+      	  {% assign title = block.settings.title %}
+        {% endif %}
+
+        <div class="object-over-image-block object-over-image-block--{{ block.id }}">
+          <div class="object-over-image-block-image">
+            {% if image != null %}
+              {{ image | image_tag: loading: 'lazy' }}
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </div>
+          <div class="object-over-image-block-content">
+            <a href="{{ url }}" class="object-over-image-block-content-link">
+              <div class="object-over-image-block-content-title {{ block.settings.title_type }}">
+                {{ title }}
+              </div>
+            </a>
+              <div class="object-over-image-block-content-buttons">
+                {% if block.settings.product != '' and block.settings.use_add_to_cart_button == true %}
+                  <button type="submit" class="button" data-add-id="{{ block.settings.product.selected_or_first_available_variant.id }}">
+                    <span>{{ block.settings.add_to_cart_text }}</span>
+                    <div class="loading-overlay__spinner hidden">
+                      <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                        <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                      </svg>
+                    </div>
+                  </button>
+                {% endif %}
+                {% if block.settings.primary_cta_button_text != '' %}
+                  <a href="{{ block.settings.primary_cta_button_url | default: url }}" class="button">
+                    {{ block.settings.primary_cta_button_text }}
+                  </a>
+                {% endif %}
+                {% if block.settings.secondary_cta_button_text != '' %}
+                  <a href="{{ block.settings.secondary_cta_button_url | default: url }}" class="button button--secondary">
+                    {{ block.settings.secondary_cta_button_text }}
+                  </a>
+                {% endif %}
+              </div>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% style %}
+  .section--{{ section.id }} {
+	background: {{ section.settings.background_color }};
+  }
+  .section--{{ section.id }} .objects-over-images .object-over-image-block {
+	aspect-ratio: {{ section.settings.image-scale }};
+  }
+  {% for block in section.blocks %}
+	.objects-over-images .object-over-image-block.object-over-image-block--{{ block.id }} .object-over-image-block-image:after {
+	  background: rgba(0,0,0,.{{ block.settings.background_opacity }});
+	}
+  {% endfor %}
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Object Over Image",
+  "tag": "section",
+  "max_blocks": 2,
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title"
+    },
+	{
+	  "type": "select",
+	  "id": "section_title_type",
+	  "options": [
+		{
+		  "value": "h1",
+	  	  "label": "H1"
+		},
+		{
+		  "value": "h2",
+		  "label": "H2"
+		},
+		{
+		  "value": "h3",
+		  "label": "H3"
+		},
+		{
+		  "value": "h4",
+		  "label": "H4"
+		}
+	  ],
+	  "default": "h1",
+	  "label": "Section Title Type"
+	},
+    {
+      "type": "select",
+      "id": "image-scale",
+      "options": [
+        {
+          "value": "1 \/ 1",
+          "label": "1:1"
+        },
+        {
+          "value": "3 \/ 4",
+          "label": "3:4"
+        },
+        {
+          "value": "4 \/ 3",
+          "label": "4:3"
+        }
+      ],
+      "default": "1 \/ 1",
+      "label": "Image Scale"
+    },
+    {
+      "type": "header",
+      "content": "Color Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image_picker",
+      "name": "Object",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Add to Cart Button"
+        },
+        {
+          "type": "checkbox",
+          "id": "use_add_to_cart_button",
+          "label": "Use Add to Cart Button",
+		  "default": true
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Choose Product"
+        },
+        {
+          "type": "text",
+          "id": "add_to_cart_text",
+          "label": "Add to Cart Button Text",
+          "default": "Add to Cart"
+        },
+		{
+          "type": "header",
+          "content": "Primary CTA Button"
+        },
+        {
+          "type": "url",
+          "id": "primary_cta_button_url",
+          "label": "URL"
+        },
+        {
+          "type": "text",
+          "id": "primary_cta_button_text",
+          "label": "Primary CTA Button Text"
+        },
+		{
+          "type": "header",
+          "content": "Secondary CTA Button"
+        },
+        {
+          "type": "url",
+          "id": "secondary_cta_button_url",
+          "label": "URL"
+        },
+        {
+          "type": "text",
+          "id": "secondary_cta_button_text",
+          "label": "Secondary CTA Button Text"
+        },
+		{
+          "type": "header",
+          "content": "Modal Settings"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "select",
+          "id": "title_type",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            }
+          ],
+          "default": "h4",
+          "label": "Title Type"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background Image"
+        },
+		{
+          "type": "range",
+          "id": "background_opacity",
+          "min": 10,
+          "max": 90,
+          "step": 10,
+          "unit": "%",
+          "label": "Background Opacity",
+          "default": 50
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Object Over Image"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,82 @@
+{% if section.settings.enable == true %}
+  {% assign freeShipingPrice = settings.cart_drawer_incentive_2_discount_threshold | times: 100 %}
+  {% assign freeShippingPriceLeft = freeShipingPrice | minus: cart.total_price %}
+  {% assign freeShippingPercentage = freeShipingPrice | minus: cart.total_price | times: 100 | divided_by: freeShipingPrice %}
+
+  <div class="section-announcement-bar">
+    <div class="announcement-bar-line">
+      <div class="announcement-bar-text{% if cart.total_price >= freeShipingPrice %} hide{% endif %}">
+        Add <span class="money">{{ freeShippingPriceLeft | money }}</span> more for free shipping!
+      </div>
+      <div class="announcement-bar-text-success{% if cart.total_price >= freeShipingPrice %} show{% endif %}">
+        {{ settings.free_shipping_success_message }}
+      </div>
+      <div class="announcement-bar-progress-bar">
+        <div style="width:{{ 100 | minus: freeShippingPercentage }}%"></div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% style %}
+.section-announcement-bar {
+  background: {{ section.settings.background_color }};
+}
+.section-announcement-bar .announcement-bar-line {
+  color: {{ section.settings.text_color }};
+}
+.section-announcement-bar .announcement-bar-progress-bar {
+  background: {{ section.settings.progress_bar_background_color }};
+}
+.section-announcement-bar .announcement-bar-progress-bar div {
+  background: {{ section.settings.progress_bar_color }};
+}
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Free Shipping Bar",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable",
+      "label": "Show Free Shipping Announcement bar",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Color Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "progress_bar_color",
+      "label": "Progress Bar Color",
+      "default": "#cccccc"
+    },
+    {
+      "type": "color",
+      "id": "progress_bar_background_color",
+      "label": "Progress Bar Background Color",
+      "default": "#f9f9f9"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Free Shipping Bar"
+    }
+  ]
+}
+{% endschema %}

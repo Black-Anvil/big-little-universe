@@ -1,0 +1,466 @@
+{
+  "sections": {
+    "165454169464a1b59f": {
+      "type": "image-with-text",
+      "blocks": {
+        "af5d4abd-dd41-48db-923d-6983cb91a1be": {
+          "type": "slider",
+          "settings": {
+            "preheading": "",
+            "preheading_font_size": 18,
+            "preheading_line_height": 24,
+            "preheading_text_color": "#411196",
+            "preheading_type": "h4",
+            "heading": "<p>One Bucket, Infinite Play<\/p>",
+            "heading_font_size": 50,
+            "heading_line_height": 48,
+            "heading_text_color": "#5b5b5b",
+            "heading_type": "h1",
+            "subheading": "<p>Encourage outdoor play this summer with buckets perfect for any adventure.<\/p>",
+            "subheading_font_size": 18,
+            "subheading_line_height": 24,
+            "subheading_text_color": "#5b5b5b",
+            "subheading_type": "h4",
+            "subsubheading": "",
+            "subsubheading_font_size": 20,
+            "subsubheading_line_height": 25,
+            "subsubheading_text_color": "#5b5b5b",
+            "subsubheading_type": "h3",
+            "primary_button": "Shop Summer Beach Sets",
+            "primary_button_url": "shopify:\/\/products\/sand-free-towel",
+            "primary_button_background_color": "#e6c057",
+            "primary_button_border_color": "#e6c057",
+            "primary_button_text_color": "#ffffff",
+            "secondary_button": "",
+            "secondary_button_url": "shopify:\/\/collections",
+            "secondary_button_background_color": "rgba(0,0,0,0)",
+            "secondary_button_border_color": "#000000",
+            "secondary_button_text_color": "#5b5b5b",
+            "background_color": "#f3f3f3",
+            "image": "shopify:\/\/shop_images\/FallActivity_1_x1440_b398be57-0f5e-4546-9d9f-a0852fecb949.jpg",
+            "image_format": "default",
+            "image_overlay": 60,
+            "video": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/c0043121e48545f380b2469b7c580d6a.mp4",
+            "text_align": "left",
+            "image_position": "right",
+            "section_image_width": "screen-width-two-thirds",
+            "mobile_preheading": "",
+            "mobile_preheading_font_size": 20,
+            "mobile_preheading_line_height": 25,
+            "mobile_preheading_text_color": "#411196",
+            "mobile_preheading_type": "",
+            "mobile_heading": "",
+            "mobile_heading_font_size": 32,
+            "mobile_heading_line_height": 32,
+            "mobile_heading_text_color": "#5b5b5b",
+            "mobile_heading_type": "h4",
+            "mobile_subheading": "",
+            "mobile_subheading_font_size": 18,
+            "mobile_subheading_line_height": 25,
+            "mobile_subheading_text_color": "#5b5b5b",
+            "mobile_subheading_type": "",
+            "mobile_subsubheading": "",
+            "mobile_subsubheading_font_size": 20,
+            "mobile_subsubheading_line_height": 25,
+            "mobile_subsubheading_text_color": "#5b5b5b",
+            "mobile_subsubheading_type": "",
+            "mobile_primary_button": "Shop Summer Beach Sets",
+            "mobile_primary_button_url": "shopify:\/\/products\/beach-bucket-set",
+            "mobile_primary_button_background_color": "#e6c057",
+            "mobile_primary_button_border_color": "#e6c057",
+            "mobile_primary_button_text_color": "#ffffff",
+            "mobile_secondary_button": "",
+            "mobile_secondary_button_url": "",
+            "mobile_secondary_button_background_color": "",
+            "mobile_secondary_button_border_color": "",
+            "mobile_secondary_button_text_color": "",
+            "mobile_background_color": "#f3f3f3",
+            "mobile_image": "shopify:\/\/shop_images\/FallActivity_1_x1440_b398be57-0f5e-4546-9d9f-a0852fecb949.jpg",
+            "mobile_image_format": "fit_full",
+            "mobile_image_overlay": 60,
+            "mobile_video": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/e9d867feec6445bfa043e24b4b3bd9b9.mp4",
+            "mobile_text_align": "left",
+            "mobile_image_position": "top",
+            "mobile_section_image_width": "box-size"
+          }
+        }
+      },
+      "block_order": [
+        "af5d4abd-dd41-48db-923d-6983cb91a1be"
+      ],
+      "settings": {
+        "section_height": "screen-height-full",
+        "section_height_mobile": "screen-height-one-half",
+        "rotating_seconds": 3,
+        "pagination_position": "center",
+        "pagination_color": "#5b5b5b"
+      }
+    },
+    "164859133999877611": {
+      "type": "text-over-image",
+      "blocks": {
+        "9d0138f8-7f17-4966-93c1-1a127a7b2ee7": {
+          "type": "image_picker",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/275968122_498067355115224_2193672230152197612_n.jpg",
+            "image_overlay": false,
+            "url": "https:\/\/www.instagram.com\/biglittleuniverse\/?hl=en",
+            "title": "",
+            "title_type": "h4",
+            "description": "",
+            "text_position": "center",
+            "text_align": "center"
+          }
+        },
+        "6bc25601-7d6e-40fe-be0b-a2d7d9079307": {
+          "type": "image_picker",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/275052511_487631842825442_6116205261268558849_n.jpg",
+            "image_overlay": false,
+            "url": "https:\/\/www.instagram.com\/biglittleuniverse\/?hl=en",
+            "title": "",
+            "title_type": "h4",
+            "description": "",
+            "text_position": "center",
+            "text_align": "center"
+          }
+        },
+        "622fa988-eb24-4cf2-96b0-8b323330805f": {
+          "type": "image_picker",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/MINA_2_225fb631-49d5-4e91-9c1d-cc8bf0f747eb.jpg",
+            "image_overlay": false,
+            "url": "https:\/\/www.instagram.com\/biglittleuniverse\/?hl=en",
+            "title": "",
+            "title_type": "h4",
+            "description": "",
+            "text_position": "center",
+            "text_align": "center"
+          }
+        },
+        "e914262d-725d-418f-83b5-6725933d4706": {
+          "type": "image_picker",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/ISL_SEB_1.jpg",
+            "image_overlay": false,
+            "url": "https:\/\/www.instagram.com\/biglittleuniverse\/?hl=en",
+            "title": "",
+            "title_type": "h4",
+            "description": "",
+            "text_position": "center",
+            "text_align": "center"
+          }
+        }
+      },
+      "block_order": [
+        "9d0138f8-7f17-4966-93c1-1a127a7b2ee7",
+        "6bc25601-7d6e-40fe-be0b-a2d7d9079307",
+        "622fa988-eb24-4cf2-96b0-8b323330805f",
+        "e914262d-725d-418f-83b5-6725933d4706"
+      ],
+      "settings": {
+        "horizontally_scrollable_mobile": true
+      }
+    },
+    "1643928550187e94a1": {
+      "type": "horizontally-scrollable",
+      "blocks": {
+        "bcbaef0d-16c4-4226-aaa4-bae57e82644e": {
+          "type": "boxes",
+          "settings": {
+            "product": "",
+            "collection": "newborn-to-6-months",
+            "custom_image": "shopify:\/\/shop_images\/COLL_AGE_6.webp",
+            "custom_text": "Newborn - 6 Months",
+            "custom_background": "#f3cfb8",
+            "background_overlay": false
+          }
+        },
+        "7ec5d173-6c4c-4801-93e2-ea516e051714": {
+          "type": "boxes",
+          "settings": {
+            "product": "",
+            "collection": "7-months-to-1-year",
+            "custom_text": "",
+            "custom_background": "",
+            "background_overlay": false
+          }
+        },
+        "ae22f969-c622-4704-bdca-39ee535fb384": {
+          "type": "boxes",
+          "settings": {
+            "product": "",
+            "collection": "1-year-to-3-year",
+            "custom_image": "shopify:\/\/shop_images\/0H0A9XX.jpg",
+            "custom_text": "",
+            "custom_background": "",
+            "background_overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "bcbaef0d-16c4-4226-aaa4-bae57e82644e",
+        "7ec5d173-6c4c-4801-93e2-ea516e051714",
+        "ae22f969-c622-4704-bdca-39ee535fb384"
+      ],
+      "settings": {
+        "title": "We inspire the curiosity little ones need to grow up to do big things",
+        "title_type": "h2",
+        "subtitle": "",
+        "subtitle_type": "h3",
+        "description": "Essentials thoughtfully curated for little ones at each developmental stage.",
+        "button_text": "Shop All Ages",
+        "button_url": "shopify:\/\/collections\/all",
+        "no_border": false,
+        "background_color": "#ffffff",
+        "section_title_color": "#5b5b5b",
+        "section_subtitle_color": "#5b5b5b",
+        "text_color": "#5b5b5b"
+      }
+    },
+    "1654627689d66c5f5f": {
+      "type": "featured-reviews-cards",
+      "blocks": {
+        "50002aff-a943-4bc8-890c-78499dc7e642": {
+          "type": "text",
+          "settings": {
+            "name": "Carolina H.",
+            "rating": "5",
+            "review": "<p>Took me a while to get the perfect kids kitchen, so hence I’m leaving this review. My daughter spends hours playing with her new kitchen. Very well made. The design looks clean, so I was able to find a great location in our leaving room (without having the feeling that the toys took all the space). Definitely worth the price. Educational toy.<\/p>"
+          }
+        },
+        "2d98b188-8237-45af-bf72-d29006cf70c4": {
+          "type": "text",
+          "settings": {
+            "name": "Whitney T.",
+            "rating": "5",
+            "review": "<p>I received this box as a gift and my 6-month old baby boy and I absolutely LOVED it! It was filled with so many treasures— everything is high quality and beautifully designed. Lots of things to keep my very curious baby occupied. The “mystery bag” is such a fun idea! And, at this price, what’s inside is well worth the $. I’m putting it at the topRead more about review stating Whitney of my list now to gift to other moms.<\/p>"
+          }
+        },
+        "f1544627-ad89-4676-9e82-57c37db24907": {
+          "type": "text",
+          "settings": {
+            "name": "Alexandra B.",
+            "rating": "5",
+            "review": "<p>My friend was thrilled to receive this gorgeously curated gift box for her newborn baby - so chic. The products were all so diverse and useful. Thank you! I will definitely be buying again.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "50002aff-a943-4bc8-890c-78499dc7e642",
+        "2d98b188-8237-45af-bf72-d29006cf70c4",
+        "f1544627-ad89-4676-9e82-57c37db24907"
+      ],
+      "settings": {
+        "title": "What Parents Are Remembering",
+        "title_type": "h2",
+        "description": "Bite-Sized Reminders of the Power of Play",
+        "image": "shopify:\/\/shop_images\/275088333_488249232763703_5835812743759529647_n.jpg",
+        "background_color": "#ffffff",
+        "section_title_color": "#5b5b5b",
+        "text_color": "#5b5b5b",
+        "rating_color": "#5b5b5b",
+        "border_color": "#5b5b5b"
+      }
+    },
+    "164863940128c29aa2": {
+      "type": "object-over-image",
+      "blocks": {
+        "9ff9a495-1b66-42bf-af81-b832a9909b31": {
+          "type": "image_picker",
+          "settings": {
+            "use_add_to_cart_button": false,
+            "product": "",
+            "add_to_cart_text": "Add to Cart",
+            "primary_cta_button_url": "shopify:\/\/blogs\/the-blog\/5-things-preschooler-needs",
+            "primary_cta_button_text": "Learn More",
+            "secondary_cta_button_url": "",
+            "secondary_cta_button_text": "",
+            "title": "What to Pack For First Day of Preschool",
+            "title_type": "h3",
+            "image": "shopify:\/\/shop_images\/pexels-tatiana-syrikova-3933033_900x_30e7b115-9745-47d2-aa64-aac253c505e7.webp",
+            "background_opacity": 40
+          }
+        },
+        "4be45c3a-1580-4cb9-a424-a33e0ee841ad": {
+          "type": "image_picker",
+          "settings": {
+            "use_add_to_cart_button": false,
+            "product": "",
+            "add_to_cart_text": "Add to Cart",
+            "primary_cta_button_url": "shopify:\/\/blogs\/the-blog\/how-to-make-recycled-crayons-using-silicone-molds",
+            "primary_cta_button_text": "Learn More",
+            "secondary_cta_button_url": "shopify:\/\/pages\/about-kevyn-aucoin",
+            "secondary_cta_button_text": "",
+            "title": "How to Make Recycled Crayons",
+            "title_type": "h3",
+            "image": "shopify:\/\/shop_images\/Cover_1_900x_18d2f733-6e22-47e8-a15b-6fe4d3362e40.webp",
+            "background_opacity": 40
+          }
+        }
+      },
+      "block_order": [
+        "9ff9a495-1b66-42bf-af81-b832a9909b31",
+        "4be45c3a-1580-4cb9-a424-a33e0ee841ad"
+      ],
+      "settings": {
+        "section_title": "",
+        "section_title_type": "h2",
+        "image-scale": "1 \/ 1",
+        "background_color": "#f3f3f3"
+      }
+    },
+    "1654516338e47731b1": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "",
+        "title_type": "h4",
+        "description": "",
+        "collection": "0-100",
+        "collection_title": "Best Sellers",
+        "collection_title_type": "h3",
+        "show_view_all": true,
+        "no_border": false,
+        "background_color": "#fafafa",
+        "section_title_color": "#5b5b5b",
+        "section_description_color": "#5b5b5b",
+        "heading_color": "#5b5b5b",
+        "link_color": "#5b5b5b",
+        "text_color": "#5b5b5b",
+        "product_modal_background_color": "#f3f3f3",
+        "product_modal_text_color": "#5b5b5b"
+      }
+    },
+    "165465022673278400": {
+      "type": "rich-text",
+      "blocks": {
+        "165465022687e71e57-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "We inspire the power of curiosity little ones need to grow up to do big things",
+            "heading_type": "h2",
+            "heading_color": "#ffffff"
+          }
+        },
+        "165465022687e71e57-1": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_color": "#ffffff"
+          }
+        },
+        "165465022687e71e57-2": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "165465022687e71e57-0",
+        "165465022687e71e57-1",
+        "165465022687e71e57-2"
+      ],
+      "settings": {
+        "full_width": true,
+        "height": "margin--small",
+        "background_color": "linear-gradient(89deg, rgba(230, 192, 87, 1) 47%, rgba(107, 152, 205, 1) 100%)"
+      }
+    },
+    "1654650378cac58032": {
+      "type": "multicolumn",
+      "disabled": true,
+      "blocks": {
+        "16546503781c37e122-0": {
+          "type": "column",
+          "settings": {
+            "title": "Free Shipping",
+            "title_type": "h4",
+            "text": "<p>On over $50 purchases<\/p>",
+            "link_label": "",
+            "link": "",
+            "text_color": "#ffffff"
+          }
+        },
+        "16546503781c37e122-1": {
+          "type": "column",
+          "settings": {
+            "title": "Free Samples",
+            "title_type": "h4",
+            "text": "<p>Choose at Checkout<\/p>",
+            "link_label": "",
+            "link": "",
+            "text_color": "#ffffff"
+          }
+        },
+        "16546503781c37e122-2": {
+          "type": "column",
+          "settings": {
+            "title": "Contact US",
+            "title_type": "h4",
+            "text": "<p>1-888-367-1319 <\/p><p>(M-F 9am-6pm EST)<\/p>",
+            "link_label": "",
+            "link": "",
+            "text_color": "#ffffff"
+          }
+        },
+        "91afbcc3-cd79-414d-96f0-1d23445b4287": {
+          "type": "column",
+          "settings": {
+            "title": "Worldwide Shipping",
+            "title_type": "h4",
+            "text": "<p>Shop from anywhere in the world.<\/p>",
+            "link_label": "",
+            "link": "",
+            "text_color": "#ffffff"
+          }
+        },
+        "e218c3e9-7337-47f7-954f-9b39f4473b2e": {
+          "type": "column",
+          "disabled": true,
+          "settings": {
+            "title": "Column",
+            "title_type": "h4",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "link_label": "",
+            "link": "",
+            "text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "16546503781c37e122-0",
+        "16546503781c37e122-1",
+        "16546503781c37e122-2",
+        "91afbcc3-cd79-414d-96f0-1d23445b4287",
+        "e218c3e9-7337-47f7-954f-9b39f4473b2e"
+      ],
+      "settings": {
+        "title": "",
+        "title_type": "h1",
+        "image_width": 48,
+        "image_ratio": "adapt",
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "swipe_on_mobile": true,
+        "background_color": "#000000",
+        "section_title_color": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "165454169464a1b59f",
+    "164859133999877611",
+    "1643928550187e94a1",
+    "1654627689d66c5f5f",
+    "164863940128c29aa2",
+    "1654516338e47731b1",
+    "165465022673278400",
+    "1654650378cac58032"
+  ]
+}

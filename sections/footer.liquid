@@ -1,0 +1,650 @@
+<footer class="footer">
+  <div class="footer-top page-width">
+    {% for block in section.blocks %}
+      <div class="footer-block footer-block--{{ block.id }}{% if block.type == 'newsletter' %} footer-block-newsletter{% endif %}">
+        {% if block.type == 'link_list'	%}
+          {% if block.settings.social == true %}
+            <div class="social">
+              <h4>Follow Us</h4>
+              <div>
+                {% if settings.social_facebook_link != '' %}
+                  <a href="{{ settings.social_facebook_link }}">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M16 8.05031C16 3.62264 12.4 0 7.99999 0C3.59999 0 0 3.62264 0 8.05031C0 12.0755 2.95 15.3962 6.74999 16V10.3648H4.69999V8.05031H6.74999V6.28931C6.74999 4.27673 7.94999 3.16981 9.74998 3.16981C10.65 3.16981 11.55 3.32075 11.55 3.32075V5.28302H10.55C9.54998 5.28302 9.24998 5.88679 9.24998 6.54088V8.05031H11.45L11.1 10.3648H9.24998V16C13.05 15.3962 16 12.0755 16 8.05031Z" fill="black"/>
+                    </svg>
+                  </a>
+                {% endif %}
+                {% if settings.social_twitter_link != '' %}
+                  <a href="{{ settings.social_twitter_link }}">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M16 8C16 12.4183 12.4183 16 8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8ZM12.024 6.73196C12.024 9.27996 10.084 12.22 6.536 12.22C5.448 12.22 4.432 11.9 3.588 11.348C3.74 11.368 3.892 11.376 4.048 11.376C4.952 11.376 5.784 11.068 6.444 10.552C5.6 10.536 4.888 9.97996 4.644 9.21196C4.764 9.23596 4.884 9.24796 5.008 9.24796C5.184 9.24796 5.356 9.22396 5.516 9.17996C4.632 8.99996 3.968 8.22396 3.968 7.28796V7.26396C4.228 7.40796 4.524 7.49596 4.84 7.50396C4.32 7.15996 3.98 6.56796 3.98 5.89996C3.98 5.54796 4.076 5.21596 4.24 4.93196C5.192 6.09996 6.612 6.86796 8.216 6.94796C8.18 6.80796 8.164 6.65996 8.164 6.50796C8.164 5.44396 9.028 4.57996 10.092 4.57996C10.648 4.57996 11.148 4.81196 11.5 5.18796C11.94 5.09996 12.352 4.93996 12.724 4.71996C12.58 5.17196 12.276 5.54796 11.876 5.78796C12.268 5.73996 12.64 5.63596 12.984 5.48396C12.724 5.87196 12.396 6.21196 12.02 6.48396C12.024 6.56396 12.024 6.64796 12.024 6.73196Z" fill="black"/>
+                    </svg>
+                  </a>
+                {% endif %}
+                {% if settings.social_instagram_link != '' %}
+                  <a href="{{ settings.social_instagram_link }}">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M7.99683 1.44156C10.1333 1.44156 10.3841 1.45108 11.2286 1.48918C12.0095 1.52411 12.4317 1.6543 12.7143 1.76543C13.0889 1.91149 13.3556 2.08295 13.6349 2.36237C13.9143 2.64179 14.0889 2.90851 14.2317 3.28319C14.3397 3.56579 14.473 3.98809 14.5079 4.7692C14.546 5.61381 14.5556 5.86466 14.5556 8.00159C14.5556 10.1385 14.546 10.3894 14.5079 11.234C14.473 12.0151 14.3429 12.4374 14.2317 12.72C14.0857 13.0947 13.9143 13.3614 13.6349 13.6408C13.3556 13.9202 13.0889 14.0949 12.7143 14.2377C12.4317 14.3457 12.0095 14.4791 11.2286 14.514C10.3841 14.5521 10.1333 14.5616 7.99683 14.5616C5.86032 14.5616 5.60952 14.5521 4.76508 14.514C3.98413 14.4791 3.5619 14.3489 3.27937 14.2377C2.90476 14.0917 2.6381 13.9202 2.35873 13.6408C2.07937 13.3614 1.90476 13.0947 1.7619 12.72C1.65397 12.4374 1.52063 12.0151 1.48571 11.234C1.44762 10.3894 1.4381 10.1385 1.4381 8.00159C1.4381 5.86466 1.44762 5.61381 1.48571 4.7692C1.52063 3.98809 1.65079 3.56579 1.7619 3.28319C1.90794 2.90851 2.07937 2.64179 2.35873 2.36237C2.6381 2.08295 2.90476 1.90832 3.27937 1.76543C3.5619 1.65747 3.98413 1.52411 4.76508 1.48918C5.60952 1.44791 5.86032 1.44156 7.99683 1.44156ZM7.99683 0C5.8254 0 5.55238 0.0095257 4.69841 0.0476285C3.84762 0.0857313 3.26667 0.222266 2.75873 0.419131C2.23175 0.622346 1.7873 0.898591 1.34286 1.34312C0.898413 1.78766 0.625397 2.23536 0.419048 2.75928C0.222222 3.26731 0.0857143 3.84838 0.047619 4.70252C0.00952381 5.55348 0 5.82655 0 7.99841C0 10.1703 0.00952381 10.4433 0.047619 11.2975C0.0857143 12.1484 0.222222 12.7295 0.419048 13.2407C0.622222 13.7678 0.898413 14.2123 1.34286 14.6569C1.7873 15.1014 2.23492 15.3745 2.75873 15.5809C3.26667 15.7777 3.84762 15.9143 4.70159 15.9524C5.55556 15.9905 5.8254 16 8 16C10.1746 16 10.4444 15.9905 11.2984 15.9524C12.1492 15.9143 12.7302 15.7777 13.2413 15.5809C13.7683 15.3777 14.2127 15.1014 14.6571 14.6569C15.1016 14.2123 15.3746 13.7646 15.581 13.2407C15.7778 12.7327 15.9143 12.1516 15.9524 11.2975C15.9905 10.4433 16 10.1734 16 7.99841C16 5.82338 15.9905 5.55348 15.9524 4.69935C15.9143 3.84838 15.7778 3.26731 15.581 2.7561C15.3778 2.22901 15.1016 1.78448 14.6571 1.33995C14.2127 0.895416 13.7651 0.622346 13.2413 0.415956C12.7333 0.219091 12.1524 0.0825561 11.2984 0.0444533C10.4413 0.0095257 10.1683 0 7.99683 0Z" fill="black"/>
+                      <path d="M7.99661 3.88965C5.72994 3.88965 3.88867 5.72811 3.88867 7.9984C3.88867 10.2687 5.72994 12.1072 7.99661 12.1072C10.2633 12.1072 12.1045 10.2655 12.1045 7.9984C12.1045 5.73128 10.2633 3.88965 7.99661 3.88965ZM7.99661 10.6656C6.52359 10.6656 5.32994 9.47171 5.32994 7.9984C5.32994 6.52509 6.52359 5.3312 7.99661 5.3312C9.46962 5.3312 10.6633 6.52509 10.6633 7.9984C10.6633 9.47171 9.46962 10.6656 7.99661 10.6656Z" fill="black"/>
+                      <path d="M12.2665 4.6864C12.7961 4.6864 13.2255 4.25707 13.2255 3.72748C13.2255 3.19788 12.7961 2.76855 12.2665 2.76855C11.7369 2.76855 11.3076 3.19788 11.3076 3.72748C11.3076 4.25707 11.7369 4.6864 12.2665 4.6864Z" fill="white"/>
+                    </svg>
+                  </a>
+                {% endif %}
+                {% if settings.social_youtube_link != '' %}
+                  <a href="{{ settings.social_youtube_link }}">
+                    <svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M22.1998 2.50353C21.9384 1.52471 21.1729 0.752941 20.202 0.489412C18.4283 0 11.3333 0 11.3333 0C11.3333 0 4.23831 0 2.46457 0.470588C1.51235 0.734118 0.728168 1.52471 0.466775 2.50353C0 4.29176 0 8 0 8C0 8 0 11.7271 0.466775 13.4965C0.728168 14.4753 1.49368 15.2471 2.46457 15.5106C4.25698 16 11.3333 16 11.3333 16C11.3333 16 18.4283 16 20.202 15.5294C21.1729 15.2659 21.9384 14.4941 22.1998 13.5153C22.6666 11.7271 22.6666 8.01882 22.6666 8.01882C22.6666 8.01882 22.6852 4.29176 22.1998 2.50353ZM9.0741 11.4259V4.57412L14.9741 8L9.0741 11.4259Z" fill="black"/>
+                    </svg>
+                  </a>
+                {% endif %}
+                {% if settings.social_pinterest_link != '' %}
+                  <a href="{{ settings.social_pinterest_link }}">
+                    <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_1555_3520)">
+                        <path d="M8.66699 0C4.24889 0 0.666992 3.58189 0.666992 8C0.666992 11.3909 2.77399 14.2881 5.75012 15.4535C5.67769 14.8214 5.61843 13.8469 5.77646 13.1556C5.92131 12.53 6.71144 9.1786 6.71144 9.1786C6.71144 9.1786 6.4744 8.69794 6.4744 7.99342C6.4744 6.88066 7.11967 6.05103 7.92296 6.05103C8.60773 6.05103 8.93695 6.56461 8.93695 7.17695C8.93695 7.86173 8.50238 8.88889 8.27193 9.84362C8.08098 10.6403 8.67358 11.2922 9.45712 11.2922C10.8793 11.2922 11.9723 9.79095 11.9723 7.63128C11.9723 5.71523 10.5962 4.3786 8.62749 4.3786C6.3493 4.3786 5.01267 6.08395 5.01267 7.84856C5.01267 8.53333 5.27605 9.27078 5.60526 9.67243C5.67111 9.75144 5.67769 9.82387 5.65794 9.90288C5.59868 10.1531 5.46041 10.6996 5.43407 10.8115C5.40115 10.9564 5.31555 10.9893 5.16411 10.9169C4.16329 10.4494 3.53777 8.99424 3.53777 7.81564C3.53777 5.29383 5.36823 2.97613 8.82502 2.97613C11.597 2.97613 13.7567 4.95144 13.7567 7.59835C13.7567 10.3572 12.0184 12.5761 9.60856 12.5761C8.79868 12.5761 8.03489 12.1547 7.7781 11.6543C7.7781 11.6543 7.37646 13.1819 7.27769 13.5572C7.09991 14.2551 6.61267 15.1243 6.28345 15.6576C7.03407 15.8881 7.82419 16.0132 8.65382 16.0132C13.0719 16.0132 16.6538 12.4313 16.6538 8.01317C16.667 3.58189 13.0851 0 8.66699 0Z" fill="black"/>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_1555_3520">
+                          <rect width="16" height="16" fill="white" transform="translate(0.666992)"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </a>
+                {% endif %}
+                {% if settings.social_linkendin_link != '' %}
+                  <a href="{{ settings.social_linkendin_link }}">
+                    <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M15.2197 0H2.11432C1.31499 0 0.666992 0.648 0.666992 1.44733V14.5526C0.666992 15.352 1.31499 16 2.11432 16H15.2196C16.019 16 16.667 15.352 16.667 14.5526V1.44733C16.667 0.648 16.019 0 15.2197 0ZM5.61807 13.8155C5.61807 14.0481 5.42951 14.2366 5.19688 14.2366H3.40396C3.17133 14.2366 2.98276 14.0481 2.98276 13.8155V6.2996C2.98276 6.06697 3.17133 5.87841 3.40396 5.87841H5.19688C5.42951 5.87841 5.61807 6.06697 5.61807 6.2996V13.8155ZM4.30042 5.16993C3.35972 5.16993 2.59713 4.40733 2.59713 3.46664C2.59713 2.52595 3.35972 1.76335 4.30042 1.76335C5.24111 1.76335 6.0037 2.52595 6.0037 3.46664C6.0037 4.40733 5.24115 5.16993 4.30042 5.16993ZM14.9878 13.8494C14.9878 14.0632 14.8144 14.2366 14.6006 14.2366H12.6766C12.4628 14.2366 12.2894 14.0632 12.2894 13.8494V10.324C12.2894 9.79812 12.4436 8.01948 10.915 8.01948C9.72927 8.01948 9.48877 9.2369 9.44048 9.78325V13.8494C9.44048 14.0632 9.26712 14.2366 9.05321 14.2366H7.19244C6.97857 14.2366 6.80517 14.0632 6.80517 13.8494V6.26568C6.80517 6.05181 6.97857 5.87841 7.19244 5.87841H9.05321C9.26708 5.87841 9.44048 6.05181 9.44048 6.26568V6.92138C9.88014 6.26157 10.5335 5.75229 11.9248 5.75229C15.0055 5.75229 14.9878 8.63045 14.9878 10.2119V13.8494Z" fill="black"/>
+                    </svg>
+                  </a>
+                {% endif %}
+                {% if settings.social_tiktok_link != '' %}
+                  <a href="{{ settings.social_tiktok_link }}">
+                    <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M14.7622 0H2.57175C1.52147 0 0.666992 0.854476 0.666992 1.90476V14.0952C0.666992 15.1455 1.52147 16 2.57175 16H14.7622C15.8125 16 16.667 15.1455 16.667 14.0952V1.90476C16.667 0.854476 15.8125 0 14.7622 0ZM13.2407 6.98019C13.1542 6.98819 13.0666 6.99352 12.9778 6.99352C11.9786 6.99352 11.1005 6.47962 10.5897 5.70286C10.5897 7.74057 10.5897 10.059 10.5897 10.0979C10.5897 11.8918 9.13518 13.3463 7.34128 13.3463C5.54737 13.3463 4.0929 11.8918 4.0929 10.0979C4.0929 8.304 5.54737 6.84952 7.34128 6.84952C7.40909 6.84952 7.47537 6.85562 7.54204 6.85981V8.46057C7.47537 8.45257 7.40985 8.44038 7.34128 8.44038C6.42547 8.44038 5.68337 9.18248 5.68337 10.0983C5.68337 11.0141 6.42547 11.7562 7.34128 11.7562C8.25709 11.7562 9.06585 11.0347 9.06585 10.1189C9.06585 10.0827 9.08185 2.65448 9.08185 2.65448H10.6118C10.7558 4.02248 11.8601 5.1021 13.2407 5.20114V6.98019Z" fill="black"/>
+                    </svg>
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+          {% if block.settings.menu_title != '' %}
+            <h4>{{ block.settings.menu_title }}</h4>
+          {% endif %}
+          {% if block.settings.menu.links != null %}
+            <ul>
+            {% for link in block.settings.menu.links %}
+              <li>
+                <a href="{{ link.url }}">{{ link.title }}</a>
+              </li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+          {% if block.settings.second_menu_title != '' %}
+            <h4>{{ block.settings.second_menu_title }}</h4>
+          {% endif %}
+          {% if block.settings.second_menu.links != null %}
+            <ul>
+            {% for link in block.settings.second_menu.links %}
+              <li>
+                <a href="{{ link.url }}">{{ link.title }}</a>
+              </li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+          {% if block.settings.third_menu_title != '' %}
+            <h4>{{ block.settings.third_menu_title }}</h4>
+          {% endif %}
+          {% if block.settings.third_menu.links != null %}
+            <ul>
+            {% for link in block.settings.third_menu.links %}
+              <li>
+                <a href="{{ link.url }}">{{ link.title }}</a>
+              </li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+       	{% elsif block.type == 'newsletter' %}
+          <div class="newsletter-column">
+            {% if block.settings.newsletter_heading != '' %}
+              <h3 class="newsletter-heading-{{ block.settings.newsletter_heading_alignment }} newsletter-heading-mobile-{{ block.settings.newsletter_heading_alignment_mobile }}">{{ block.settings.newsletter_heading }}</h3>
+            {% endif %}
+            {% if block.settings.newsletter_content != '<p></p>' %}
+              <div class="newsletter-content newsletter-content-{{ block.settings.newsletter_content_alignment }} newsletter-content-mobile-{{ block.settings.newsletter_content_alignment_mobile }}">{{ block.settings.newsletter_content }}</div>
+            {% endif %}
+            {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <div class="newsletter-form__field-wrapper">
+                <div class="field">
+                  <input
+                    id="NewsletterForm--{{ section.id }}"
+                    type="email"
+                    name="contact[email]"
+                    class="field__input"
+                    value="{{ form.email }}"
+                    aria-required="true"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    autocomplete="email"
+                    {% if form.errors %}
+                      autofocus
+                      aria-invalid="true"
+                      aria-describedby="ContactFooter-error"
+                    {% elsif form.posted_successfully? %}
+                      aria-describedby="ContactFooter-success"
+                    {% endif %}
+                    placeholder="{{ 'newsletter.label' | t }}"
+                    required
+                  >
+                  <label class="field__label" for="NewsletterForm--{{ section.id }}">
+                    {{ 'newsletter.label' | t }}
+                  </label>
+                  <input type="hidden" name="contact[tags]" value="newsletter">
+                  <button type="submit" class="newsletter-form__button field__button" name="commit" id="Subscribe" aria-label="{{ 'newsletter.button_label' | t }}">
+                    {% render 'icon-arrow' %}
+                  </button>
+                </div>
+                {%- if form.errors -%}
+                  <p class="newsletter-form__message form__message" id="ContactFooter-error">{% render 'icon-error' %}{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</p>
+                {%- endif -%}
+              </div>
+              {%- if form.posted_successfully? -%}
+                <p class="newsletter-form__message newsletter-form__message--success form__message" id="ContactFooter-success" tabindex="-1" autofocus>{% render 'icon-success' %}{{ 'newsletter.success' | t }}</p>
+              {%- endif -%}
+            {%- endform -%}
+            {% if block.settings.text_below_newsletter != '' %}
+              <div class="text-below-newsletter-{{ block.settings.text_below_newsletter_alignment }} text-below-newsletter-mobile-{{ block.settings.text_below_newsletter_alignment_mobile }}">{{ block.settings.text_below_newsletter }}</div>
+            {% endif %}
+          </div>
+          {% if block.settings.show_logo == true %}
+        	<div class="footer-logo footer-logo-{{ block.settings.logo_alignment }} footer-logo-mobile-{{ block.settings.logo_alignment_mobile }}">
+              {% if block.settings.logo != null %}
+                {{ block.settings.logo | image_url: width: block.settings.logo_width | image_tag: loading: 'lazy' }}
+              {% else %}
+                <h2>{{ shop.name }}</h2>
+              {% endif %}
+        	</div>
+          {% endif %}
+        {% elsif block.type == 'text' %}
+          {% if block.settings.heading != '' %}
+        	<h4>{{ block.settings.heading }}</h4>
+          {% endif %}
+          <div>
+            {{ block.settings.subtext }}
+          </div>
+        {% elsif block.type == 'image' %}
+          {% if block.settings.image != null %}
+            <div class="footer-image footer-image-{{ block.settings.alignment }} footer-image-mobile-{{ block.settings.alignment_mobile }}">
+              {{ block.settings.image | image_url: width: block.settings.image_width | image_tag: loading: 'lazy' }} 
+            </div>
+          {% endif %}
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+  <div class="footer-bottom page-width">
+    <div class="links">
+      {% for privacy in section.settings.privacy_menu.links %}
+      	<a href="{{ privacy.url }}">{{ privacy.title }}</a>
+      {% endfor %}
+    </div>
+    <div class="copyrights">
+      {% if section.settings.enable_payment_methods == true %}
+        <div class="footer-payment-methods">
+          {%- unless shop.enabled_payment_types == empty -%}
+            <span class="visuallyhidden">Supported payment methods</span>
+            <ul>
+              {%- for type in shop.enabled_payment_types -%}
+                <li>
+                  {{ type | payment_type_svg_tag: class: 'icon' }}
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endunless -%}
+        </div>
+      {% endif %}
+      {% if section.settings.logo != null %}
+      	<div class="copy-logo">
+          {{ section.settings.logo | image_url: width: section.settings.logo_width | image_tag: loading: 'lazy' }} 
+        </div>
+      {% endif %}
+      &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: routes.root_url }}
+    </div>
+  </div>
+</footer>
+
+{% style %}
+  .footer {
+  	background: {{ section.settings.background_color }};
+  }
+  .footer, 
+  .footer h2, 
+  .footer h3, 
+  .footer h4, 
+  .footer a {
+  	color: {{ section.settings.text_color }};
+  }
+  .footer .footer-top .footer-block .social svg path {
+	fill: {{ section.settings.text_color }};
+  }
+  .footer h2, 
+  .footer h3, 
+  .footer h4 {
+	font-size: {{ section.settings.heading_size }}px;
+  }
+  .footer .footer-top .footer-block li a {
+	font-size: {{ section.settings.text_size }}px;
+  }
+  .footer .footer-top .footer-block.footer-block-newsletter .newsletter-column .field__input, 
+  .footer .footer-top .footer-block.footer-block-newsletter .newsletter-column .select__select, 
+  .footer .footer-top .footer-block.footer-block-newsletter .newsletter-column .customer .field input, 
+  .footer .footer-top .footer-block.footer-block-newsletter .newsletter-column .customer select {
+	border-color: {{ section.settings.text_color }};
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Footer",
+  "max_blocks": 4,
+  "blocks": [
+	{
+	  "type": "link_list",
+	  "name": "Menu", 
+	  "settings": [
+		{
+		  "type": "text",
+		  "id": "menu_title",
+		  "label": "Menu Title"
+		},
+		{
+		  "type": "link_list",
+		  "id": "menu",
+		  "label": "Menu"
+		},
+		{
+		  "type": "text",
+		  "id": "second_menu_title",
+		  "label": "Second Menu Title"
+		},
+		{
+		  "type": "link_list",
+		  "id": "second_menu",
+		  "label": "Second Menu"
+		},
+		{
+		  "type": "text",
+		  "id": "third_menu_title",
+		  "label": "Third Menu Title"
+		},
+		{
+		  "type": "link_list",
+		  "id": "third_menu",
+		  "label": "Third Menu"
+		},
+		{
+          "type": "checkbox",
+          "id": "social",
+          "label": "Show social links", 
+          "default": false
+        }
+	  ]
+	},
+	{
+	  "type": "newsletter",
+	  "name": "Newsletter", 
+	  "settings": [
+		{
+		  "type": "text",
+		  "id": "newsletter_heading",
+		  "label": "Newsletter Heading", 
+		  "default": "Sign Up!"
+		},
+        {
+          "type": "select",
+          "id": "newsletter_heading_alignment",
+          "label": "Newsletter Heading alignment on big screen",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "select",
+          "id": "newsletter_heading_alignment_mobile",
+          "label": "Newsletter Heading alignment on small screen",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        },
+		{
+		  "type": "richtext",
+		  "id": "newsletter_content",
+		  "label": "Newsletter Content", 
+		  "default": "<p></p>"
+		},
+        {
+          "type": "select",
+          "id": "newsletter_content_alignment",
+          "label": "Newsletter Content alignment on big screen",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "select",
+          "id": "newsletter_content_alignment_mobile",
+          "label": "Newsletter Content alignment on small screen",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "richtext",
+          "id": "text_below_newsletter",
+          "label": "Text below Newsletter"
+        },
+        {
+          "type": "select",
+          "id": "text_below_newsletter_alignment",
+          "label": "Text below Newsletter alignment on big screen",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "right"
+        },
+        {
+          "type": "select",
+          "id": "text_below_newsletter_alignment_mobile",
+          "label": "Text below Newsletter alignment on small screen",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        },
+		{
+		  "type": "checkbox",
+		  "id": "show_logo", 
+		  "label": "Show Logo",
+		  "default": true
+		},
+		{
+		  "type": "image_picker",
+		  "id": "logo",
+		  "label": "Choose logo"
+		},
+		{
+          "type": "range",
+          "id": "logo_width",
+          "min": 50,
+          "max": 250,
+          "step": 10,
+          "unit": "px",
+          "label": "Logo width",
+          "default": 100
+        },
+        {
+          "type": "select",
+          "id": "logo_alignment",
+          "label": "Logo alignment on large screen",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "select",
+          "id": "logo_alignment_mobile",
+          "label": "Logo alignment on small screen",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        }
+	  ]
+	},
+    {
+      "type": "text",
+      "name": "t:sections.footer.blocks.text.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Heading",
+          "label": "t:sections.footer.blocks.text.settings.heading.label"
+        },
+        {
+          "type": "richtext",
+          "id": "subtext",
+          "default": "<p>Share store details, promotions, or brand content with your customers.</p>",
+          "label": "t:sections.footer.blocks.text.settings.subtext.label"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "min": 50,
+          "max": 250,
+          "step": 10,
+          "unit": "px",
+          "label": "Image width",
+          "default": 100
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Image alignment on large screen",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "select",
+          "id": "alignment_mobile",
+          "label": "Image alignment on small screen",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        }
+      ]
+    }
+  ],
+  "settings": [
+	{
+	  "type": "range",
+	  "id": "heading_size",
+	  "min": 15,
+	  "max": 25,
+	  "step": 1,
+	  "unit": "px",
+	  "label": "Title size",
+	  "default": 18
+	},
+	{
+	  "type": "range",
+	  "id": "text_size",
+	  "min": 10,
+	  "max": 20,
+	  "step": 1,
+	  "unit": "px",
+	  "label": "Links size",
+	  "default": 14
+	},
+	{
+	  "type": "link_list",
+	  "id": "privacy_menu",
+	  "label": "Privacy Menu"
+	},
+    {
+      "type": "header",
+      "content": "Logo bottom"
+    },
+	{
+	  "type": "image_picker",
+	  "id": "logo",
+	  "label": "Choose logo"
+	},
+	{
+	  "type": "range",
+	  "id": "logo_width",
+	  "min": 50,
+	  "max": 250,
+	  "step": 10,
+	  "unit": "px",
+	  "label": "Logo width",
+	  "default": 100
+	},
+    {
+      "type": "header",
+      "content": "Payment Methods"
+    },
+	{
+	  "type": "checkbox",
+	  "id": "enable_payment_methods",
+	  "label": "Enable Payment Methods Icons",
+	  "default": true
+	},
+    {
+      "type": "header",
+      "content": "Color Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f6f6f6"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#333232"
+    }
+  ]
+}
+{% endschema %}

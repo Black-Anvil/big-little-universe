@@ -1,0 +1,267 @@
+<div class="collection-section">
+  <div class="page-width">
+    {% assign spacing = false %}
+    {% if section.settings.title != '' %}
+      <{{ section.settings.title_type }} class="title">{{ section.settings.title }}</{{ section.settings.title_type }}>
+      {% assign spacing = true %}
+    {% endif %}
+    {% if section.settings.description != '' %}
+      <p class="description">{{ section.settings.description }}</p>
+      {% assign spacing = true %}
+    {% endif %}
+
+    {% if section.settings.collection.title != '' or show_view_all == true %}
+      <div class="category-heading{% if spacing == true %} spacing{% endif %}">
+        <div class="category-title {{ section.settings.collection_title_type }}">
+          {% if section.settings.collection_title != '' %}
+            {{ section.settings.collection_title }}
+          {% else %}
+            {{ section.settings.collection.title }}
+          {% endif %}
+        </div>
+        {% if section.settings.show_view_all == true %}
+        <a href="{{ section.settings.collection.url }}" class="link">
+          See All
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.99984 6L8.58984 7.41L13.1698 12L8.58984 16.59L9.99984 18L15.9998 12L9.99984 6Z" fill="black"/>
+          </svg>
+        </a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+  <div class="collection-scrollable-content">
+    <div class="swiper scrollable-products collection-scrollable-content-scroller-{{ section.id }}">
+      <div class="swiper-wrapper">
+        {% for product in section.settings.collection.products %}
+          <div class="swiper-slide scrollable-product">
+            {% render 'product-card',
+              product_card_product: product, 
+              no_border: section.settings.no_border
+            %}
+          </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-button-next">
+      	<svg width="30" height="30" viewBox="5 0 20 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="15" cy="15" r="15" fill="#eeeeee"/>
+          <path d="M12.9998 9L11.5898 10.41L16.1698 15L11.5898 19.59L12.9998 21L18.9998 15L12.9998 9Z" fill="black"/>
+        </svg>
+      </div>
+      <div class="swiper-button-prev">
+      	<svg width="30" height="30" viewBox="5 0 20 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="15" cy="15" r="15" fill="#eeeeee"/>
+          <path d="M12.9998 9L11.5898 10.41L16.1698 15L11.5898 19.59L12.9998 21L18.9998 15L12.9998 9Z" fill="black"/>
+        </svg>
+      </div>
+      <div class="swiper-scrollbar"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+new Swiper('.collection-scrollable-content-scroller-{{ section.id }}', {
+  slidesPerView: 'auto',
+  spaceBetween: 12,
+  freeMode: true,
+  mousewheel: {
+	forceToAxis: true
+  },
+  navigation: {
+	nextEl: ".swiper-button-next",
+	prevEl: ".swiper-button-prev",
+  },
+  scrollbar: {
+	el: ".swiper-scrollbar",
+  }
+});
+</script>
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    background: {{ section.settings.background_color }};
+  }
+  #shopify-section-{{ section.id }} .collection-scrollable-content .collection-scrollable-content-box .collection-scrollable-content-box-title,
+  #shopify-section-{{ section.id }} .collection-scrollable-content .collection-scrollable-content-box .collection-scrollable-content-box-price {
+    color: {{ section.settings.text_color }};
+  }
+  #shopify-section-{{ section.id }} .collection .title {
+	color: {{ section.settings.section_title_color }};
+  }
+  #shopify-section-{{ section.id }} .collection .description {
+	color: {{ section.settings.section_description_color }};
+  }
+  #shopify-section-{{ section.id }} .collection .category-heading .category-title {
+	color: {{ section.settings.heading_color }};
+  }
+  #shopify-section-{{ section.id }} .collection .category-heading .link {
+	color: {{ section.settings.link_color }};
+  }
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) {
+	background: {{ section.settings.product_modal_background_color }};
+  }
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) a, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .card-wrapper-option select, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .select .icon-caret, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .product-form__input label.color-picker.load-more, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .require-select-variant {
+	{% comment %} color: {{ section.settings.product_modal_text_color }}; {% endcomment %}
+  border-radius: 50px;
+  }
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .require-select-variant svg path {
+	fill: {{ section.settings.product_modal_text_color }};
+  }
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .card-wrapper-option .product-form__input input[type=radio]:hover+label.color-picker, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .card-wrapper-option .product-form__input input[type=radio]:checked+label.color-picker, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .card-wrapper-option .product-form__input label.color-picker.load-more:hover {
+	border-color: {{ section.settings.product_modal_text_color }};
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Products Scrollable",
+  "tag": "section",
+  "class": "spaced-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Featured collection",
+      "label": "t:sections.featured-collection.settings.title.label"
+    },
+	{
+	  "type": "select",
+	  "id": "title_type",
+	  "options": [
+		{
+		  "value": "h1",
+		  "label": "H1"
+		},
+		{
+		  "value": "h2",
+		  "label": "H2"
+		},
+		{
+		  "value": "h3",
+		  "label": "H3"
+		},
+		{
+		  "value": "h4",
+		  "label": "H4"
+		}
+	  ],
+	  "default": "h1",
+	  "label": "Title Type"
+	},
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:sections.featured-collection.settings.collection.label"
+    },
+    {
+      "type": "text",
+      "id": "collection_title",
+      "label": "Custom Collection Title"
+    },
+	{
+	  "type": "select",
+	  "id": "collection_title_type",
+	  "options": [
+		{
+		  "value": "h1",
+		  "label": "H1"
+		},
+		{
+		  "value": "h2",
+		  "label": "H2"
+		},
+		{
+		  "value": "h3",
+		  "label": "H3"
+		},
+		{
+		  "value": "h4",
+		  "label": "H4"
+		}
+	  ],
+	  "default": "h4",
+	  "label": "Collection Title Type"
+	},
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "default": true,
+      "label": "t:sections.featured-collection.settings.show_view_all.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "no_border",
+      "label": "Remove image border",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Color Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "section_title_color",
+      "label": "Section Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "section_description_color",
+      "label": "Section Description Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "product_modal_background_color",
+      "label": "Product Modal Background Color",
+      "default": "#FAFAFA"
+    },
+    {
+      "type": "color",
+      "id": "product_modal_text_color",
+      "label": "Product Modal Text Color",
+      "default": "#000000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Products Scrollable"
+    }
+  ]
+}
+{% endschema %}

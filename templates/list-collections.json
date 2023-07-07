@@ -1,0 +1,107 @@
+{
+  "sections": {
+    "165463986152320a6d": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "",
+        "title_type": "h2",
+        "description": "",
+        "collection": "newborn-to-6-months",
+        "collection_title": "Shop Newborn +",
+        "collection_title_type": "h2",
+        "show_view_all": true,
+        "no_border": true,
+        "background_color": "#f3f3f3",
+        "section_title_color": "#5b5b5b",
+        "section_description_color": "#5b5b5b",
+        "heading_color": "#5b5b5b",
+        "link_color": "#5b5b5b",
+        "text_color": "#5b5b5b",
+        "product_modal_background_color": "#fafafa",
+        "product_modal_text_color": "#5b5b5b"
+      }
+    },
+    "1654640226db767120": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "",
+        "title_type": "h1",
+        "description": "",
+        "collection": "7-months-to-1-year",
+        "collection_title": "Shop 6 Months +",
+        "collection_title_type": "h2",
+        "show_view_all": true,
+        "no_border": true,
+        "background_color": "#ffffff",
+        "section_title_color": "#5b5b5b",
+        "section_description_color": "#5b5b5b",
+        "heading_color": "#5b5b5b",
+        "link_color": "#5b5b5b",
+        "text_color": "#5b5b5b",
+        "product_modal_background_color": "#fafafa",
+        "product_modal_text_color": "#5b5b5b"
+      }
+    },
+    "1654640233998ec462": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "",
+        "title_type": "h1",
+        "description": "",
+        "collection": "1-year-to-3-year",
+        "collection_title": "Shop 3 Years +",
+        "collection_title_type": "h2",
+        "show_view_all": true,
+        "no_border": true,
+        "background_color": "#f3f3f3",
+        "section_title_color": "#5b5b5b",
+        "section_description_color": "#5b5b5b",
+        "heading_color": "#5b5b5b",
+        "link_color": "#5b5b5b",
+        "text_color": "#5b5b5b",
+        "product_modal_background_color": "#fafafa",
+        "product_modal_text_color": "#5b5b5b"
+      }
+    },
+    "16411648695d60edff": {
+      "type": "newsletter",
+      "blocks": {
+        "16411648696cab5589-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "🚛 Get Free Shipping On Your First Order 💨",
+            "heading_type": "h2"
+          }
+        },
+        "16411648696cab5589-1": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Be the first to know about new collections and exclusive offers.<\/p>"
+          }
+        },
+        "16411648696cab5589-2": {
+          "type": "email_form",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "16411648696cab5589-0",
+        "16411648696cab5589-1",
+        "16411648696cab5589-2"
+      ],
+      "settings": {
+        "full_width": true,
+        "background_color": "#e6c057",
+        "section_title_color": "#ffffff",
+        "text_color": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "165463986152320a6d",
+    "1654640226db767120",
+    "1654640233998ec462",
+    "16411648695d60edff"
+  ]
+}

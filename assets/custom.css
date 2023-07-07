@@ -1,0 +1,132 @@
+#shopify-section-template--15777709654174__1654516338e47731b1 .collection-section .collection-scrollable-content .card-wrapper:not(.cart--drawer-product-big) .card-wrapper-image, 
+.collection-section .collection-scrollable-content .card-wrapper:not(.cart--drawer-product-big) .card-wrapper-image img{
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+#shopify-section-template--15777709654174__1654516338e47731b1 .card-wrapper:not(.cart--drawer-product-big) {
+  border-radius: 0;
+}
+
+#shopify-section-template--15777709654174__1654516338e47731b1 .card-wrapper:not(.cart--drawer-product-big) a.disabled {
+  border-radius: 50px;
+  background-color: #f3e0ab;
+    opacity: 1;
+    border: none;
+    color: #fff;
+}
+
+#shopify-section-template--15777709654174__1654516338e47731b1 .collection-section .category-heading .category-title.h3 {
+  color: #6E6E6E!important;
+}
+
+
+#shopify-section-template--15777708998814__164115860805f71059 .field__input, #shopify-section-template--15777708998814__164115860805f71059 .field__input:hover, #shopify-section-template--15777708998814__164115860805f71059 .field__input:focus {
+  border-radius: 0;
+}
+
+.collection-section .category-heading .category-title, 
+.collage-wrapper-title {
+  color: #6E6E6E;
+}
+
+#NewsletterForm--template--15777709752478__16411648695d60edff {
+border-radius: 0;  
+}
+
+/* FOOTER CTA BORDER */
+#NewsletterForm--footer {
+  border-radius: 0;  
+}
+
+.collection-section .category-heading .link {
+  color: #6E6E6E!important;
+}
+
+.newsletter__wrapper .newsletter-form .newsletter-form__field-wrapper .field__input {
+  border-radius: 0;
+}
+
+.collection-section .collection-scrollable-content .swiper .swiper-wrapper .swiper-slide .card-wrapper {
+  border-radius: 0;
+}
+
+.collection-section .collection-scrollable-content .swiper .swiper-wrapper .swiper-slide .card-wrapper .card-wrapper-top .card-wrapper-image {
+  border-radius: 0;
+}
+
+.scrollable-products .swiper-wrapper .swiper-slide .card-wrapper .card-wrapper-top .card-wrapper-image,
+.scrollable-products .swiper-wrapper .swiper-slide .card-wrapper .card-wrapper-top .card-wrapper-image img {
+  border-radius: 0;
+}
+
+
+/* PDP FONT COLOR */
+.product__info-wrapper .product__info-container {
+  color: #6E6E6E;
+}
+.product .product__info-wrapper .product__info-container .product__title,
+.product .product__info-wrapper .product__info-container .price .price__regular .price-item {
+  color: #6E6E6E;
+}
+
+/* BLOG FONT COLOR */
+.main-blog .title--primary {
+  color: #6E6E6E;
+}
+
+.main-blog .article-card__excerpt {
+  color: #6E6E6E;
+}
+
+/* BLOG ARTICLE FONT COLORS */
+.article-template__content {
+  color:#6E6E6E;
+}
+
+.article-template__sidebar-product-detail h3 a {
+  color:#6E6E6E;
+}
+
+.article-template__link.link {
+  color:#6E6E6E;
+}
+
+
+/* CUSTOM BUTTON STYLES */
+.button:not(.button.button--secondary):hover, 
+.button:not(.button.button--secondary):focus {
+  border-radius: 50px;
+  transform: translateY(-4px);
+}
+
+.button:not(.button.button--secondary):active {
+  border-radius: 50px;
+  transform: translateY(0);
+}
+
+.button.button--secondary.disabled {
+    background-color: #f3e0ab;
+    opacity: 1;
+    border: none;
+    color: #ffffff;
+}
+
+.card-wrapper:not(.cart--drawer-product-big) .card-wrapper-image .card-wrapper-badges span.sold-out, 
+.product--page-you-may-also-like .product-grid .product-badges span.sold-out, 
+.product__images-slider .swiper-media .product-badges span.sold-out {
+  color: #989898;
+}
+
+/* ALL PRODUCTS PAGE */
+
+#shopify-section-template--15777709555870__product-grid #ProductGridContainer .grid__item .card-wrapper:not(.cart--drawer-product-big) .card-wrapper-top .card-wrapper-image,
+#shopify-section-template--15777709555870__product-grid #ProductGridContainer .grid__item .card-wrapper:not(.cart--drawer-product-big) .card-wrapper-top .card-wrapper-image img {
+  border-top-left-radius: 0!important;
+  border-top-right-radius: 0!important;
+  border-radius: 0;
+}
+
+.card-wrapper:not(.cart--drawer-product-big) .card-wrapper-image .card-wrapper-badges span.sold-out, .product--page-you-may-also-like .product-grid .product-badges span.sold-out, .product__images-slider .swiper-media .product-badges span.sold-out {
+  color: #989898!important;
+}

@@ -1,0 +1,177 @@
+<section class="section-reasons-to-love" id="reasons-to-love">
+  <div class="page-width">
+    <div class="reasons-to-love-title {{ section.settings.title_type }}">{{ section.settings.title }}</div>
+    <p class="reasons-to-love-description">{{ section.settings.description }}</p>
+    <div class="image-texts">
+      <div class="image">
+        {% assign i = 1 %}
+        {% for block in section.blocks %}
+          {% if block.settings.image != null %}
+            <img src="{{ block.settings.image | image_url: height: 1012 }}" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}" alt="{{ block.settings.heading | escape }}" data-tab="{{ i }}"{% if i > 1 %} class="hidden"{% endif %} loading="lazy">
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+          {% assign i = i | plus: 1 %}
+        {% endfor %}
+      </div>
+      <div class="texts">
+        {% assign i = 1 %}
+        {% for block in section.blocks %}
+          <a href="#" data-tab="{{ i }}"{% if i == 1 %} class="active"{% endif %}>
+            <svg width="24" height="28" viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 14L-1.30507e-06 27.8564L-9.36995e-08 0.143593L24 14Z" fill="#000000"/>
+            </svg>
+            <div class="texts-heading {{ block.settings.heading_type }}">{{ block.settings.heading }}</div>
+            <div class="texts-description">{{ block.settings.description }}</div>
+          </a>
+          {% assign i = i | plus: 1 %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="image-texts-mobile">
+      <div class="swiper swiper-reasons-to-love">
+        <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="swiper-slide image-texts">
+            <div class="image">
+              {% if block.settings.image != null %}
+              	{{ block.settings.image | image_url: height: 1012 | image_tag: loading: 'lazy' }}
+              {% else %}
+              	{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+            </div>
+            <div class="texts">
+              <a href="#" class="active">
+                <svg width="24" height="28" viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M24 14L-1.30507e-06 27.8564L-9.36995e-08 0.143593L24 14Z" fill="#000000"/>
+                </svg>
+                <div class="texts-heading {{ block.settings.heading_type }}">{{ block.settings.heading }}</div>
+                <div class="texts-description">{{ block.settings.description }}</div>
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+        {% if section.blocks.size > 1 %}
+          <div class="swiper-pagination"></div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% if section.blocks.size > 1 %}
+<script>
+new Swiper('.swiper-reasons-to-love', {
+  slidesPerView: 1,
+  loop: true,
+  mousewheel: {
+    forceToAxis: true
+  },
+  pagination: {
+    el: '.swiper-pagination',
+    type: 'bullets',
+    clickable: true
+  }
+});
+</script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Reasons to Love",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title text",
+      "default": "Reasons to Love"
+    },
+	{
+	  "type": "select",
+	  "id": "title_type",
+	  "options": [
+		{
+		  "value": "h1",
+		  "label": "H1"
+		},
+		{
+		  "value": "h2",
+		  "label": "H2"
+		},
+		{
+		  "value": "h3",
+		  "label": "H3"
+		},
+		{
+		  "value": "h4",
+		  "label": "H4"
+		}
+	  ],
+	  "default": "h4",
+	  "label": "Title Type"
+	},
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description text",
+      "default": "Lorem ipsum dolor sit amet"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image_picker",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading text",
+          "default": "Lorem ipsum dolor sit amet"
+        },
+        {
+          "type": "select",
+          "id": "heading_type",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            }
+          ],
+          "default": "h4",
+          "label": "Heading Type"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description text",
+          "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend neque elit, nec mollis urna mattis ut. Integer quis auctor nunc. In hac habitasse platea dictumst. Nunc eget sapien volutpat, eleifend eros et, volutpat turpis."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reasons to Love"
+    }
+  ]
+}
+{% endschema %}

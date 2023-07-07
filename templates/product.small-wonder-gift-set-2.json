@@ -1,0 +1,512 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "fb3fbeb8-0850-4008-aeca-9f7d375c6638": {
+          "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/star-rating\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "disabled": true,
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "96498bd2-57f5-45bf-a183-ed8b4c7b0f4d": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "dropdown",
+            "picker_color": true,
+            "picker_color_type": "variant_color"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "hide_more_payment_options": true
+          }
+        },
+        "05fce094-2fb8-4e5e-aba7-d365a2758461": {
+          "type": "upsell_product",
+          "settings": {
+            "upsell": "sand-free-towel",
+            "upsell_text": "Add a Sand Free Towel"
+          }
+        },
+        "8660367e-1e42-4bbd-8a2c-3af63d4cf6c3": {
+          "type": "icons",
+          "settings": {
+            "icon_1": "truck",
+            "icon_text_1": "Ships In 48 Hours",
+            "icon_2": "check_mark",
+            "icon_text_2": "CPSC Tested & Approved",
+            "icon_3": "check_mark",
+            "icon_text_3": ""
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "collapse_description": true,
+            "h1s_new_dropdown": false,
+            "collapse_icon": "chat_bubble"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "fb3fbeb8-0850-4008-aeca-9f7d375c6638",
+        "96498bd2-57f5-45bf-a183-ed8b4c7b0f4d",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "05fce094-2fb8-4e5e-aba7-d365a2758461",
+        "8660367e-1e42-4bbd-8a2c-3af63d4cf6c3",
+        "description"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "hide_variants": true,
+        "enable_video_looping": true,
+        "no_border": true,
+        "no_thumbnail_border": true,
+        "images_grid": false,
+        "remove_grid_big_images": true,
+        "autoplay_video": true
+      }
+    },
+    "add-to-cart-bar": {
+      "type": "add-to-cart-bar",
+      "disabled": true,
+      "settings": {
+        "links": "new-menu",
+        "no_border": true
+      }
+    },
+    "165610487617b7aa16": {
+      "type": "multicolumn",
+      "blocks": {
+        "1656104876fcd6d9e0-0": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/PDP_Icons_238x298_CREATIVE_PLAY_WHITE.jpg",
+            "title": "",
+            "title_type": "h4",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "text_color": "#000000"
+          }
+        },
+        "1656104876fcd6d9e0-1": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/PDP_Icons_238x298_FINE_MOTOR_SKILLS_WHITE.jpg",
+            "title": "",
+            "title_type": "h4",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "text_color": "#000000"
+          }
+        },
+        "1656104876fcd6d9e0-2": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/PDP_Icons_238x298_COMMUNICATION_WHITE.jpg",
+            "title": "",
+            "title_type": "h4",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "1656104876fcd6d9e0-0",
+        "1656104876fcd6d9e0-1",
+        "1656104876fcd6d9e0-2"
+      ],
+      "settings": {
+        "title": "",
+        "title_type": "h1",
+        "image_width": 144,
+        "image_ratio": "portrait",
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "swipe_on_mobile": false,
+        "background_color": "#ffffff",
+        "section_title_color": "#000000"
+      }
+    },
+    "164936710713f7d555": {
+      "type": "text-over-image",
+      "blocks": {
+        "74de21a5-5de2-4f78-a688-cc9250fed367": {
+          "type": "image_picker",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/2T9A6128_copy.jpg",
+            "image_overlay": false,
+            "url": "https:\/\/www.instagram.com\/biglittleuniverse\/",
+            "title": "",
+            "title_type": "h4",
+            "description": "",
+            "text_position": "center",
+            "text_align": "center"
+          }
+        },
+        "3be80cfc-c2bb-4aec-abb2-361ea10d0517": {
+          "type": "image_picker",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/BLU_TOT_3.png",
+            "image_overlay": false,
+            "url": "https:\/\/www.instagram.com\/biglittleuniverse\/",
+            "title": "",
+            "title_type": "h4",
+            "description": "",
+            "text_position": "center",
+            "text_align": "center"
+          }
+        },
+        "549c0648-596d-4f60-a691-11d631e890d7": {
+          "type": "image_picker",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/COL_BOO_5.gif",
+            "image_overlay": false,
+            "url": "https:\/\/www.instagram.com\/biglittleuniverse\/",
+            "title": "",
+            "title_type": "h4",
+            "description": "",
+            "text_position": "center",
+            "text_align": "center"
+          }
+        },
+        "57da74e8-2014-4812-8cb1-5c54afcfa23f": {
+          "type": "image_picker",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Seba2.jpg",
+            "image_overlay": false,
+            "url": "https:\/\/www.instagram.com\/biglittleuniverse\/",
+            "title": "",
+            "title_type": "h4",
+            "description": "",
+            "text_position": "center",
+            "text_align": "center"
+          }
+        }
+      },
+      "block_order": [
+        "74de21a5-5de2-4f78-a688-cc9250fed367",
+        "3be80cfc-c2bb-4aec-abb2-361ea10d0517",
+        "549c0648-596d-4f60-a691-11d631e890d7",
+        "57da74e8-2014-4812-8cb1-5c54afcfa23f"
+      ],
+      "settings": {
+        "horizontally_scrollable_mobile": true
+      }
+    },
+    "165610519806cfa3da": {
+      "type": "multicolumn",
+      "blocks": {
+        "16561051982271159b-0": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/PDP_Icons_238x298_BATTERY_FREE_WHITE_1_74b538c4-dc0e-4166-9768-c690250b3b57.jpg",
+            "title": "",
+            "title_type": "h4",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "text_color": "#000000"
+          }
+        },
+        "16561051982271159b-1": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/PDP_Icons_238x298_OPENENDED_PLAY_WHITE_1.jpg",
+            "title": "",
+            "title_type": "h4",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "text_color": "#000000"
+          }
+        },
+        "16561051982271159b-2": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/PDP_Icons_238x298_GENDER_NEU_WHITE_1_55090485-c0ca-40f0-b27c-7ddb89e0416a.jpg",
+            "title": "",
+            "title_type": "h4",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "16561051982271159b-0",
+        "16561051982271159b-1",
+        "16561051982271159b-2"
+      ],
+      "settings": {
+        "title": "",
+        "title_type": "h1",
+        "image_width": 144,
+        "image_ratio": "portrait",
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "swipe_on_mobile": false,
+        "background_color": "#ffffff",
+        "section_title_color": "#000000"
+      }
+    },
+    "1638764815f4a8bd1f": {
+      "type": "apps",
+      "blocks": {
+        "a14b4d93-ffff-4309-b39c-ddc4257a8024": {
+          "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "disabled": true,
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "a14b4d93-ffff-4309-b39c-ddc4257a8024"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "165159127438e84990": {
+      "type": "bundle-products",
+      "disabled": true,
+      "blocks": {
+        "0a19a6f3-08e5-4bbb-bb57-9e8f2245607c": {
+          "type": "product",
+          "settings": {
+            "product": "sand-free-towel"
+          }
+        },
+        "839e15ab-d26a-4d95-a0d3-4f2ab1b4e7a7": {
+          "type": "product",
+          "disabled": true,
+          "settings": {
+            "product": "stocking-stuffer"
+          }
+        },
+        "d783a287-3a19-4ae0-bb59-6ee4a95ef3db": {
+          "type": "product",
+          "disabled": true,
+          "settings": {
+            "product": "organic-cotton-bunny-lovey"
+          }
+        },
+        "88109ceb-669c-44fe-bc74-1a84a13b6e5e": {
+          "type": "product",
+          "disabled": true,
+          "settings": {
+            "product": "pacifier-clip-duo"
+          }
+        }
+      },
+      "block_order": [
+        "0a19a6f3-08e5-4bbb-bb57-9e8f2245607c",
+        "839e15ab-d26a-4d95-a0d3-4f2ab1b4e7a7",
+        "d783a287-3a19-4ae0-bb59-6ee4a95ef3db",
+        "88109ceb-669c-44fe-bc74-1a84a13b6e5e"
+      ],
+      "settings": {
+        "title_type": "h2",
+        "collection": "",
+        "display": "both",
+        "discount_incentive_type": "dollar_value",
+        "discount_input": 15,
+        "discount_threshold_type": "item_quantity",
+        "discount_threshold_input": 3,
+        "product_modal_background_color": "#fafafa",
+        "product_modal_text_color": "#000000"
+      }
+    },
+    "16440118531baa673f": {
+      "type": "text-over-image",
+      "disabled": true,
+      "settings": {
+        "horizontally_scrollable_mobile": true
+      }
+    },
+    "16402127088c5bf225": {
+      "type": "faq",
+      "disabled": true,
+      "blocks": {
+        "9755d940-a474-467e-bd04-c0b8391bb51f": {
+          "type": "text",
+          "settings": {
+            "question": "Lorem ipsum dolor sit amet?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat<\/p>"
+          }
+        },
+        "2d7b87a8-ace3-4e2b-809c-d510ddcf48ec": {
+          "type": "text",
+          "settings": {
+            "question": "Lorem ipsum dolor sit amet?",
+            "answer": "<p>To ship outsideLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequatof the U.S., simply select your country in the shipping details at checkout. Year-Limited Warranty Information <a href=\"https:\/\/shopsonix.myshopify.com\/pages\/warranty\" target=\"_blank\" title=\"https:\/\/shopsonix.myshopify.com\/pages\/warranty\">here<\/a>.<\/p>"
+          }
+        },
+        "bcc4c6ef-e3f8-46b4-9f3e-73a38e49cb77": {
+          "type": "text",
+          "settings": {
+            "question": "Lorem ipsum dolor sit amet?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat<\/p>"
+          }
+        },
+        "822b2fcb-6e59-49a0-b51f-e1e75ec8fa0b": {
+          "type": "text",
+          "settings": {
+            "question": "Lorem ipsum dolor sit amet",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend neque elit, nec mollis urna mattis ut. Integer quis auctor nunc. In hac habitasse platea dictumst. Nunc eget sapien volutpat, eleifend eros et, volutpat turpis.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "9755d940-a474-467e-bd04-c0b8391bb51f",
+        "2d7b87a8-ace3-4e2b-809c-d510ddcf48ec",
+        "bcc4c6ef-e3f8-46b4-9f3e-73a38e49cb77",
+        "822b2fcb-6e59-49a0-b51f-e1e75ec8fa0b"
+      ],
+      "settings": {
+        "title": "For The Curious Mind (FAQs)",
+        "title_type": "h2",
+        "background_color": "#f3f3f3",
+        "section_title_color": "#5b5b5b",
+        "question_color": "#5b5b5b",
+        "answer_color": "#5b5b5b"
+      }
+    },
+    "164115860805f71059": {
+      "type": "newsletter",
+      "blocks": {
+        "164115860819d56da5-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "🚛 Get Free Shipping On Your First Order 💨",
+            "heading_type": "h2"
+          }
+        },
+        "164115860819d56da5-1": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Be the first to know about new collections and exclusive offers.<\/p>"
+          }
+        },
+        "164115860819d56da5-2": {
+          "type": "email_form",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "164115860819d56da5-0",
+        "164115860819d56da5-1",
+        "164115860819d56da5-2"
+      ],
+      "settings": {
+        "full_width": true,
+        "background_color": "#bcc6bf",
+        "section_title_color": "#ffffff",
+        "text_color": "#ffffff"
+      }
+    },
+    "16408842078cbfe6d5": {
+      "type": "reasons-to-love",
+      "disabled": true,
+      "blocks": {
+        "e2c8b61a-7dfa-4b35-8a46-0a1ca57b2561": {
+          "type": "image_picker",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/0H0A9734_3.jpg",
+            "heading": "✈️ Travels So Easily",
+            "heading_type": "h4",
+            "description": "The best carry-on for anyone that travels! I bought the beach bucket and towel set for a trip tropical vacation. The set packed well for our daily beach or pool trip and the bucket's handle was great for small hands."
+          }
+        },
+        "cc0d39ce-b55b-4b19-b6d0-66ace509c5ba": {
+          "type": "image_picker",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Read_2_739aade9-d88c-420d-bd45-f256216464ac.jpg",
+            "heading": "🛁 From The Beach To The Bath",
+            "heading_type": "h4",
+            "description": "Such a beautiful set of beach toys, love the colors. They are lightweight, fold easily so I can take it with me and the kids love it. We even used it in the bath."
+          }
+        },
+        "728bd526-fd65-4778-9748-ff0dbce1c351": {
+          "type": "image_picker",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/BLU_BANNER-7_V2.jpg",
+            "heading": "❌ No More Broken Plastic",
+            "heading_type": "h4",
+            "description": "\"No more broken plastic beach toys!  The number of plastic beach toys we have broken made me look for a more durable alternative. The silicone design is genius, won’t break when dropped and is lightweight. Love the colours too!\""
+          }
+        }
+      },
+      "block_order": [
+        "e2c8b61a-7dfa-4b35-8a46-0a1ca57b2561",
+        "cc0d39ce-b55b-4b19-b6d0-66ace509c5ba",
+        "728bd526-fd65-4778-9748-ff0dbce1c351"
+      ],
+      "settings": {
+        "title": "Reasons to Love",
+        "title_type": "h2",
+        "description": ""
+      }
+    },
+    "16546550202b038a8f": {
+      "type": "product-recommendations",
+      "settings": {
+        "title": "Spark Creativity",
+        "title_type": "h2",
+        "description": "Vintage toys like our {{ product.title }} allow little imaginations to shine bright",
+        "no_border": true,
+        "shopify_recommendations": true,
+        "collection": "0-100",
+        "product_modal_background_color": "#fafafa",
+        "product_modal_text_color": "#5b5b5b"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "add-to-cart-bar",
+    "165610487617b7aa16",
+    "164936710713f7d555",
+    "165610519806cfa3da",
+    "1638764815f4a8bd1f",
+    "165159127438e84990",
+    "16440118531baa673f",
+    "16402127088c5bf225",
+    "164115860805f71059",
+    "16408842078cbfe6d5",
+    "16546550202b038a8f"
+  ]
+}

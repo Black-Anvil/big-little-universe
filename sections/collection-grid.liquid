@@ -1,0 +1,320 @@
+{% assign maxProducts = 8 %}
+{% if section.settings.banner != null or section.settings.banner_background_color != '' %}
+  {% assign maxProducts = 6 %}
+{% endif %}
+
+<div class="page-width">
+  <div class="collection-grid">
+    {% if section.settings.banner != null or section.settings.banner_background_color != '' %}
+      <div class="collection-banner-grid collection-banner-{{ section.settings.banner_size }} collection-banner-{{ section.settings.banner_position }} collection-banner-mobile-{{ section.settings.mobile_banner_position }}">
+        {% if section.settings.banner_size == 'small' %}
+          <div class="collection-banner-cols">
+        {% endif %}
+        <div class="collection-banner-col{% if section.settings.banner_size == 'small' %} collection-grid-col{% endif %}">
+          {% if section.settings.banner != null or section.settings.mobile_banner != null %}
+          	<div class="collection-banner-col-image">
+              {% if section.settings.mobile_banner != null %}
+              	{% if section.settings.banner != null %}
+                  {{ section.settings.banner | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'desktop' }}
+              	{% endif %}
+                {{ section.settings.mobile_banner | image_url: height: 410 | image_tag: loading: 'lazy', class: 'mobile' }}
+              {% else %}
+                {{ section.settings.banner | image_url: width: 1000 | image_tag: loading: 'lazy' }}
+              {% endif %}
+          	</div>
+          {% endif %}
+          <div class="collection-grid-col-text">
+            {% if section.settings.title != '' %}
+              <div class="collection-grid-col-title">{{ section.settings.title | escape }}</div>
+            {% endif %}
+            {% if section.settings.description != '' %}
+              <div class="collection-grid-col-description">{{ section.settings.description | escape }}</div>
+            {% endif %}
+            {% if section.settings.primary_button != '' or section.settings.secondary_button != '' %}
+              <div class="collection-grid-col-buttons">
+                {% if section.settings.primary_button != '' %}
+                  <a href="{{ section.settings.primary_button_url }}" class="button">{{ section.settings.primary_button | escape }}</a>
+                {% endif %}
+                {% if section.settings.secondary_button != '' %}
+                  <a href="{{ section.settings.secondary_button_url }}" class="button button--secondary">{{ section.settings.secondary_button | escape }}</a>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+        {% if section.settings.banner_size == 'large' %}
+          <div class="collection-banner-cols">
+        {% endif %}
+    {% endif %}
+
+    {% if section.settings.collection != null %}
+      {% for product in section.settings.collection.products %}
+    	<div class="collection-grid-col">
+          {% render 'product-card',
+			product_card_product: product, 
+			no_border: false
+		  %}
+        </div>
+    	{% if forloop.index == maxProducts %}
+          {% break %}
+    	{% endif %}
+      {% endfor %}
+    {% endif %}
+    {% if section.settings.banner != null or section.settings.banner_background_color != '' %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+	background: {{ section.settings.section_background_color }};
+  }
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) {
+	background: {{ section.settings.product_modal_background_color }};
+  }
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) a, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .card-wrapper-option select, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .select .icon-caret, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .product-form__input label.color-picker.load-more {
+	color: {{ section.settings.product_modal_text_color }};
+  }
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .card-wrapper-option .product-form__input input[type=radio]:hover+label.color-picker, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .card-wrapper-option .product-form__input input[type=radio]:checked+label.color-picker, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .card-wrapper-option .product-form__input label.color-picker.load-more:hover {
+	border-color: {{ section.settings.product_modal_text_color }};
+  }
+  #shopify-section-{{ section.id }} .collection-grid .collection-banner-col {
+	background: {{ section.settings.banner_background_color }};
+	color: {{ section.settings.banner_text_color }};
+  }
+  #shopify-section-{{ section.id }} .collection-grid .collection-banner-col .collection-grid-col-text { 
+	justify-content: {{ section.settings.banner_text_position }};
+  }
+  #shopify-section-{{ section.id }} .collection-grid .collection-banner-col .collection-banner-col-image::after {
+	background: rgba(0, 0, 0, 0.{{ section.settings.banner_overlay }});
+  }
+  @media (max-width: 767px) {
+	#shopify-section-{{ section.id }} .collection-grid .collection-banner-col .collection-banner-col-image::after {
+      background: rgba(0, 0, 0, 0.{{ section.settings.mobile_banner_overlay }});
+    }
+    #shopify-section-{{ section.id }} .collection-grid .collection-banner-col .collection-grid-col-text { 
+	  justify-content: center;
+      align-items: {{ section.settings.mobile_banner_text_position }};
+	  text-align: {% if section.settings.mobile_banner_text_position == 'flex-start' %}left{% elsif section.settings.mobile_banner_text_position == 'flex-end' %}right{% else %}{{ section.settings.mobile_banner_text_position }}{% endif %};
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Collection Grid",
+  "class": "spaced-section",
+  "settings": [
+	{
+      "type": "header",
+      "content": "Global Settings"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+	{
+	  "type": "text",
+	  "id": "title",
+	  "label": "Title"
+	},
+	{
+	  "type": "text",
+	  "id": "description",
+	  "label": "Description"
+	},
+	{
+	  "type": "text",
+	  "id": "primary_button",
+	  "label": "Primary CTA Text"
+	},
+	{
+	  "type": "url",
+	  "id": "primary_button_url",
+	  "label": "Primary CTA URL"
+	},
+	{
+	  "type": "text",
+	  "id": "secondary_button",
+	  "label": "Secondary CTA Text"
+	},
+	{
+	  "type": "url",
+	  "id": "secondary_button_url",
+	  "label": "Secondary CTA URL"
+	},
+    {
+      "type": "header",
+      "content": "Desktop Settings"
+    },
+	{
+      "type": "image_picker",
+      "id": "banner",
+      "label": "Banner"
+    },
+	{
+      "type": "select",
+      "id": "banner_position",
+      "label": "Banner Position",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+		{
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "banner_overlay",
+      "min": 0,
+      "max": 90,
+      "step": 10,
+      "unit": "%",
+      "label": "Banner Overlay",
+      "default": 0
+    },
+	{
+      "type": "select",
+      "id": "banner_size",
+      "label": "Banner Size",
+      "default": "large",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+		{
+          "value": "large",
+          "label": "Large"
+        }
+      ]
+    },
+	{
+      "type": "select",
+      "id": "banner_text_position",
+      "label": "Banner Text Position",
+      "default": "center",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Top"
+        },
+		{
+          "value": "center",
+          "label": "Center"
+        },
+		{
+          "value": "flex-end",
+          "label": "Bottom"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Mobile Settings"
+    },
+	{
+      "type": "image_picker",
+      "id": "mobile_banner",
+      "label": "Banner"
+    },
+	{
+      "type": "select",
+      "id": "mobile_banner_position",
+      "label": "Banner Position",
+      "default": "top",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+		{
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "mobile_banner_overlay",
+      "min": 0,
+      "max": 90,
+      "step": 10,
+      "unit": "%",
+      "label": "Banner Overlay",
+      "default": 0
+    },
+	{
+      "type": "select",
+      "id": "mobile_banner_text_position",
+      "label": "Banner Text Position",
+      "default": "center",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+		{
+          "value": "center",
+          "label": "Center"
+        },
+		{
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Color Settings"
+    },
+	{
+      "type": "color",
+      "id": "section_background_color",
+      "label": "Section Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "product_modal_background_color",
+      "label": "Product Modal Background Color",
+      "default": "#FAFAFA"
+    },
+    {
+      "type": "color",
+      "id": "product_modal_text_color",
+      "label": "Product Modal Text Color",
+      "default": "#000000"
+    },
+	{
+	  "type": "color",
+	  "id": "banner_background_color",
+	  "label": "Banner Background Color"
+    },
+	{
+	  "type": "color",
+	  "id": "banner_text_color",
+	  "label": "Banenr Text Color",
+	  "default": "#ffffff"
+	}
+  ],
+  "presets": [
+    {
+      "name": "Collection Grid"
+    }
+  ]
+}
+{% endschema %}

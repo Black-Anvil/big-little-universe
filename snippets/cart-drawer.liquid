@@ -1,0 +1,213 @@
+<div class="cart--drawer">
+  {% if settings.cart_drawer_incentive_1_discount_threshold > 0 %}
+    <div class="cart--drawer-announcement-bar" data-threshold="{{ settings.cart_drawer_incentive_1_discount_threshold }}" data-type="{{ settings.cart_drawer_incentive_1_discount_type }}" data-discount="{{ settings.cart_drawer_incentive_1_discount_incentive }}" data-zero-amount-items="{{ settings.0_items_not_count }}">
+      {% if settings.cart_drawer_incentive_1_discount_type == 'dollar' %}
+        {% assign incentive1_amountLeft = settings.cart_drawer_incentive_1_discount_threshold | times: 100.0 | minus: cart.total_price %}
+        {% if incentive1_amountLeft > 0 %}
+          Increase your bundle value by <span class="cart-drawer-dollar">{{ incentive1_amountLeft | money_without_trailing_zeros }}</span> to get {{ settings.cart_drawer_incentive_1_discount_incentive }}.
+        {% else %}
+       	  You got {{ settings.cart_drawer_incentive_1_discount_incentive }}!
+        {% endif %}
+      {% elsif settings.cart_drawer_incentive_1_discount_type == 'items' %}
+        {% assign incentive1_itemsLeft = settings.cart_drawer_incentive_1_discount_threshold | minus: cart.item_count %}
+        {% if settings.0_items_not_count == true %}
+       	  {% for cartItem in cart.items %}
+        	{% if cartItem.final_price == 0 %}
+         	  {% assign incentive1_itemsLeft = incentive1_itemsLeft | plus: 1 %}
+            {% endif %}
+       	  {% endfor %}
+        {% endif %}
+        {% if incentive1_itemsLeft > 0 %}
+      	  Buy <span class="cart-drawer-item">{{ incentive1_itemsLeft }}</span> more items for {{ settings.cart_drawer_incentive_1_discount_incentive }}.
+        {% else %}
+       	  You got {{ settings.cart_drawer_incentive_1_discount_incentive }}!
+        {% endif %}
+      {% endif %}
+    </div>
+  {% endif %}
+  <div class="cart--drawer-header">
+    {% if settings.cart_drawer_incentive_2_discount_threshold > 0 %}
+      {% assign freeShipingPrice = settings.cart_drawer_incentive_2_discount_threshold | times: 100 %}
+      <div class="cart--drawer-process">
+        <p class="cart--drawer-free-shipping">You're <span class="money" data-price="{{ freeShipingPrice }}">{{ freeShipingPrice | money }}</span> away from free shipping!</p>
+        <p class="cart--drawer-free-shipping-success">{{ settings.free_shipping_success_message }}</p>
+        <div class="cart--drawer-process-bar"><div style="width:0%"></div></div>
+      </div>
+    {% endif %}
+	<div class="cart--drawer-title">
+	  Your Cart (<span class="cart--drawer-count">{{ cart.item_count }}</span>)
+	  <div class="cart--drawer-close">
+		<a href="#">
+		  <svg class="cart--drawer-close-desktop" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M13.3 0.710215C12.91 0.320215 12.28 0.320215 11.89 0.710215L6.99997 5.59022L2.10997 0.700215C1.71997 0.310215 1.08997 0.310215 0.699971 0.700215C0.309971 1.09021 0.309971 1.72022 0.699971 2.11022L5.58997 7.00022L0.699971 11.8902C0.309971 12.2802 0.309971 12.9102 0.699971 13.3002C1.08997 13.6902 1.71997 13.6902 2.10997 13.3002L6.99997 8.41021L11.89 13.3002C12.28 13.6902 12.91 13.6902 13.3 13.3002C13.69 12.9102 13.69 12.2802 13.3 11.8902L8.40997 7.00022L13.3 2.11022C13.68 1.73022 13.68 1.09022 13.3 0.710215Z" fill="black"/>
+		  </svg>
+		  <svg class="cart--drawer-close-mobile" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M20 11H7.83L13.42 5.41L12 4L4 12L12 20L13.41 18.59L7.83 13H20V11Z" fill="black"/>
+		  </svg>
+		</a>
+	  </div>
+	</div>
+  </div>
+  <div class="cart--drawer-content">
+	<div class="cart--drawer-products">
+	  {% for cartProduct in cart.items %}
+		<div class="cart--drawer-product" data-key="{{ cartProduct.key }}" data-product-variant-id="{{ cartProduct.variant_id }}" data-product-id="{{ cartProduct.product_id }}">
+		  <div class="cart--drawer-product-image">
+			<a href="{{ cartProduct.url }}">
+              {% if cartProduct.image != null %}
+			  	{{ cartProduct.image | image_url: width: 256 | image_tag: loading: 'lazy' }}
+              {% else %}
+              	{{ 'image' | placeholder_svg_tag }}
+              {% endif %}
+			</a>
+		  </div>
+		  <div class="cart--drawer-product-info">
+			<a href="{{ cartProduct.url_to_remove }}" class="cart--drawer-product-remove">
+			  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M11.89 6.7L10 8.59L8.11 6.7C7.72 6.31 7.09 6.31 6.7 6.7C6.31 7.09 6.31 7.72 6.7 8.11L8.59 10L6.7 11.89C6.31 12.28 6.31 12.91 6.7 13.3C7.09 13.69 7.72 13.69 8.11 13.3L10 11.41L11.89 13.3C12.28 13.69 12.91 13.69 13.3 13.3C13.69 12.91 13.69 12.28 13.3 11.89L11.41 10L13.3 8.11C13.69 7.72 13.69 7.09 13.3 6.7C12.91 6.32 12.27 6.32 11.89 6.7ZM10 0C4.47 0 0 4.47 0 10C0 15.53 4.47 20 10 20C15.53 20 20 15.53 20 10C20 4.47 15.53 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18Z" fill="black"/>
+			  </svg>
+			</a>
+			<div class="cart--drawer-product-name">
+		  	  <a href="{{ cartProduct.url }}">{{ cartProduct.product.title }}</a>
+			</div>
+			{% assign variant_options = cartProduct.title | replace: cartProduct.product.title | replace: ' - ', '' %}
+            {% if variant_options != '' or cartProduct.properties != null %}
+              <div class="cart--drawer-product-variant">
+				{% if variant_options != '' %}
+				  {{ variant_options }}
+				{% endif %}
+				{% if cartProduct.properties != null %}
+				  {% for property in cartProduct.properties %}
+					<p>{{ property.first }}: {{ property.last }}</p>
+				  {% endfor %}
+				{% endif %}
+			  </div>
+			{% endif %}
+			<div class="cart--drawer-product-price">
+			  {% if cartProduct.original_price != cartProduct.discounted_price %}
+				<span class="old">{{ cartProduct.original_price | money }}</span> {{ cartProduct.discounted_price | money }}
+              {% else %}
+              	{{ cartProduct.final_price | money }}
+			  {% endif %}
+			</div>
+            <div class="cart--drawer-product-quantity">
+              <div>
+                <button type="button" class="quantity-minus">
+                  <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M8.99992 1.66683H0.999919C0.633252 1.66683 0.333252 1.36683 0.333252 1.00016C0.333252 0.633496 0.633252 0.333496 0.999919 0.333496H8.99992C9.36659 0.333496 9.66659 0.633496 9.66659 1.00016C9.66659 1.36683 9.36659 1.66683 8.99992 1.66683Z" fill="black"/>
+				  </svg>
+				</button>
+				<input type="text" name="quantity" value="{{ cartProduct.quantity }}" min="1" readonly="readonly">
+				<button type="button" class="quantity-plus">
+				  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M8.99992 5.66683H5.66659V9.00016C5.66659 9.36683 5.36659 9.66683 4.99992 9.66683C4.63325 9.66683 4.33325 9.36683 4.33325 9.00016V5.66683H0.999919C0.633252 5.66683 0.333252 5.36683 0.333252 5.00016C0.333252 4.6335 0.633252 4.3335 0.999919 4.3335H4.33325V1.00016C4.33325 0.633496 4.63325 0.333496 4.99992 0.333496C5.36659 0.333496 5.66659 0.633496 5.66659 1.00016V4.3335H8.99992C9.36659 4.3335 9.66659 4.6335 9.66659 5.00016C9.66659 5.36683 9.36659 5.66683 8.99992 5.66683Z" fill="black"/>
+				  </svg>
+				</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  {% endfor %}
+    </div>
+    {% if settings.ymal_enabled == true %}
+      <div class="cart--drawer-you-may-also-like-title{% if cart.item_count == 0 %} hidden{% endif %}">You May Also Like</div>
+      <div class="cart--drawer-you-may-also-like{% if cart.item_count == 0 %} hidden{% endif %}" data-shopify-recommendations="{{ settings.shopify_recommended_enabled }}">
+        <div class="swiper cart--drawer-you-may-also-like-scroller">
+          <div class="swiper-wrapper">
+            {% capture cartProductsList %}{% for cartProduct in cart.items %}{{ cartProduct.product_id }},{% endfor %}{% endcapture %}
+            {% assign youMayAlsoLikeNum = 0 %}
+            {% for product in collections.all.products %}
+              {% if product.tags contains 'Upsell Eligible' and product.available == true %}
+                {% assign productIdComma = product.id | append: ',' %}
+                {% unless cartProductsList contains productIdComma %}
+                  <div class="swiper-slide cart--drawer-product-big card-wrapper" data-product-id="{{ product.id }}">
+                    <div class="card-wrapper-top">
+                      <a href="{{ product.url }}">
+                        {% if product.featured_image != null %}
+                          {{ product.featured_image | image_url: width: 380 | image_tag: loading: 'lazy' }}
+                        {% else %}
+                          {{ 'image' | placeholder_svg_tag }}
+                        {% endif %}
+                        <div class="cart--drawer-product-big-name">{{ product.title }}</div>
+                        <div class="cart--drawer-product-big-price">
+                          {% if product.compare_at_price_varies == true %}
+                            {{ product.compare_at_price_min | money }} - {{ product.compare_at_price_max | money }}
+                          {% elsif product.price_varies == true %}
+                            {{ product.price_min | money }} - {{ product.price_max | money }}
+                          {% else %}
+                            {{ product.price | money }}
+                            {% if product.compare_at_price > 0 %}
+                              <span class="old">{{ product.compare_at_price | money }}</span>
+                            {% endif %}
+                          {% endif %}
+                        </div>
+                      </a>
+                    </div>
+                    <div class="card-wrapper-bottom">
+                      {% unless product.has_only_default_variant %}
+                      <div class="card-wrapper-option">
+                        <div class="product-form__input product-form__input--dropdown">
+                          <div class="select">
+                            <select class="select__select">
+                              {% for product_variant in product.variants %}
+                                {% if product_variant.available == true %}
+                                  <option value="{{ product_variant.id }}"{% if product_variant.selected == value %} selected="selected"{% endif %}>
+                                    {{ product_variant.title }}
+                                  </option>
+                                {% endif %}
+                              {% endfor %}
+                            </select>
+                            {% render 'icon-caret' %}
+                          </div>
+                        </div>
+                      </div>
+                      <a href="#" class="cart--drawer-product-big-button text-center">Select an Option</a>
+                      {% endunless %}
+                      <button type="button" data-add-id="{{ product.first_available_variant.id }}" data-product-id="{{ product.id }}" data-collection-id="{% for collection in product.collections %}{{ collection.id }},{% endfor %}" class="button"{% if product.has_only_default_variant == false %} disabled="disabled"{% endif %}>
+                        <span>Add to Cart</span>
+                        <div class="loading-overlay__spinner hidden">
+                          <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                            <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                          </svg>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                  {% assign youMayAlsoLikeNum = youMayAlsoLikeNum | plus: 1 %}
+                {% endunless %}
+              {% endif %}
+              {% if youMayAlsoLikeNum == 4 %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+  <div class="cart--drawer-summary">
+    <div class="cart--drawer-summary-prices">
+      <div class="d-flex">
+        <div class="d-flex-left">Subtotal</div>
+        <div class="d-flex-right"><span class="cart--drawer-summary-subtotal">{{ cart.total_price | money }}</span></div>
+      </div>
+      {% for discount_application in cart.discount_applications %}
+        <ul class="discounts list-unstyled" role="list" aria-label="Discount">
+          <li class="discounts__discount discounts__discount--end">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-discount color-foreground-text" viewBox="0 0 12 12">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M7 0h3a2 2 0 012 2v3a1 1 0 01-.3.7l-6 6a1 1 0 01-1.4 0l-4-4a1 1 0 010-1.4l6-6A1 1 0 017 0zm2 2a1 1 0 102 0 1 1 0 00-2 0z" fill="currentColor"></path>
+            </svg>
+            {{ discount_application.title }} (-{{ discount_application.total_allocated_amount | money }})
+		  </li>
+        </ul>
+      {% endfor %}
+      <p>Shipping and taxes calculated at checkout.</p>
+    </div>
+    <form action="{{ routes.cart_url }}" method="post" id="cart">
+      <button type="submit" id="checkout" name="checkout" class="button" form="cart">Go to Checkout</button>
+    </form>
+    <div class="text-center">
+      <a href="{{ routes.cart_url }}">View Cart Page</a>
+    </div>
+  </div>
+</div>

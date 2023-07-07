@@ -1,0 +1,67 @@
+{% if template.name contains 'product' %}
+  <section class="section-add-to-cart-bar{% if settings.mobile-nav-add-to-cart == true %} hide-mobile{% endif %}">
+    <div class="add-to-cart-bar-line">
+      <div class="links">
+        {% for linklist in linklists %}
+          {% if linklist.handle == section.settings.links %}
+            {% for link in linklist.links %}
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            {% endfor %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="product">
+        <a href="{{ product.url }}">
+          {% if product.featured_image != null %}
+            {{ product.featured_image | image_url: height: 92 | image_tag: loading: 'lazy' }}
+          {% else %}
+            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+          <div class="info">
+            <div class="title">{{ product.title }}</div>
+          </div>
+        </a>
+        <button type="submit" name="add" class="button">
+          <span>
+            {% if product.selected_or_first_available_variant.available %}
+              Add to Cart • <span class="btn-price">{{ product.selected_or_first_available_variant.price | money }}</span>
+            {% else %}
+              Sold Out
+            {% endif %}
+          </span>
+          <div class="loading-overlay__spinner hidden">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+              <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+            </svg>
+          </div>
+        </button>
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Add to Cart Bar",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "links",
+      "label": "Menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "no_border",
+      "label": "Remove image border",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Add to Cart Bar"
+    }
+  ]
+}
+{% endschema %}

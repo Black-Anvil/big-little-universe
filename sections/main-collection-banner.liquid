@@ -1,0 +1,154 @@
+{% assign collection_image = false %}
+{% if collection.featured_image != nil %}
+  {% assign collection_image = collection.featured_image %}
+{% endif %}
+<div class="collection-banner{% if section.settings.show_collection_image == true and collection_image != false %} collection-image{% endif %}">
+  <div class="collection-banner-main">
+    {% if section.settings.show_collection_image == true and collection_image != false %}
+    <div class="image overlay-{{ section.settings.banner_overlay }}">
+      {% if collection.featured_image != null %}
+        {{ collection.featured_image | image_url: width: 1920 | image_tag: loading: 'lazy' }}
+      {% else %}
+        {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+    {% endif %}
+    <div class="collection-banner-content page-width {{ section.settings.banner_height }} text-{{ section.settings.banner_text_alignment }}">
+      <{{ section.settings.title_type }}>{{ collection.title }}</{{ section.settings.title_type }}>
+      {% if section.settings.show_collection_description == true and collection.description != '' and settings.collection-description-bottom == false %}
+        <div class="description">{{ collection.description }}</div>
+      {% endif %}
+    </div>
+  </div>
+  {% if section.settings.show_collection_description == true and collection.description != '' and settings.collection-description-bottom == false %}
+    <div class="description">{{ collection.description }}</div>
+  {% endif %}
+</div>
+
+{% style %}
+.collection-banner.collection-image h1, 
+.collection-banner.collection-image h2, 
+.collection-banner.collection-image h3, 
+.collection-banner.collection-image h4 {
+  color: {{ section.settings.title_color }};
+}
+.collection-banner.collection-image .collection-banner-content .description {
+  color: {{ section.settings.description_color }};
+}
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Collection Banner",
+  "class": "spaced-section spaced-section--full-width",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.main-collection-banner.settings.paragraph.content"
+    },
+	{
+	  "type": "select",
+	  "id": "title_type",
+	  "options": [
+		{
+		  "value": "h1",
+		  "label": "H1"
+		},
+		{
+		  "value": "h2",
+		  "label": "H2"
+		},
+		{
+		  "value": "h3",
+		  "label": "H3"
+		},
+		{
+		  "value": "h4",
+		  "label": "H4"
+		}
+	  ],
+	  "default": "h1",
+	  "label": "Title Type"
+	},
+    {
+      "type": "select",
+      "id": "banner_height",
+	  "label": "Banner Height", 
+	  "options": [
+		{
+		  "value": "small",
+		  "label": "Small"
+		},
+		{
+		  "value": "medium",
+		  "label": "Medium"
+		},
+		{
+		  "value": "large",
+		  "label": "Large"
+		}
+	  ],
+	  "default": "large"
+    },
+    {
+      "type": "range",
+      "id": "banner_overlay",
+      "min": 0,
+      "max": 90,
+      "step": 10,
+      "unit": "%",
+      "label": "Banner Overlay",
+      "default": 40
+    },
+    {
+      "type": "select",
+      "id": "banner_text_alignment",
+	  "label": "Banner Text Aligment", 
+	  "options": [
+		{
+		  "value": "left",
+		  "label": "Left"
+		},
+		{
+		  "value": "center",
+		  "label": "Center"
+		},
+		{
+		  "value": "right",
+		  "label": "Right"
+		}
+	  ],
+	  "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_description",
+      "default": true,
+      "label": "t:sections.main-collection-banner.settings.show_collection_description.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_image",
+      "default": false,
+      "label": "t:sections.main-collection-banner.settings.show_collection_image.label",
+      "info": "t:sections.main-collection-banner.settings.show_collection_image.info"
+    },
+    {
+      "type": "header",
+      "content": "Color Settings"
+    },
+	{
+      "type": "color",
+      "id": "title_color",
+      "default": "#000000",
+      "label": "Title Text Color"
+    },
+	{
+      "type": "color",
+      "id": "description_color",
+      "default": "#000000",
+      "label": "Description Text Color"
+    }
+  ]
+}
+{% endschema %}

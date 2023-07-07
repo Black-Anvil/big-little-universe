@@ -1,0 +1,201 @@
+{% comment %}
+  {%- liquid
+    case section.settings.sort
+      when 'products_high' or 'products_low'
+        assign collections = collections | sort: 'all_products_count'
+      when 'date' or 'date_reversed'
+        assign collections = collections | sort: 'published_at'
+    endcase
+
+    if section.settings.sort == 'products_high' or section.settings.sort == 'date_reversed' or section.settings.sort == 'alphabetical_reversed'
+      assign collections = collections | reverse
+    endif
+  -%}
+
+  <div class="list-collections">
+    {% for collection in collections %}
+      <div class="list-collection-header page-width">
+        <div class="list-collection-title">{{ collection.title }}</div>
+        <div class="list-collection-link">
+          <a href="{{ collection.url }}">
+            <span>See All</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.99997 6L8.58997 7.41L13.17 12L8.58997 16.59L9.99997 18L16 12L9.99997 6Z" fill="#2353A7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="list-collection-products">
+        <div class="swiper swiper-{{ collection.id }}">
+          <div class="swiper-wrapper">
+            {% paginate collection.products by 8 %}
+              {% for product in collection.products %}
+                <div class="swiper-slide">
+                  <div class="card-wrapper">
+                    <a href="{{ product.url }}">
+                      <div class="card-wrapper-image">
+                        {% assign productImages = product.images | size %}
+                        {% if productImages > 1 %}
+                          {% if no_border == true %}
+                            {{ product.featured_image.src | image_url: width: 710 | image_tag: class: 'first no-border', loading: 'lazy' }}
+                            {{ product.images[1] | image_url: width: 710 | image_tag: class: 'second no-border', loading: 'lazy' }}
+                          {% else %}
+                            {{ product.featured_image.src | image_url: width: 710 | image_tag: class: 'first', loading: 'lazy' }}
+                            {{ product.images[1] | image_url: width: 710 | image_tag: class: 'second', loading: 'lazy' }}
+                          {% endif %}
+                        {% else %}
+                          {% if no_border == true %}
+                            {{ product.featured_image.src | image_url: width: 710 | image_tag: class: 'no-border', loading: 'lazy' }}
+                          {% else %}
+                            {{ product.featured_image.src | image_url: width: 710 | image_tag: loading: 'lazy' }}
+                          {% endif %}
+                        {% endif %}
+                        <div class="card-wrapper-badges">
+                          {% if product.available == false %}
+                            <span class="sold-out">{{ 'products.product.sold_out' | t }}</span>
+                          {% elsif product.compare_at_price > product.price and product.available %}
+                            <span class="on-sale">{{ 'products.product.on_sale' | t }}</span>
+                          {% endif %}
+                        </div>
+                      </div>
+                      <div class="card-wrapper-title">
+                        {{ product.title }}
+                      </div>
+                    </a>
+                    <div class="card-wrapper-price">
+                      {{ product.price | money }}
+                      {% if product.compare_at_price > 0 %}
+                        <span class="old">{{ product.compare_at_price | money }}</span>
+                      {% endif %}
+                    </div>
+                    {% if product.available == true %}
+                      {% if settings.cta_buttons != 'hide_cta_buttons' %}
+                        <div class="d-flex">
+                          <button type="submit" class="button{% if settings.cta_buttons == 'hide_buy_now_button' %} w-100{% endif %}" data-add-id="{{ product.selected_or_first_available_variant.id }}"{% if settings.enable_variant_selection == true %} disabled{% endif %}>
+                            <span>Add to Cart</span>
+                            <div class="loading-overlay__spinner hidden">
+                              <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                              </svg>
+                            </div>
+                          </button>
+                          {% if settings.cta_buttons != 'hide_buy_now_button' %}
+                          <button type="submit" class="button button--secondary buy-now" data-add-id="{{ product.selected_or_first_available_variant.id }}"{% if settings.enable_variant_selection == true %} disabled{% endif %}>
+                            <span>Buy Now</span>
+                            <div class="loading-overlay__spinner hidden">
+                              <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                              </svg>
+                            </div>
+                          </button>
+                          {% endif %}
+                        </div>
+                        {% unless product.has_only_default_variant %}
+                        <div class="card-wrapper-option">
+                          <div class="product-form__input product-form__input--dropdown">
+                            <div class="select">
+                              <select class="select__select">
+                              {% if settings.enable_variant_selection == true %}
+                                <option value="">Choose your {{ product.options | join: ' / ' }}</option>
+                              {% endif %}
+                              {% for product_variant in product.variants %}
+                                <option value="{{ product_variant.id }}"{% if product_variant.selected == value %} selected="selected"{% endif %}>
+                                  {{ product_variant.title }}
+                                </option>
+                              {% endfor %}
+                              </select>
+                              {% render 'icon-caret' %}
+                            </div>
+                          </div>
+                        </div>
+                        {% endunless %}
+                      {% endif %}
+                    {% endif %}
+                  </div>
+                </div>
+              {% endfor %}
+            {% endpaginate %}
+          </div>
+          <div class="swiper-button-next">
+            <svg width="30" height="30" viewBox="5 0 20 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="15" cy="15" r="15" fill="#eeeeee"/>
+              <path d="M12.9998 9L11.5898 10.41L16.1698 15L11.5898 19.59L12.9998 21L18.9998 15L12.9998 9Z" fill="black"/>
+            </svg>
+          </div>
+          <div class="swiper-button-prev">
+            <svg width="30" height="30" viewBox="5 0 20 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="15" cy="15" r="15" fill="#eeeeee"/>
+              <path d="M12.9998 9L11.5898 10.41L16.1698 15L11.5898 19.59L12.9998 21L18.9998 15L12.9998 9Z" fill="black"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <script>
+        const swiper_{{ collection.id }} = new Swiper('.swiper-{{ collection.id }}', {
+		  slidesPerView: 'auto',
+		  spaceBetween: 12,
+          freeMode: true,
+          mousewheel: {
+            forceToAxis: true
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+		  breakpoints: {
+            767: {
+              spaceBetween: 24
+            }
+          }
+        });
+      </script>
+    {% endfor %}
+  </div>
+
+{% schema %}
+{
+  "name": "Collections list",
+  "class": "spaced-section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "sort",
+      "options": [
+        {
+          "value": "alphabetical",
+          "label": "t:sections.main-list-collections.settings.sort.options__1.label"
+        },
+        {
+          "value": "alphabetical_reversed",
+          "label": "t:sections.main-list-collections.settings.sort.options__2.label"
+        },
+        {
+          "value": "date_reversed",
+          "label": "t:sections.main-list-collections.settings.sort.options__3.label"
+        },
+        {
+          "value": "date",
+          "label": "t:sections.main-list-collections.settings.sort.options__4.label"
+        },
+        {
+          "value": "products_high",
+          "label": "t:sections.main-list-collections.settings.sort.options__5.label"
+        },
+        {
+          "value": "products_low",
+          "label": "t:sections.main-list-collections.settings.sort.options__6.label"
+        }
+      ],
+      "default": "alphabetical",
+      "label": "t:sections.main-list-collections.settings.sort.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "no_border",
+      "label": "Remove image border",
+      "default": false
+    }
+  ]
+}
+{% endschema %}
+{% endcomment %}

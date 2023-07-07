@@ -1,0 +1,201 @@
+<div class="section-featured-reviews" id="featured-reviews">
+  <div class="section-featured-reviews-title {{ section.settings.title_type }}">{{ section.settings.title }}</div>
+  <p class="section-featured-reviews-description">{{ section.settings.description }}</p>
+  <div class="featured-reviews-content">
+    <div class="left-side">
+      {% if section.blocks.size > 0 %}
+        {% assign i = 1 %}
+        {% for block in section.blocks %}
+          <div class="featured-review">
+            <div class="featured-review-name">{{ block.settings.name }}</div>
+            <div class="featured-review-rating">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.99996 14.3916L15.15 17.5L13.7833 11.6416L18.3333 7.69996L12.3416 7.19163L9.99996 1.66663L7.65829 7.19163L1.66663 7.69996L6.21663 11.6416L4.84996 17.5L9.99996 14.3916Z" fill="#CE9440"/>
+              </svg>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.99996 14.3916L15.15 17.5L13.7833 11.6416L18.3333 7.69996L12.3416 7.19163L9.99996 1.66663L7.65829 7.19163L1.66663 7.69996L6.21663 11.6416L4.84996 17.5L9.99996 14.3916Z" fill="#CE9440"/>
+              </svg>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.99996 14.3916L15.15 17.5L13.7833 11.6416L18.3333 7.69996L12.3416 7.19163L9.99996 1.66663L7.65829 7.19163L1.66663 7.69996L6.21663 11.6416L4.84996 17.5L9.99996 14.3916Z" fill="#CE9440"/>
+              </svg>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.99996 14.3916L15.15 17.5L13.7833 11.6416L18.3333 7.69996L12.3416 7.19163L9.99996 1.66663L7.65829 7.19163L1.66663 7.69996L6.21663 11.6416L4.84996 17.5L9.99996 14.3916Z" fill="#CE9440"/>
+              </svg>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.99996 14.3916L15.15 17.5L13.7833 11.6416L18.3333 7.69996L12.3416 7.19163L9.99996 1.66663L7.65829 7.19163L1.66663 7.69996L6.21663 11.6416L4.84996 17.5L9.99996 14.3916Z" fill="#CE9440"/>
+              </svg>
+            </div>
+            <div class="featured-review-review">{{ block.settings.review }}</div>
+          </div>
+          {% assign i = i | plus: 1 %}
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div class="right-side">
+      {% if section.settings.image != null %}
+        {{ section.settings.image | image_url: height: 1832 | image_tag: loading: 'lazy' }}
+      {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    background: {{ section.settings.background_color }};
+  }
+  #shopify-section-{{ section.id }} .section-featured-reviews .section-featured-reviews-title,
+  #shopify-section-{{ section.id }} .section-featured-reviews .section-featured-reviews-description,
+  #shopify-section-{{ section.id }} .section-featured-reviews .featured-reviews-content .featured-review .featured-review-name,
+  #shopify-section-{{ section.id }} .section-featured-reviews .featured-reviews-content .featured-review .featured-review-review,
+  #shopify-section-{{ section.id }} .section-featured-reviews .featured-reviews-content .featured-review .featured-review-review p {
+    color: {{ section.settings.text_color }};
+  }
+  #shopify-section-{{ section.id }} .section-featured-reviews .section-featured-reviews-title {
+	color: {{ section.settings.section_title_color }};
+  }
+  #shopify-section-{{ section.id }} .section-featured-reviews .featured-reviews-content .featured-review .featured-review-rating svg path {
+    fill: {{ section.settings.rating_color }};
+  }
+  #shopify-section-{{ section.id }} .section-featured-reviews .featured-reviews-content .featured-review {
+    border-color: {{ section.settings.border_color }};
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Featured Reviews Cards",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title text",
+      "default": "What People Are Saying"
+    },
+	{
+	  "type": "select",
+	  "id": "title_type",
+	  "options": [
+		{
+		  "value": "h1",
+		  "label": "H1"
+		},
+		{
+		  "value": "h2",
+		  "label": "H2"
+		},
+		{
+		  "value": "h3",
+		  "label": "H3"
+		},
+		{
+		  "value": "h4",
+		  "label": "H4"
+		}
+	  ],
+	  "default": "h1",
+	  "label": "Title Type"
+	},
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description text",
+      "default": "Real Reviews From Real Customers"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image on the right"
+    },
+    {
+      "type": "header",
+      "content": "Color Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "section_title_color",
+      "label": "Section Title Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "rating_color",
+      "label": "Rating Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Reviews Borders Color",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Customer Name",
+          "default": "John"
+        },
+        {
+          "type": "select",
+          "id": "rating",
+          "label": "Rating",
+          "options": [
+            {
+              "value": "5",
+              "label": "5"
+            },
+            {
+              "value": "4",
+              "label": "4"
+            },
+            {
+              "value": "3",
+              "label": "3"
+            },
+            {
+              "value": "2",
+              "label": "2"
+            },
+            {
+              "value": "1",
+              "label": "1"
+            }
+          ],
+          "default": "5"
+        },
+        {
+          "type": "richtext",
+          "id": "review",
+          "label": "Review",
+          "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend neque elit, nec mollis urna mattis ut. Integer quis auctor nunc. In hac habitasse platea dictumst. Nunc eget sapien volutpat, eleifend eros et, volutpat turpis.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Reviews Cards"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,221 @@
+<section class="section-text-over-image">
+  <div class="text-over-image-content{% if section.settings.horizontally_scrollable_mobile == true %} text-over-image-content-desktop{% endif %}">
+    {% for block in section.blocks %}
+      <div class="text-over-image text-over-image--{{ block.id }}">
+        <div class="text-over-image-box">
+        {% if block.settings.url != nil %}
+        <a href="{{ block.settings.url }}">
+        {% endif %}
+          <div class="text-over-image-image{% if block.settings.image_overlay == true %} text-over-image-image-overlay{% endif %}">
+            {% if block.settings.image != null %}
+              {{ block.settings.image | image_url: height: 1200 | image_tag: loading: 'lazy' }}
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </div>
+          {% if block.settings.title != '' or block.settings.description != '' %}
+          <div class="text-over-image-text">
+            <div class="text-over-image-text-title {{ block.settings.title_type }}">{{ block.settings.title }}</div>
+            <div class="text-over-image-text-description">{{ block.settings.description }}</div>
+          </div>
+          {% endif %}
+        {% if block.settings.url != nil %}
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M23.9905 4.32467C30.4 4.32467 31.1524 4.35324 33.6857 4.46755C36.0286 4.57234 37.2952 4.96289 38.1429 5.29629C39.2667 5.73447 40.0667 6.24886 40.9048 7.08712C41.7429 7.92538 42.2667 8.72554 42.6952 9.84957C43.019 10.6974 43.419 11.9643 43.5238 14.3076C43.6381 16.8414 43.6667 17.594 43.6667 24.0048C43.6667 30.4156 43.6381 31.1681 43.5238 33.7019C43.419 36.0452 43.0286 37.3122 42.6952 38.16C42.2571 39.284 41.7429 40.0841 40.9048 40.9224C40.0667 41.7607 39.2667 42.2846 38.1429 42.7132C37.2952 43.0371 36.0286 43.4372 33.6857 43.542C31.1524 43.6563 30.4 43.6849 23.9905 43.6849C17.581 43.6849 16.8286 43.6563 14.2952 43.542C11.9524 43.4372 10.6857 43.0466 9.83809 42.7132C8.71429 42.2751 7.91429 41.7607 7.07619 40.9224C6.2381 40.0841 5.71429 39.284 5.28571 38.16C4.9619 37.3122 4.5619 36.0452 4.45714 33.7019C4.34286 31.1681 4.31429 30.4156 4.31429 24.0048C4.31429 17.594 4.34286 16.8414 4.45714 14.3076C4.5619 11.9643 4.95238 10.6974 5.28571 9.84957C5.72381 8.72554 6.2381 7.92538 7.07619 7.08712C7.91429 6.24886 8.71429 5.72495 9.83809 5.29629C10.6857 4.97241 11.9524 4.57234 14.2952 4.46755C16.8286 4.34372 17.581 4.32467 23.9905 4.32467ZM23.9905 0C17.4762 0 16.6571 0.0285771 14.0952 0.142885C11.5429 0.257194 9.8 0.666799 8.27619 1.25739C6.69524 1.86704 5.3619 2.69577 4.02857 4.02937C2.69524 5.36297 1.87619 6.70609 1.25714 8.27783C0.666667 9.80194 0.257143 11.5451 0.142857 14.1076C0.0285714 16.6604 0 17.4797 0 23.9952C0 30.5108 0.0285714 31.33 0.142857 33.8924C0.257143 36.4453 0.666667 38.1885 1.25714 39.7222C1.86667 41.3034 2.69524 42.637 4.02857 43.9706C5.3619 45.3042 6.70476 46.1234 8.27619 46.7426C9.8 47.3332 11.5429 47.7428 14.1048 47.8571C16.6667 47.9714 17.4762 48 24 48C30.5238 48 31.3333 47.9714 33.8952 47.8571C36.4476 47.7428 38.1905 47.3332 39.7238 46.7426C41.3048 46.133 42.6381 45.3042 43.9714 43.9706C45.3048 42.637 46.1238 41.2939 46.7429 39.7222C47.3333 38.1981 47.7429 36.4548 47.8571 33.8924C47.9714 31.33 48 30.5203 48 23.9952C48 17.4701 47.9714 16.6604 47.8571 14.098C47.7429 11.5451 47.3333 9.80194 46.7429 8.26831C46.1333 6.68704 45.3048 5.35344 43.9714 4.01985C42.6381 2.68625 41.2952 1.86704 39.7238 1.24787C38.2 0.657273 36.4571 0.247668 33.8952 0.13336C31.3238 0.0285771 30.5048 0 23.9905 0ZM23.9903 11.6694C17.1903 11.6694 11.6665 17.1848 11.6665 23.9957C11.6665 30.8066 17.1903 36.3219 23.9903 36.3219C30.7903 36.3219 36.3142 30.797 36.3142 23.9957C36.3142 17.1943 30.7903 11.6694 23.9903 11.6694ZM23.9903 31.9973C19.5713 31.9973 15.9903 28.4156 15.9903 23.9957C15.9903 19.5758 19.5713 15.9941 23.9903 15.9941C28.4094 15.9941 31.9903 19.5758 31.9903 23.9957C31.9903 28.4156 28.4094 31.9973 23.9903 31.9973ZM39.6773 11.1834C39.6773 12.7722 38.3894 14.0602 36.8006 14.0602C35.2118 14.0602 33.9238 12.7722 33.9238 11.1834C33.9238 9.59461 35.2118 8.30664 36.8006 8.30664C38.3894 8.30664 39.6773 9.59461 39.6773 11.1834Z" fill="white"/>
+          </svg>
+        </a>
+        {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  {% if section.settings.horizontally_scrollable_mobile == true %}
+  	<div class="swiper swiper-text-over-image text-over-image-content-mobile">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+		  <div class="swiper-slide image-texts image-texts--{{ block.id }}">
+            <div class="text-over-image-box">
+            {% if block.settings.url != nil %}
+            <a href="{{ block.settings.url }}">
+            {% endif %}
+              <div class="text-over-image-image{% if block.settings.image_overlay == true %} text-over-image-image-overlay{% endif %}">
+                {% if block.settings.image != null %}
+                  {{ block.settings.image | image_url: height: 1200 | image_tag: loading: 'lazy' }}
+                {% else %}
+                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                {% endif %}
+              </div>
+              {% if block.settings.title != '' or block.settings.description != '' %}
+              <div class="text-over-image-text">
+                <div class="text-over-image-text-title {{ block.settings.title_type }}">{{ block.settings.title }}</div>
+                <div class="text-over-image-text-description">{{ block.settings.description }}</div>
+              </div>
+              {% endif %}
+            {% if block.settings.url != nil %}
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M23.9905 4.32467C30.4 4.32467 31.1524 4.35324 33.6857 4.46755C36.0286 4.57234 37.2952 4.96289 38.1429 5.29629C39.2667 5.73447 40.0667 6.24886 40.9048 7.08712C41.7429 7.92538 42.2667 8.72554 42.6952 9.84957C43.019 10.6974 43.419 11.9643 43.5238 14.3076C43.6381 16.8414 43.6667 17.594 43.6667 24.0048C43.6667 30.4156 43.6381 31.1681 43.5238 33.7019C43.419 36.0452 43.0286 37.3122 42.6952 38.16C42.2571 39.284 41.7429 40.0841 40.9048 40.9224C40.0667 41.7607 39.2667 42.2846 38.1429 42.7132C37.2952 43.0371 36.0286 43.4372 33.6857 43.542C31.1524 43.6563 30.4 43.6849 23.9905 43.6849C17.581 43.6849 16.8286 43.6563 14.2952 43.542C11.9524 43.4372 10.6857 43.0466 9.83809 42.7132C8.71429 42.2751 7.91429 41.7607 7.07619 40.9224C6.2381 40.0841 5.71429 39.284 5.28571 38.16C4.9619 37.3122 4.5619 36.0452 4.45714 33.7019C4.34286 31.1681 4.31429 30.4156 4.31429 24.0048C4.31429 17.594 4.34286 16.8414 4.45714 14.3076C4.5619 11.9643 4.95238 10.6974 5.28571 9.84957C5.72381 8.72554 6.2381 7.92538 7.07619 7.08712C7.91429 6.24886 8.71429 5.72495 9.83809 5.29629C10.6857 4.97241 11.9524 4.57234 14.2952 4.46755C16.8286 4.34372 17.581 4.32467 23.9905 4.32467ZM23.9905 0C17.4762 0 16.6571 0.0285771 14.0952 0.142885C11.5429 0.257194 9.8 0.666799 8.27619 1.25739C6.69524 1.86704 5.3619 2.69577 4.02857 4.02937C2.69524 5.36297 1.87619 6.70609 1.25714 8.27783C0.666667 9.80194 0.257143 11.5451 0.142857 14.1076C0.0285714 16.6604 0 17.4797 0 23.9952C0 30.5108 0.0285714 31.33 0.142857 33.8924C0.257143 36.4453 0.666667 38.1885 1.25714 39.7222C1.86667 41.3034 2.69524 42.637 4.02857 43.9706C5.3619 45.3042 6.70476 46.1234 8.27619 46.7426C9.8 47.3332 11.5429 47.7428 14.1048 47.8571C16.6667 47.9714 17.4762 48 24 48C30.5238 48 31.3333 47.9714 33.8952 47.8571C36.4476 47.7428 38.1905 47.3332 39.7238 46.7426C41.3048 46.133 42.6381 45.3042 43.9714 43.9706C45.3048 42.637 46.1238 41.2939 46.7429 39.7222C47.3333 38.1981 47.7429 36.4548 47.8571 33.8924C47.9714 31.33 48 30.5203 48 23.9952C48 17.4701 47.9714 16.6604 47.8571 14.098C47.7429 11.5451 47.3333 9.80194 46.7429 8.26831C46.1333 6.68704 45.3048 5.35344 43.9714 4.01985C42.6381 2.68625 41.2952 1.86704 39.7238 1.24787C38.2 0.657273 36.4571 0.247668 33.8952 0.13336C31.3238 0.0285771 30.5048 0 23.9905 0ZM23.9903 11.6694C17.1903 11.6694 11.6665 17.1848 11.6665 23.9957C11.6665 30.8066 17.1903 36.3219 23.9903 36.3219C30.7903 36.3219 36.3142 30.797 36.3142 23.9957C36.3142 17.1943 30.7903 11.6694 23.9903 11.6694ZM23.9903 31.9973C19.5713 31.9973 15.9903 28.4156 15.9903 23.9957C15.9903 19.5758 19.5713 15.9941 23.9903 15.9941C28.4094 15.9941 31.9903 19.5758 31.9903 23.9957C31.9903 28.4156 28.4094 31.9973 23.9903 31.9973ZM39.6773 11.1834C39.6773 12.7722 38.3894 14.0602 36.8006 14.0602C35.2118 14.0602 33.9238 12.7722 33.9238 11.1834C33.9238 9.59461 35.2118 8.30664 36.8006 8.30664C38.3894 8.30664 39.6773 9.59461 39.6773 11.1834Z" fill="white"/>
+              </svg>
+            </a>
+            {% endif %}
+            </div>
+          </div>
+          {% style %}
+            .section-text-over-image .text-over-image.text-over-image--{{ block.id }} .text-over-image-text {
+              justify-content: {{ block.settings.text_position }};
+        	  text-align: {{ block.settings.text_align }};
+            }
+          {% endstyle %}
+        {% endfor %}
+      </div>
+      {% comment %}
+      <div class="swiper-button-next">
+      	<svg width="30" height="30" viewBox="5 0 20 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="15" cy="15" r="15" fill="#eeeeee"/>
+          <path d="M12.9998 9L11.5898 10.41L16.1698 15L11.5898 19.59L12.9998 21L18.9998 15L12.9998 9Z" fill="black"/>
+        </svg>
+      </div>
+      <div class="swiper-button-prev">
+      	<svg width="30" height="30" viewBox="5 0 20 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="15" cy="15" r="15" fill="#eeeeee"/>
+          <path d="M12.9998 9L11.5898 10.41L16.1698 15L11.5898 19.59L12.9998 21L18.9998 15L12.9998 9Z" fill="black"/>
+        </svg>
+      </div>
+      {% endcomment %}
+  	</div>
+  {% endif %}
+</section>
+
+{% if section.settings.horizontally_scrollable_mobile == true %}
+<script>
+new Swiper('.swiper-text-over-image', {
+  slidesPerView: 'auto',
+  mousewheel: {
+    forceToAxis: true
+  },
+  {% comment %}
+  navigation: {
+	nextEl: ".swiper-button-next",
+	prevEl: ".swiper-button-prev",
+  }
+  {% endcomment %}
+});
+</script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Text Over Image",
+  "tag": "section",
+  "max_blocks": 15,
+  "settings": [
+	{
+	  "type": "checkbox",
+	  "id": "horizontally_scrollable_mobile",
+	  "label": "Make horizontally scrollable on mobile"
+	}
+  ],
+  "blocks": [
+    {
+      "type": "image_picker",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "checkbox",
+          "id": "image_overlay",
+          "label": "Image Overlay",
+          "default": false
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "select",
+          "id": "title_type",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            }
+          ],
+          "default": "h4",
+          "label": "Title Type"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        },
+		{
+          "type": "select",
+          "id": "text_position",
+          "options": [
+            {
+              "value": "flex-start",
+              "label": "Top"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "flex-end",
+              "label": "Bottom"
+            }
+          ],
+          "default": "center",
+          "label": "Text Position"
+        },
+		{
+          "type": "select",
+          "id": "text_align",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center",
+          "label": "Text Align"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text Over Image"
+    }
+  ]
+}
+{% endschema %}

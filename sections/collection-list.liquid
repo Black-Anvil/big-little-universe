@@ -1,0 +1,101 @@
+{% comment %}
+<div class="collection-list page-width">
+  {% if section.settings.title != '' %}
+    <{{ section.settings.title_type }}>{{ section.settings.title }}</{{ section.settings.title_type }}>
+  {% endif %}
+  <div class="collection-list-blocks">
+    {% for block in section.blocks %}
+      {% assign starting_at = 0 %}
+	  {% for product in block.settings.collection.products %}
+		{% if product.price_min < starting_at or starting_at == 0 %}
+		  {% assign starting_at = product.price_min %}
+		{% endif %}
+	  {% endfor %}
+      <div class="collection-list-block">
+        <a href="{{ block.settings.collection.url }}">
+          {% if block.settings.collection.featured_image != null %}
+            {{ block.settings.collection.featured_image | image_url: width: 604 | image_tag: loading: 'lazy' }}
+          {% else %}
+            {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+          <div class="collection-title">
+            {{ block.settings.collection.title }}
+          </div>
+          {% if starting_at > 0 %}
+          	<p>Starting at {{ starting_at | money }}</p>
+          {% endif %}
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.collection-list.name",
+  "tag": "section",
+  "class": "spaced-section collection-list-section",
+  "max_blocks": 20,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.collection-list.settings.title.label"
+    },
+	{
+	  "type": "select",
+	  "id": "title_type",
+	  "options": [
+		{
+		  "value": "h1",
+		  "label": "H1"
+		},
+		{
+		  "value": "h2",
+		  "label": "H2"
+		},
+		{
+		  "value": "h3",
+		  "label": "H3"
+		},
+		{
+		  "value": "h4",
+		  "label": "H4"
+		}
+	  ],
+	  "default": "h1",
+	  "label": "Title Type"
+	}
+  ],
+  "blocks": [
+    {
+      "type": "featured_collection",
+      "name": "t:sections.collection-list.blocks.featured_collection.name",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "t:sections.collection-list.blocks.featured_collection.settings.collection.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.collection-list.presets.name",
+      "blocks": [
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+{% endcomment %}

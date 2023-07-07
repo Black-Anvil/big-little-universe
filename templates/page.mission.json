@@ -1,0 +1,287 @@
+{
+  "sections": {
+    "1660744109f5dbe9a6": {
+      "type": "image-with-text",
+      "blocks": {
+        "e5dabc61-aa0e-4e02-b04e-166c7ac014c3": {
+          "type": "slider",
+          "settings": {
+            "preheading": "",
+            "preheading_font_size": 20,
+            "preheading_line_height": 25,
+            "preheading_text_color": "#000000",
+            "preheading_type": "",
+            "heading": "<p>Our Mission<\/p>",
+            "heading_font_size": 42,
+            "heading_line_height": 31,
+            "heading_text_color": "#fafafa",
+            "heading_type": "h4",
+            "subheading": "",
+            "subheading_font_size": 20,
+            "subheading_line_height": 25,
+            "subheading_text_color": "#000000",
+            "subheading_type": "",
+            "subsubheading": "",
+            "subsubheading_font_size": 20,
+            "subsubheading_line_height": 25,
+            "subsubheading_text_color": "#000000",
+            "subsubheading_type": "",
+            "primary_button": "",
+            "primary_button_url": "",
+            "primary_button_background_color": "",
+            "primary_button_border_color": "",
+            "primary_button_text_color": "",
+            "secondary_button": "",
+            "secondary_button_url": "",
+            "secondary_button_background_color": "",
+            "secondary_button_border_color": "",
+            "secondary_button_text_color": "",
+            "background_color": "",
+            "image": "shopify:\/\/shop_images\/Cover_1_900x_18d2f733-6e22-47e8-a15b-6fe4d3362e40.webp",
+            "image_format": "default",
+            "image_overlay": 20,
+            "video": "",
+            "text_align": "center",
+            "image_position": "right",
+            "section_image_width": "screen-width-full-image",
+            "mobile_preheading": "",
+            "mobile_preheading_font_size": 20,
+            "mobile_preheading_line_height": 25,
+            "mobile_preheading_text_color": "#000000",
+            "mobile_preheading_type": "",
+            "mobile_heading": "",
+            "mobile_heading_font_size": 32,
+            "mobile_heading_line_height": 0,
+            "mobile_heading_text_color": "#ffffff",
+            "mobile_heading_type": "h1",
+            "mobile_subheading": "",
+            "mobile_subheading_font_size": 20,
+            "mobile_subheading_line_height": 25,
+            "mobile_subheading_text_color": "#000000",
+            "mobile_subheading_type": "",
+            "mobile_subsubheading": "",
+            "mobile_subsubheading_font_size": 20,
+            "mobile_subsubheading_line_height": 25,
+            "mobile_subsubheading_text_color": "#000000",
+            "mobile_subsubheading_type": "",
+            "mobile_primary_button": "Learn More",
+            "mobile_primary_button_url": "",
+            "mobile_primary_button_background_color": "",
+            "mobile_primary_button_border_color": "",
+            "mobile_primary_button_text_color": "",
+            "mobile_secondary_button": "",
+            "mobile_secondary_button_url": "",
+            "mobile_secondary_button_background_color": "",
+            "mobile_secondary_button_border_color": "",
+            "mobile_secondary_button_text_color": "",
+            "mobile_background_color": "",
+            "mobile_image_format": "default",
+            "mobile_image_overlay": 20,
+            "mobile_video": "",
+            "mobile_text_align": "center",
+            "mobile_image_position": "top",
+            "mobile_section_image_width": "full-size"
+          }
+        }
+      },
+      "block_order": [
+        "e5dabc61-aa0e-4e02-b04e-166c7ac014c3"
+      ],
+      "settings": {
+        "section_height": "screen-height-one-half",
+        "section_height_mobile": "four-fifty-height-hero",
+        "rotating_seconds": 3,
+        "pagination_position": "center",
+        "pagination_color": "#000000"
+      }
+    },
+    "166074433525c4094c": {
+      "type": "rich-text",
+      "blocks": {
+        "1660744335b33b6137-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "We inspire the lifelong power of curiosity little ones need to grow up to do big things",
+            "heading_type": "h4",
+            "heading_color": "#5b5b5b"
+          }
+        },
+        "1660744335b33b6137-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>",
+            "text_color": "#000000"
+          }
+        },
+        "1660744335b33b6137-2": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "1660744335b33b6137-0",
+        "1660744335b33b6137-1",
+        "1660744335b33b6137-2"
+      ],
+      "settings": {
+        "full_width": true,
+        "height": "margin--small",
+        "background_color": "linear-gradient(270deg, rgba(243, 243, 243, 1), rgba(243, 243, 243, 1) 100%)"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "hide_title": true
+      }
+    },
+    "16607444278f46dd21": {
+      "type": "image-with-text",
+      "blocks": {
+        "7cfbb917-5edf-4c2d-8729-93b4a7dbaa0f": {
+          "type": "slider",
+          "settings": {
+            "preheading": "",
+            "preheading_font_size": 20,
+            "preheading_line_height": 25,
+            "preheading_text_color": "#000000",
+            "preheading_type": "",
+            "heading": "<p>Who<\/p>",
+            "heading_font_size": 32,
+            "heading_line_height": 31,
+            "heading_text_color": "#ffffff",
+            "heading_type": "h2",
+            "subheading": "<p><em><strong>Who are you and what is your background?<\/strong><\/em><\/p>",
+            "subheading_font_size": 18,
+            "subheading_line_height": 15,
+            "subheading_text_color": "#ffffff",
+            "subheading_type": "",
+            "subsubheading": "<p>I’m a multidisciplinary designer and founder \/ creative director of Big Little Universe, a children’s brand that inspires curiosity through play. I earned my degree from Parson’s School of Design and I’ve created everything from brand logos to product packaging to commercial, restaurant and work space interiors.<\/p><p><br\/>At its core, I believe design is about problem solving. The challenge I’m particularly passionate about is helping people get the most out of beautifully designed products or spaces through entertaining, educational or inspirational companion content. Nowhere am I more inspired by this intersection than in the world of goods designed for babies, children and their parents.<\/p>",
+            "subsubheading_font_size": 17,
+            "subsubheading_line_height": 25,
+            "subsubheading_text_color": "#ffffff",
+            "subsubheading_type": "",
+            "primary_button": "",
+            "primary_button_url": "",
+            "primary_button_background_color": "",
+            "primary_button_border_color": "",
+            "primary_button_text_color": "",
+            "secondary_button": "",
+            "secondary_button_url": "",
+            "secondary_button_background_color": "",
+            "secondary_button_border_color": "",
+            "secondary_button_text_color": "",
+            "background_color": "#e6c057",
+            "image": "shopify:\/\/shop_images\/DSC_5552.jpg",
+            "image_format": "default",
+            "image_overlay": 60,
+            "video": "",
+            "text_align": "left",
+            "image_position": "left",
+            "section_image_width": "screen-width-one-half",
+            "mobile_preheading": "",
+            "mobile_preheading_font_size": 20,
+            "mobile_preheading_line_height": 25,
+            "mobile_preheading_text_color": "#000000",
+            "mobile_preheading_type": "",
+            "mobile_heading": "",
+            "mobile_heading_font_size": 26,
+            "mobile_heading_line_height": 31,
+            "mobile_heading_text_color": "#ffffff",
+            "mobile_heading_type": "h4",
+            "mobile_subheading": "",
+            "mobile_subheading_font_size": 20,
+            "mobile_subheading_line_height": 25,
+            "mobile_subheading_text_color": "#ffffff",
+            "mobile_subheading_type": "",
+            "mobile_subsubheading": "",
+            "mobile_subsubheading_font_size": 15,
+            "mobile_subsubheading_line_height": 25,
+            "mobile_subsubheading_text_color": "#ffffff",
+            "mobile_subsubheading_type": "",
+            "mobile_primary_button": "Learn More",
+            "mobile_primary_button_url": "",
+            "mobile_primary_button_background_color": "",
+            "mobile_primary_button_border_color": "",
+            "mobile_primary_button_text_color": "",
+            "mobile_secondary_button": "",
+            "mobile_secondary_button_url": "",
+            "mobile_secondary_button_background_color": "",
+            "mobile_secondary_button_border_color": "",
+            "mobile_secondary_button_text_color": "",
+            "mobile_background_color": "",
+            "mobile_image_format": "default",
+            "mobile_image_overlay": 60,
+            "mobile_video": "",
+            "mobile_text_align": "left",
+            "mobile_image_position": "top",
+            "mobile_section_image_width": "full-size"
+          }
+        }
+      },
+      "block_order": [
+        "7cfbb917-5edf-4c2d-8729-93b4a7dbaa0f"
+      ],
+      "settings": {
+        "section_height": "seven-fifty-height-hero",
+        "section_height_mobile": "screen-height-two-thirds",
+        "rotating_seconds": 3,
+        "pagination_position": "center",
+        "pagination_color": "#000000"
+      }
+    },
+    "1661549242e9fec5d8": {
+      "type": "rich-text",
+      "blocks": {
+        "1661549242f73e9330-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Why did you found Big Little Universe?",
+            "heading_type": "h2",
+            "heading_color": "#5b5b5b"
+          }
+        },
+        "1661549242f73e9330-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>I saw an opportunity to help little ones imagine a more creative way to play. In my experience there were thoughtfully designed children's products, and there were instances or great storytelling, but it was rare to find brands that excelled in bringing the two together in a deep and meaningful way.<\/p><p><\/p><p>I founded Big Little Universe to bridge that gap. We inspire the lifelong power of curiosity that little ones need to grow up to do big things. We do it with carefully curated toys and companion content that introduces them to different kinds of play at each age and learning stage.<\/p>",
+            "text_color": "#5b5b5b"
+          }
+        },
+        "1661549242f73e9330-2": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "1661549242f73e9330-0",
+        "1661549242f73e9330-1",
+        "1661549242f73e9330-2"
+      ],
+      "settings": {
+        "full_width": true,
+        "height": "margin--medium",
+        "background_color": ""
+      }
+    }
+  },
+  "order": [
+    "1660744109f5dbe9a6",
+    "166074433525c4094c",
+    "main",
+    "16607444278f46dd21",
+    "1661549242e9fec5d8"
+  ]
+}

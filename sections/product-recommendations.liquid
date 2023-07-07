@@ -1,0 +1,311 @@
+<div class="section-you-may-also-like" id="you-may-also-like">
+  <div class="product--page-you-may-also-like-title {{ section.settings.title_type }}">{{ section.settings.title }}</div>
+  <div class="product--page-you-may-also-like-description">{{ section.settings.description }}</div>
+  <div class="swiper scrollable-products swiper-you-may-also-like-{{ section.id }}">
+    <div class="swiper-wrapper">
+    {% if section.settings.shopify_recommendations == false %}
+      {% capture cartProductsList %}
+        {% for cartProduct in cart.items %}
+          {{ cartProduct.product_id }},
+        {% endfor %}
+      {% endcapture %}
+      {% assign youMayAlsoLikeNum = 0 %}
+      {% for product in collections.all.products %}
+        {% if product.tags contains 'Upsell Eligible' %}
+          {% assign productIdComma = product.id | append: ',' %}
+          {% unless cartProductsList contains productIdComma %}
+            <div class="swiper-slide scrollable-product">
+              {% render 'product-card',
+                product_card_product: product, 
+				no_border: section.settings.no_border
+			  %}
+            </div>
+            {% assign youMayAlsoLikeNum = youMayAlsoLikeNum | plus: 1 %}
+          {% endunless %}
+        {% endif %}
+        {% if youMayAlsoLikeNum == 3 %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    </div>
+    <div class="swiper-button-next">
+      <svg width="30" height="30" viewBox="5 0 20 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="15" cy="15" r="15" fill="#eeeeee"/>
+        <path d="M12.9998 9L11.5898 10.41L16.1698 15L11.5898 19.59L12.9998 21L18.9998 15L12.9998 9Z" fill="black"/>
+      </svg>
+    </div>
+    <div class="swiper-button-prev">
+      <svg width="30" height="30" viewBox="5 0 20 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="15" cy="15" r="15" fill="#eeeeee"/>
+        <path d="M12.9998 9L11.5898 10.41L16.1698 15L11.5898 19.59L12.9998 21L18.9998 15L12.9998 9Z" fill="black"/>
+      </svg>
+    </div>
+    <div class="swiper-scrollbar"></div>
+  </div>
+</div>
+
+{% if section.settings.shopify_recommendations == true %}
+<script>
+  var i = 1;
+  var ctaButtons = '{{ settings.cta_buttons }}';
+  var recommendationsProducts = {% if section.settings.collection.all_products != null %}{{ section.settings.collection.all_products | json }}{% else %}''{% endif %};
+  var placeholder_svg = '{{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}';
+  $.get('/recommendations/products.json?product_id={{ product.id }}', function(results) {
+	if (results.products.length > 0) {
+      recommendationsProducts = results.products;
+  	}
+    if (recommendationsProducts != '') {
+      $.each(recommendationsProducts, function(k, v) {
+        if (i < 6 && v.available == true) {
+          var product_price = Intl.NumberFormat(Shopify.locale, {
+            style: 'currency',
+            currency: Shopify.currency.active
+          }).format((v.price / 100));
+          var product_old_price = 0;
+          if (v.compare_at_price > 0) {
+            product_old_price = Intl.NumberFormat(Shopify.locale, {
+              style: 'currency',
+              currency: Shopify.currency.active
+            }).format((v.compare_at_price / 100));
+          }
+          var product_images = placeholder_svg;
+          if (v.media.length > 1) {
+            product_images = '';
+            var product_images_i = 1;
+            $.each(v.media, function(k2, v2) {
+              if (v2.media_type == 'image') {
+                var product_image_class = 'variant variant-' + v2.id;
+                if (product_images_i == 1) {
+                  product_image_class += ' first';
+                } else if (product_images_i == 2) {
+                  product_image_class += ' second';
+                }
+                product_images += '<img src="' + v2.preview_image.src + '" alt="' + (v2.alt != null ? v2.alt : v.title) + '" class="' + product_image_class + '{% if section.settings.no_border == true %} no-border{% endif %}">';
+                product_images_i++;
+              }
+            });
+          } else if (v.featured_image != null) {
+            product_images = '<img src="' + v.featured_image + '" alt="' + v.title + '"{% if section.settings.no_border == true %} class="no-border"{% endif %}>';
+          }
+          var product_badges = '';
+          if (v.compare_at_price > v.price) {
+            product_badges = '<span class="on-sale">{{ 'products.product.on_sale' | t }}</span>';
+          }
+          var variantSelector = {{ settings.enable_variant_selection }};
+          var options = '';
+          if (ctaButtons != 'hide_cta_buttons' && v.options.length > 0 && v.options[0].values[0] != 'Default Title') {
+            $.each(v.options, function(ok, ov) {
+              var productOptionNameLower = ov.name.toLowerCase();
+              if (productOptionNameLower == 'color' || productOptionNameLower == 'colour') {
+                options += '<div class="product-form__input">';
+                $.each(ov.values, function(ovk, ovv) {
+                  options += '<input type="radio" id="color-picker--{{ section.id }}-' + v.id + '-' + ovv.replace(' ', '-').toLowerCase() + '" name="{{ section.id }}_' + v.id + '_' + productOptionNameLower.replace(' ', '_') + '" value="' + ovv + '" data-option="' + ov.position + '"' + ((variantSelector == false && ovk == 0) ? ' checked="checked"' : '') + '>\
+                  	<label class="color-picker" for="color-picker--{{ section.id }}-' + v.id + '-' + ovv.replace(' ', '-').toLowerCase() + '" data-color="' + ovv + '">\
+                      <span data-color="' + ovv + '"></span>\
+                    </label>';
+                });
+                options += '</div>';
+              }
+            });
+            $.each(v.options, function(ok, ov) {
+              var productOptionNameLower = ov.name.toLowerCase();
+              if (productOptionNameLower != 'color' && productOptionNameLower != 'colour') {
+                options += '<div class="product-form__input product-form__input--dropdown">\
+                  <div class="select">\
+                    <select class="select__select" data-option="' + ov.position + '">';
+                    if (variantSelector == true) {
+                      options += '<option value="">Select ' + ov.name + '</option>';
+                    }
+                	$.each(ov.values, function(ovk, ovv) {
+                      options += '<option value="' + ovv + '"' + ((variantSelector == false && ovk == 0) ? ' selected="selected"' : '') + '>' + ovv + '</option>';
+                    });
+                    options += '</select>\
+					<svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></svg>\
+                  </div>\
+                </div>';
+              }
+            });
+          }
+          $('.swiper-you-may-also-like-{{ section.id }} .swiper-wrapper').append('<div class="swiper-slide scrollable-product">\
+            <div class="card-wrapper" data-variants="' + encodeURI(JSON.stringify(v.variants)) + '">\
+              <div class="card-wrapper-top">\
+                <a href="' + v.url + '">\
+                  <div class="card-wrapper-image">\
+                    ' + product_images + '\
+                    <div class="card-wrapper-badges">' + product_badges + '</div>\
+                  </div>\
+                  <div class="card-wrapper-title">' + v.title + '</div>\
+                </a>\
+              </div>\
+              ' + (ctaButtons != 'hide_cta_buttons' ? '<div class="card-wrapper-bottom">\
+            	<div class="card-wrapper-option">' + options + '</div>\
+                <button type="submit" class="button" data-add-id="' + v.variants[0].id + '"' + ((variantSelector == true) ? ' disabled' : '') + '>\
+            	  <div>\
+                    <span>Add to Cart</span>\
+                    <div class="loading-overlay__spinner hidden">\
+                      <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">\
+                        <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>\
+                      </svg>\
+                    </div>\
+                  </div>\
+                  <div>' + product_price + (product_old_price != 0 ? ' <span class="old">' + product_old_price + '</span>' : '') + '</div>\
+                </button>\
+	            ' + ((variantSelector == true) ? '<div class="require-select-variant"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.1665 11.5001H9.83317V13.1667H8.1665V11.5001ZM8.1665 4.83341H9.83317V9.83341H8.1665V4.83341ZM8.9915 0.666748C4.3915 0.666748 0.666504 4.40008 0.666504 9.00008C0.666504 13.6001 4.3915 17.3334 8.9915 17.3334C13.5998 17.3334 17.3332 13.6001 17.3332 9.00008C17.3332 4.40008 13.5998 0.666748 8.9915 0.666748ZM8.99984 15.6667C5.3165 15.6667 2.33317 12.6834 2.33317 9.00008C2.33317 5.31675 5.3165 2.33341 8.99984 2.33341C12.6832 2.33341 15.6665 5.31675 15.6665 9.00008C15.6665 12.6834 12.6832 15.6667 8.99984 15.6667Z" fill="black"/></svg><span>Select variant first</span></div>' : '') + '\
+              </div>' : '') + '\
+            </div>\
+          </div>');
+          i++;
+        }
+      });
+      new Swiper('.swiper-you-may-also-like-{{ section.id }}', {
+        slidesPerView: 'auto',
+  		spaceBetween: 12,
+        freeMode: true,
+        mousewheel: {
+          forceToAxis: true
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        scrollbar: {
+          el: ".swiper-scrollbar",
+        }
+      });
+      colorSwatches();
+    }
+  });
+</script>
+{% else %}
+<script>
+new Swiper('.swiper-you-may-also-like-{{ section.id }}', {
+  slidesPerView: 'auto',
+  spaceBetween: 12,
+  freeMode: true,
+  mousewheel: {
+	forceToAxis: true
+  },
+  navigation: {
+	nextEl: ".swiper-button-next",
+	prevEl: ".swiper-button-prev",
+  },
+  breakpoints: {
+    768: {
+      spaceBetween: 24
+    }
+  },
+  scrollbar: {
+	el: ".swiper-scrollbar",
+  }
+});
+</script>
+{% endif %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) {
+	background: {{ section.settings.product_modal_background_color }};
+  }
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) a, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .card-wrapper-option select, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .select .icon-caret, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .product-form__input label.color-picker.load-more, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .require-select-variant {
+	color: {{ section.settings.product_modal_text_color }};
+  }
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .require-select-variant svg path {
+	fill: {{ section.settings.product_modal_text_color }};
+  }
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .card-wrapper-option .product-form__input input[type=radio]:hover+label.color-picker, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .card-wrapper-option .product-form__input input[type=radio]:checked+label.color-picker, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .card-wrapper-option .product-form__input label.color-picker.load-more:hover {
+	border-color: {{ section.settings.product_modal_text_color }};
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Product YMAL",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "You may also like",
+      "label": "Section title"
+    },
+	{
+	  "type": "select",
+	  "id": "title_type",
+	  "options": [
+		{
+		  "value": "h1",
+		  "label": "H1"
+		},
+		{
+		  "value": "h2",
+		  "label": "H2"
+		},
+		{
+		  "value": "h3",
+		  "label": "H3"
+		},
+		{
+		  "value": "h4",
+		  "label": "H4"
+		}
+	  ],
+	  "default": "h4",
+	  "label": "Title Type"
+	},
+    {
+      "type": "text",
+      "id": "description",
+      "default": "Lorem ipsum dolor sit amet",
+      "label": "Section description"
+    },
+    {
+      "type": "checkbox",
+      "id": "no_border",
+      "label": "Remove image border",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Recommendations"
+    },
+    {
+      "type": "checkbox",
+      "id": "shopify_recommendations",
+      "label": "Enable Shopify Recommendations",
+      "default": false
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "or use selected collection"
+    },
+    {
+      "type": "header",
+      "content": "Color Settings"
+    },
+    {
+      "type": "color",
+      "id": "product_modal_background_color",
+      "label": "Product Modal Background Color",
+      "default": "#FAFAFA"
+    },
+    {
+      "type": "color",
+      "id": "product_modal_text_color",
+      "label": "Product Modal Text Color",
+      "default": "#000000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product YMAL"
+    }
+  ]
+}
+{% endschema %}

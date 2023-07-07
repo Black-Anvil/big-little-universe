@@ -1,0 +1,137 @@
+<div class="section-faq page-width">
+  <div class="section-faq-title {{ section.settings.title_type }}">{{ section.settings.title }}</div>
+  <div class="faqs">
+    {% assign i = 1 %}
+    {% for faq in section.blocks %}
+      <div class="faq{% if i == 1 %} active{% endif %}">
+        <div class="faq-question">
+          {{ faq.settings.question }}
+          <svg class="plus" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 8H7.99997V13C7.99997 13.55 7.54997 14 6.99997 14C6.44997 14 5.99997 13.55 5.99997 13V8H0.99997C0.44997 8 -3.05176e-05 7.55 -3.05176e-05 7C-3.05176e-05 6.45 0.44997 6 0.99997 6H5.99997V1C5.99997 0.45 6.44997 0 6.99997 0C7.54997 0 7.99997 0.45 7.99997 1V6H13C13.55 6 14 6.45 14 7C14 7.55 13.55 8 13 8Z" fill="black"/>
+          </svg>
+          <svg class="minus" width="14" height="2" viewBox="0 0 14 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 2H0.99997C0.44997 2 -3.05176e-05 1.55 -3.05176e-05 1C-3.05176e-05 0.45 0.44997 0 0.99997 0H13C13.55 0 14 0.45 14 1C14 1.55 13.55 2 13 2Z" fill="black"/>
+          </svg>
+        </div>
+        <div class="faq-answer">
+          {{ faq.settings.answer }}
+        </div>
+      </div>
+      {% assign i = i | plus: 1 %}
+    {% endfor %}
+  </div>
+</div>
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    background: {{ section.settings.background_color }};
+  }
+  #shopify-section-{{ section.id }} .section-faq .section-faq-title {
+	color: {{ section.settings.section_title_color }};
+  }
+  #shopify-section-{{ section.id }} .section-faq .faqs .faq {
+	border-color: {{ section.settings.section_title_color }};
+  }
+  #shopify-section-{{ section.id }} .section-faq .faqs .faq .faq-question {
+    color: {{ section.settings.question_color }};
+  }
+  #shopify-section-{{ section.id }} .section-faq .faqs .faq .faq-question svg path {
+	fill: {{ section.settings.question_color }};
+  }
+  #shopify-section-{{ section.id }} .section-faq .faqs .faq .faq-answer, 
+  #shopify-section-{{ section.id }} .section-faq .faqs .faq .faq-answer p {
+    color: {{ section.settings.answer_color }};
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "FAQs",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title text",
+      "default": "FAQs"
+    },
+	{
+	  "type": "select",
+	  "id": "title_type",
+	  "options": [
+		{
+		  "value": "h1",
+		  "label": "H1"
+		},
+		{
+		  "value": "h2",
+		  "label": "H2"
+		},
+		{
+		  "value": "h3",
+		  "label": "H3"
+		},
+		{
+		  "value": "h4",
+		  "label": "H4"
+		}
+	  ],
+	  "default": "h1",
+	  "label": "Title Type"
+	},
+    {
+      "type": "header",
+      "content": "Color Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "section_title_color",
+      "label": "Section Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "question_color",
+      "label": "Question Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "answer_color",
+      "label": "Answer Color",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "FAQ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Lorem ipsum dolor sit amet"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend neque elit, nec mollis urna mattis ut. Integer quis auctor nunc. In hac habitasse platea dictumst. Nunc eget sapien volutpat, eleifend eros et, volutpat turpis.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQs"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,101 @@
+<section class="section-marquee" id="marquee">
+  <div class="marquee-container{% if section.settings.enable_auto_rotating == false %} page-width{% endif %}">
+    <div class="marquee marquee-{{ section.settings.direction }}{% if section.settings.enable_auto_rotating == true %} marquee-auto-rotating{% endif %}">
+      <div>
+        {% for block in section.blocks %}
+          <a href="{{ block.settings.url }}">
+            {% if block.settings.logo != null %}
+              {{ block.settings.logo | image_url: height: 150 | image_tag: loading: 'lazy' }}
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+		  </a>
+        {% endfor %}
+      </div>
+      {% if section.settings.enable_auto_rotating == true %}
+      <div>
+        {% for block in section.blocks %}
+          <a href="{{ block.settings.url }}">
+            {% if block.settings.logo != null %}
+              {{ block.settings.logo | image_url: height: 150 | image_tag: loading: 'lazy' }}
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </a>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% style %}
+  {% if section.settings.background_color != blank %}
+  #shopify-section-{{ section.id }} .section-marquee .marquee-container {
+    background: {{ section.settings.background_color }};
+  }
+  {% endif %}
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Marquee Bar",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "Direction",
+      "options": [
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        }
+      ],
+      "default": "left"
+    },
+	{
+	  "type": "checkbox",
+	  "id": "enable_auto_rotating",
+	  "label": "Enable Auto-Rotating",
+	  "default": true
+	},
+    {
+      "type": "header",
+      "content": "Color Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Marquee Bar"
+    }
+  ]
+}
+{% endschema %}

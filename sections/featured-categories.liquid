@@ -1,0 +1,300 @@
+<div class="collection">
+  <div class="page-width">
+    {% assign spacing = false %}
+    {% if section.settings.title != '' %}
+      <{{ section.settings.title_type }} class="title">{{ section.settings.title }}</{{ section.settings.title_type }}>
+      {% assign spacing = true %}
+    {% endif %}
+    {% if section.settings.description != '' %}
+      <p class="description">{{ section.settings.description }}</p>
+      {% assign spacing = true %}
+    {% endif %}
+
+    {% if section.settings.name != '' or show_view_all == true %}
+      <div class="category-heading{% if spacing == true %} spacing{% endif %}">
+        <div class="category-title">
+          {{ section.settings.name }}
+        </div>
+        {% if section.settings.show_view_all == true %}
+        <a href="{{ section.settings.show_all_view_url }}" class="link">
+          See All
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.99984 6L8.58984 7.41L13.1698 12L8.58984 16.59L9.99984 18L15.9998 12L9.99984 6Z" fill="black"/>
+          </svg>
+        </a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="collection-scrollable-content">
+    <div class="swiper collection-scrollable-content-scroller collection-scrollable-content-scroller-{{ section.id }}">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          {% assign starting_at = 0 %}
+          {% for product in block.settings.collection.products %}
+        	{% if product.price_min < starting_at or starting_at == 0 %}
+        	  {% assign starting_at = product.price_min %}
+        	{% endif %}
+       	  {% endfor %}
+          <div class="swiper-slide collection-scrollable-content-box">
+            <a href="{{ block.settings.collection.url }}" class="product-link">
+              <div class="collection-scrollable-content-box-image">
+                {% if block.settings.image != null %}
+                  {% if no_border == true %}
+                	{{ block.settings.image | image_url: width: 710 | image_tag: loading: 'lazy', class: 'no-border' }}
+                  {% else %}
+                	{{ block.settings.image | image_url: width: 710 | image_tag: loading: 'lazy' }}
+                  {% endif %}
+                {% elsif block.settings.collection.featured_image != null %}
+                  {% if no_border == true %}
+                	{{ block.settings.collection.featured_image | image_url: width: 710 | image_tag: loading: 'lazy', class: 'no-border' }}
+                  {% else %}
+					{{ block.settings.collection.featured_image | image_url: width: 710 | image_tag: loading: 'lazy' }}
+                  {% endif %}
+                {% else %}
+                  {% if no_border == true %}
+                  	{{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg no-border' }}
+                  {% else %}
+                	{{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {% endif %}
+                {% endif %}
+              </div>
+              <div class="collection-scrollable-content-box-title">
+                {{ block.settings.collection.title }}
+              </div>
+              <div class="collection-scrollable-content-box-price">
+                Starting at {{ starting_at | money }}
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-button-next">
+      	<svg width="30" height="30" viewBox="5 0 20 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="15" cy="15" r="15" fill="#eeeeee"/>
+          <path d="M12.9998 9L11.5898 10.41L16.1698 15L11.5898 19.59L12.9998 21L18.9998 15L12.9998 9Z" fill="black"/>
+        </svg>
+      </div>
+      <div class="swiper-button-prev">
+      	<svg width="30" height="30" viewBox="5 0 20 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="15" cy="15" r="15" fill="#eeeeee"/>
+          <path d="M12.9998 9L11.5898 10.41L16.1698 15L11.5898 19.59L12.9998 21L18.9998 15L12.9998 9Z" fill="black"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+new Swiper('.collection-scrollable-content-scroller-{{ section.id }}', {
+  slidesPerView: 'auto',
+  spaceBetween: 12,
+  freeMode: true,
+  mousewheel: {
+	forceToAxis: true
+  },
+  navigation: {
+	nextEl: ".swiper-button-next",
+	prevEl: ".swiper-button-prev",
+  }
+});
+</script>
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    background: {{ section.settings.background_color }};
+  }
+  #shopify-section-{{ section.id }} .collection-scrollable-content .collection-scrollable-content-box .collection-scrollable-content-box-title,
+  #shopify-section-{{ section.id }} .collection-scrollable-content .collection-scrollable-content-box .collection-scrollable-content-box-price {
+    color: {{ section.settings.text_color }};
+  }
+  #shopify-section-{{ section.id }} .collection .title {
+	text-align: {{ section.settings.title_text_align }};
+	color: {{ section.settings.section_title_color }};
+  }
+  #shopify-section-{{ section.id }} .collection .description {
+	color: {{ section.settings.section_description_color }};
+  }
+  #shopify-section-{{ section.id }} .collection .category-heading .category-title {
+	color: {{ section.settings.heading_color }};
+  }
+  #shopify-section-{{ section.id }} .collection .category-heading .link {
+	color: {{ section.settings.link_color }};
+  }
+  @media (max-width: 767px) {
+	#shopify-section-{{ section.id }} .collection .title {
+	  text-align: {{ section.settings.mobile_title_text_align }};
+	}
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Collections Scrollable",
+  "tag": "section",
+  "class": "spaced-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Featured collections",
+      "label": "t:sections.featured-collection.settings.title.label"
+    },
+	{
+	  "type": "select",
+	  "id": "title_type",
+	  "options": [
+		{
+		  "value": "h1",
+		  "label": "H1"
+		},
+		{
+		  "value": "h2",
+		  "label": "H2"
+		},
+		{
+		  "value": "h3",
+		  "label": "H3"
+		},
+		{
+		  "value": "h4",
+		  "label": "H4"
+		}
+	  ],
+	  "default": "h4",
+	  "label": "Title Type"
+	},
+    {
+      "type": "select",
+      "id": "title_text_align",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "label": "Title Aligment",
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "mobile_title_text_align",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "label": "(Mobile) Title Aligment",
+      "default": "left"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "name",
+      "label": "Category name"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "default": true,
+      "label": "Enable See All button if category has more collections than shown"
+    },
+    {
+      "type": "url",
+      "id": "show_all_view_url",
+      "label": "See All Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "no_border",
+      "label": "Remove image border",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Color Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "section_title_color",
+      "label": "Section Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "section_description_color",
+      "label": "Section Description Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Select Custom Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collections Scrollable"
+    }
+  ]
+}
+{% endschema %}

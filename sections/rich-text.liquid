@@ -1,0 +1,189 @@
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'section-rich-text.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'section-rich-text.css' | asset_url | stylesheet_tag }}</noscript>
+
+<div class="rich-text rich-text--{{ section.id }} {% if section.settings.full_width %} rich-text--full-width{% endif %} {{ section.settings.height }}">
+  <div class="{% unless section.settings.full_width %} page-width{% endunless %}">
+    <div class="rich-text__blocks">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'heading' -%}
+            <{{ block.settings.heading_type }} {{ block.shopify_attributes }}>{{ block.settings.heading | escape }}</{{ block.settings.heading_type }}>
+      		{% style %}
+      		  .rich-text--{{ section.id }} {{ block.settings.heading_type }} {
+      			color: {{ block.settings.heading_color }};
+      		  }
+      		{% endstyle %}
+          {%- when 'text' -%}
+            <div class="rich-text__text rte" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+      	  	{% style %}
+      		  .rich-text--{{ section.id }} .rich-text__text {
+      			color: {{ block.settings.text_color }};
+      		  }
+      		{% endstyle %}
+          {%- when 'button' -%}
+            <a{% if block.settings.button_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.button_link }}"{% endif %} class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}" {{ block.shopify_attributes }}>
+              {{ block.settings.button_label | escape }}
+            </a>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% style %}
+  .rich-text--{{ section.id }} {
+	background: {{ section.settings.background_color }};
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "t:sections.rich-text.name",
+  "tag": "section",
+  "class": "spaced-section--full-width",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": true,
+      "label": "t:sections.rich-text.settings.full_width.label"
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": "Height",
+      "default": "margin--medium",
+      "options": [
+        {
+          "value": "margin--small",
+          "label": "Small"
+        },
+        {
+          "value": "margin--medium",
+          "label": "Medium"
+        },
+        {
+          "value": "margin--large",
+          "label": "Large"
+        }
+      ]
+    },
+	{
+      "type": "header",
+      "content": "Color Settings"
+    },
+	{
+      "type": "color_background",
+      "id": "background_color",
+	  "label": "Background Color"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "t:sections.rich-text.blocks.heading.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Talk about your brand",
+          "label": "t:sections.rich-text.blocks.heading.settings.heading.label"
+        },
+        {
+          "type": "select",
+          "id": "heading_type",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            }
+          ],
+          "default": "h4",
+          "label": "Heading Type"
+        },
+        {
+          "type": "color",
+          "id": "heading_color",
+          "label": "Heading Color",
+		  "default": "#000000"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.rich-text.blocks.text.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+          "label": "t:sections.rich-text.blocks.text.settings.text.label"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Description Color",
+		  "default": "#000000"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "t:sections.rich-text.blocks.button.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "default": "Button label",
+          "label": "t:sections.rich-text.blocks.button.settings.button_label.label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.rich-text.blocks.button.settings.button_link.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_style_secondary",
+          "default": false,
+          "label": "t:sections.rich-text.blocks.button.settings.button_style_secondary.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.rich-text.presets.name",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "button"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

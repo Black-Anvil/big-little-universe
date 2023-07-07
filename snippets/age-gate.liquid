@@ -1,0 +1,51 @@
+{% if settings.age_gate_enabled == true %}
+  <div id="ageGate" class="age-gate{% if settings.age_gate_invert_colors == true %} age-gate-invert{% endif %}">
+    <div class="age-gate-content">
+      {% if settings.age_gate_logo != null %}
+      <div class="age-gate-top-logo">
+        <img src="{{ settings.age_gate_logo | image_url: height: 134 }}" width="{{ settings.age_gate_logo.width }}" height="{{ settings.age_gate_logo.height }}" alt="{{ settings.age_gate_logo.alt | default: shop.name }}" loading=“lazy”>
+      </div>
+      {% endif %}
+      {% if settings.age_gate_title != '' %}
+      <h3 class="age-gate-title">
+        {{ settings.age_gate_title }}
+      </h3>
+      {% endif %}
+      {% if settings.age_gate_description != '' %}
+      <div class="age-gate-desc">
+        {{ settings.age_gate_description }}
+      </div>
+      {% endif %}
+      <div class="age-gate-actions">
+        <button class="age-gate-true close" type="button">
+          {{ settings.age_gate_agree_button }}
+        </button>
+        {% if settings.age_gate_cancel_button != '' %}
+        <button class="age-gate-false" type="button">
+          {{ settings.age_gate_cancel_button }}
+        </button>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      var ageGate = $('#ageGate');
+      var ageGateVal = sessionStorage.getItem('age-gate');
+      if (ageGateVal != 'true') {
+        ageGate.show();
+      }
+
+      $('.age-gate-true', ageGate).on('click', function() {
+        ageGate.hide();
+        sessionStorage.setItem('age-gate', 'true');
+      });
+
+      $('.age-gate-false', ageGate).on('click', function() {
+        $('.age-gate-desc').removeClass('false').addClass('false');
+        sessionStorage.setItem('age-gate', 'false');
+      });
+    });
+  </script>
+{% endif %}

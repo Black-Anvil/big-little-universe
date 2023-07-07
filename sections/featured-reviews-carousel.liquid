@@ -1,0 +1,130 @@
+<div class="section-featured-reviews-carousel" id="featured-reviews-carousel">
+  <div class="page-width">
+    <div class="featured-reviews-carousel">
+  	  <div class="featured-reviews-carousel-title {{ section.settings.title_type }}">{{ section.settings.title }}</div>
+      <div class="featured-reviews-carousel-slider">
+        <div class="swiper featured-reviews-carousel-swiper">
+          <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+              <div class="swiper-slide">
+                <div class="featured-reviews-carousel-review">{{ block.settings.review }}</div>
+                <p class="featured-reviews-carousel-author">{{ block.settings.name }}</p>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    background: {{ section.settings.background_color }};
+	color: {{ section.settings.text_color }};
+  }
+  #shopify-section-{{ section.id }} .featured-reviews-carousel-title {
+	color: {{ section.settings.section_title_color }};
+  }
+  #shopify-section-{{ section.id }} .featured-reviews-carousel-author,
+  #shopify-section-{{ section.id }} .featured-reviews-carousel-review, 
+  #shopify-section-{{ section.id }} .featured-reviews-carousel-review p {
+	color: {{ section.settings.text_color }};
+  }
+{% endstyle %}
+
+<script>
+  new Swiper('.featured-reviews-carousel-swiper', {
+	pagination: {
+	  el: '.swiper-pagination',
+	  clickable: true
+	}
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Featured Reviews Carousel",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title text",
+      "default": "What people are saying?"
+    },
+	{
+	  "type": "select",
+	  "id": "title_type",
+	  "options": [
+		{
+		  "value": "h1",
+		  "label": "H1"
+		},
+		{
+		  "value": "h2",
+		  "label": "H2"
+		},
+		{
+		  "value": "h3",
+		  "label": "H3"
+		},
+		{
+		  "value": "h4",
+		  "label": "H4"
+		}
+	  ],
+	  "default": "h1",
+	  "label": "Title Type"
+	},
+    {
+      "type": "header",
+      "content": "Color Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "section_title_color",
+      "label": "Section Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Customer Name",
+          "default": "John"
+        },
+        {
+          "type": "richtext",
+          "id": "review",
+          "label": "Review",
+          "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend neque elit, nec mollis urna mattis ut. Integer quis auctor nunc. In hac habitasse platea dictumst. Nunc eget sapien volutpat, eleifend eros et, volutpat turpis.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Reviews Carousel"
+    }
+  ]
+}
+{% endschema %}

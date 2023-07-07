@@ -1,0 +1,59 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "featured_image": {
+          "type": "featured_image",
+          "settings": {
+            "image_height": "small"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "blog_show_date": true,
+            "blog_show_author": false
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {
+          }
+        },
+        "c2fe0f89-78e4-4e10-8e91-b143e4acd29d": {
+          "type": "related_products",
+          "settings": {
+            "related_products_label": "Related Products"
+          }
+        },
+        "b975670c-5e07-422a-a8a4-6424e0ee0181": {
+          "type": "recent_articles",
+          "settings": {
+            "recent_articles_label": "Recent Articles"
+          }
+        }
+      },
+      "block_order": [
+        "featured_image",
+        "title",
+        "share",
+        "content",
+        "c2fe0f89-78e4-4e10-8e91-b143e4acd29d",
+        "b975670c-5e07-422a-a8a4-6424e0ee0181"
+      ],
+      "settings": {
+        "hide_title": false
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

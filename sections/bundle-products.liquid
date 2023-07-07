@@ -1,0 +1,323 @@
+{% assign product_id = 0 %}
+{% if template contains 'product' %}
+  {% assign product_id = product.id %}
+{% endif %}
+
+{% assign total = 0 %}
+{% if template contains 'product' %}
+  {% assign bundleI = 1 %}
+  {% assign product_card_product = product %}
+  {% assign total = total | plus: product_card_product.price %}
+{% endif %}
+{% if section.settings.display == 'collection' or section.settings.display == 'both' %}
+  {% if section.settings.collection != null %}
+	{% for product_card_product in section.settings.collection.products %}
+	  {% if product_card_product.available == true and product_card_product.id != product_id %}
+		{% assign total = total | plus: product_card_product.price %}
+	  {% endif %}
+	{% endfor %}
+  {% endif %}
+{% endif %}
+{% if section.settings.display == 'products' or section.settings.display == 'both' %}
+  {% for block in section.blocks %}
+	{% assign product_card_product = block.settings.product %}
+	{% if product_card_product.available == true and product_card_product.id != product_id %}
+	  {% assign total = total | plus: product_card_product.price %}
+	{% endif %}
+  {% endfor %}
+{% endif %}
+
+<div class="bundle-products">
+  <div class="page-width">
+    <div class="bundle-header">
+      <div class="bundle-side">
+        <div class="bundle-title {{ section.settings.title_type }}">
+          Bundle and Save 
+          {% if section.settings.discount_incentive_type == 'dollar_value' %}
+          	{{ section.settings.discount_input | times: 100 | money_without_trailing_zeros }} 
+          {% elsif section.settings.discount_incentive_type == 'percentage_discount' %}
+          	{{ section.settings.discount_input }}% 
+          {% endif %}
+        </div>
+        <div class="bundle-price" data-discount-type="{{ section.settings.discount_incentive_type }}" data-discount="{{ section.settings.discount_input }}"></div>
+      </div>
+      <div class="bundle-side">
+        <button type="button" class="button" disabled>
+          <div class="button-content">
+            <svg class="hidden" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.4993 2.16699C5.89935 2.16699 2.16602 5.90033 2.16602 10.5003C2.16602 15.1003 5.89935 18.8337 10.4993 18.8337C15.0993 18.8337 18.8327 15.1003 18.8327 10.5003C18.8327 5.90033 15.0993 2.16699 10.4993 2.16699ZM8.83268 14.667L4.66602 10.5003L5.84102 9.32533L8.83268 12.3087L15.1577 5.98366L16.3327 7.16699L8.83268 14.667Z" fill="#9C9C9C"/>
+            </svg>
+            <span>Add Bundle to Cart</span>
+          </div>
+          <div class="loading-overlay__spinner hidden">
+			<svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+			  <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+			</svg>
+		  </div>
+        </button>
+        <p>
+          {% if section.settings.discount_threshold_type == 'dollar_value' %}
+          	Increase your bundle value by <span class="dollar_value" data-amount="{{ section.settings.discount_threshold_input | times: 100 }}">{{ section.settings.discount_threshold_input | times: 100 | money_without_trailing_zeros }}</span> to get 
+            {% if section.settings.discount_incentive_type == 'dollar_value' %}
+              {{ section.settings.discount_input | times: 100 | money_without_trailing_zeros }} 
+            {% elsif section.settings.discount_incentive_type == 'percentage_discount' %}
+              {{ section.settings.discount_input }}% 
+            {% endif %}
+            off.
+          {% elsif section.settings.discount_threshold_type == 'item_quantity' %}
+          	{% assign itemsLeft = section.settings.discount_threshold_input | minus: cart.item_count %}
+          	{% if itemsLeft > 0 %}
+          	  Buy <span class="item_quantity" data-quantity="{{ section.settings.discount_threshold_input }}">{{ itemsLeft }}</span> more items for 
+          	  {% if section.settings.discount_incentive_type == 'dollar_value' %}
+                {{ section.settings.discount_input | times: 100 | money_without_trailing_zeros }} 
+              {% elsif section.settings.discount_incentive_type == 'percentage_discount' %}
+                {{ section.settings.discount_input }}% 
+              {% endif %}
+              off.
+          	{% endif %}
+          {% endif %} 
+        </p>
+      </div>
+    </div>
+    <div class="bundle-bar">
+      <div style="width:0%"></div>
+    </div>
+  </div>
+  <div class="bundle-items">
+    <div class="swiper scrollable-products swiper-bundle-items-{{ section.id }}">
+      <div class="swiper-wrapper">
+      	{% if template contains 'product' %}
+          {% assign product_card_product = product %}
+          <div class="swiper-slide scrollable-product bundle-item">
+            {% render 'product-card',
+              product_card_product: product_card_product, 
+              no_border: no_border,
+              bundle_product: true
+            %}
+          </div>
+        {% endif %}
+
+        {% if section.settings.display == 'collection' or section.settings.display == 'both' %}
+          {% if section.settings.collection != null %}
+            {% for product_card_product in section.settings.collection.products %}
+              {% if product_card_product.available == true and product_card_product.id != product_id %}
+                <div class="swiper-slide scrollable-product bundle-item">
+                  {% render 'product-card',
+                    product_card_product: product_card_product, 
+                    no_border: no_border,
+              		bundle_product: true
+                  %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endif %}
+        
+        {% if section.settings.display == 'products' or section.settings.display == 'both' %}
+          {% for block in section.blocks %}
+            {% assign product_card_product = block.settings.product %}
+            {% if product_card_product.available == true and product_card_product.id != product_id %}
+              <div class="swiper-slide scrollable-product bundle-item">
+                {% render 'product-card',
+                  product_card_product: product_card_product, 
+                  no_border: no_border,
+              	  bundle_product: true
+                %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </div>
+      <div class="swiper-button-next">
+        <svg width="30" height="30" viewBox="5 0 20 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="15" cy="15" r="15" fill="#eeeeee"/>
+          <path d="M12.9998 9L11.5898 10.41L16.1698 15L11.5898 19.59L12.9998 21L18.9998 15L12.9998 9Z" fill="black"/>
+        </svg>
+      </div>
+      <div class="swiper-button-prev">
+        <svg width="30" height="30" viewBox="5 0 20 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="15" cy="15" r="15" fill="#eeeeee"/>
+          <path d="M12.9998 9L11.5898 10.41L16.1698 15L11.5898 19.59L12.9998 21L18.9998 15L12.9998 9Z" fill="black"/>
+        </svg>
+      </div>
+      <div class="swiper-scrollbar"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+new Swiper('.swiper-bundle-items-{{ section.id }}', {
+  slidesPerView: 'auto',
+  spaceBetween: 12,
+  freeMode: true,
+  mousewheel: {
+	forceToAxis: true
+  },
+  navigation: {
+	nextEl: ".swiper-button-next",
+	prevEl: ".swiper-button-prev",
+  },
+  scrollbar: {
+	el: ".swiper-scrollbar",
+  }
+});
+</script>
+
+{% style %}
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) {
+	background: {{ section.settings.product_modal_background_color }};
+  }
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) a, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .card-wrapper-option select, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .select .icon-caret, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .product-form__input label.color-picker.load-more, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .require-select-variant {
+	color: {{ section.settings.product_modal_text_color }};
+  }
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .require-select-variant svg path {
+	fill: {{ section.settings.product_modal_text_color }};
+  }
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .card-wrapper-option .product-form__input input[type=radio]:hover+label.color-picker, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .card-wrapper-option .product-form__input input[type=radio]:checked+label.color-picker, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .card-wrapper-option .product-form__input label.color-picker.load-more:hover {
+	border-color: {{ section.settings.product_modal_text_color }};
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Bundle Products",
+  "tag": "section",
+  "max_blocks": 5, 
+  "settings": [
+	{
+	  "type": "select",
+	  "id": "title_type",
+	  "options": [
+		{
+		  "value": "h1",
+		  "label": "H1"
+		},
+		{
+		  "value": "h2",
+		  "label": "H2"
+		},
+		{
+		  "value": "h3",
+		  "label": "H3"
+		},
+		{
+		  "value": "h4",
+		  "label": "H4"
+		}
+	  ],
+	  "default": "h1",
+	  "label": "Title Type"
+	},
+    {
+	  "type": "collection",
+	  "id": "collection",
+	  "label": "Choose Collection"
+	},
+	{
+      "type": "select",
+      "id": "display",
+      "label": "Display products",
+	  "info": "If you choose ‘Display both’, the products will be appended to the collection. If one or more of the products are within the selected collection, they will only be shown once.",
+      "default": "collection",
+      "options": [
+        {
+          "value": "collection",
+          "label": "Display selected collection"
+        },
+		{
+          "value": "products",
+          "label": "Display selected products"
+        },
+		{
+		  "value": "both",
+          "label": "Display both"
+		}
+      ]
+    },
+	{
+      "type": "select",
+      "id": "discount_incentive_type",
+      "label": "Discount incentive type",
+      "default": "percentage_discount",
+      "options": [
+        {
+          "value": "dollar_value",
+          "label": "Dollar value"
+        },
+		{
+          "value": "percentage_discount",
+          "label": "Percentage discount"
+        }
+      ]
+    },
+	{
+	  "type": "number",
+	  "id": "discount_input",
+	  "label": "Discount Input",
+	  "default": 20
+	},
+	{
+      "type": "select",
+      "id": "discount_threshold_type",
+      "label": "Discount threshold type",
+      "default": "item_quantity",
+      "options": [
+        {
+          "value": "dollar_value",
+          "label": "Dollar value"
+        },
+		{
+          "value": "item_quantity",
+          "label": "Item Quantity"
+        }
+      ]
+    },
+	{
+	  "type": "number",
+	  "id": "discount_threshold_input",
+	  "label": "Discount threshold input",
+	  "default": 3
+	},
+    {
+      "type": "header",
+      "content": "Color Settings"
+    },
+    {
+      "type": "color",
+      "id": "product_modal_background_color",
+      "label": "Product Modal Background Color",
+      "default": "#FAFAFA"
+    },
+    {
+      "type": "color",
+      "id": "product_modal_text_color",
+      "label": "Product Modal Text Color",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+	{
+      "type": "product",
+      "name": "Product", 
+      "settings": [
+		{
+		  "type": "product",
+		  "id": "product",
+		  "label": "Choose Product"
+		}
+      ]
+	}
+  ],
+  "presets": [
+    {
+      "name": "Bundle Products"
+    }
+  ]
+}
+{% endschema %}

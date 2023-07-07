@@ -1,0 +1,321 @@
+<section class="section-horizontally-scrollable">
+  <div class="horizontally-scrollable-container page-width">
+    <div class="horizontally-scrollable-title {{ section.settings.title_type }}">
+      {{ section.settings.title }}
+      {% if section.settings.subtitle != '' %}
+      <div class="horizontally-scrollable-subtitle {{ section.settings.subtitle_type }}">
+        {{ section.settings.subtitle }}
+      </div>
+      {% endif %}
+      {% if section.settings.subtitle_image != null %}
+      	{{ section.settings.subtitle_image | image_url: width: 250 | image_tag: loading: 'lazy' }}
+      {% endif %}
+    </div>
+    <div class="horizontally-scrollable-description">
+      <p>{{ section.settings.description }}</p>
+      {% if section.settings.button_text != '' %}
+        <a href="{{ section.settings.button_url }}" class="button">{{ section.settings.button_text }}</a>
+      {% endif %}
+    </div>
+  </div>
+  <div class="horizontally-scrollable-content">
+    <div class="swiper horizontally-scrollable-content-scroller">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          {% if block.settings.collection != '' %}
+            <div class="swiper-slide horizontally-scrollable-content-box{% if block.settings.background_overlay == false %} horizontally-scrollable-content-box-no-overlay{% endif %}">
+              <a href="{{ block.settings.collection.url }}">
+                <div class="horizontally-scrollable-content-box-image"{% if block.settings.custom_background != '' %} style="background:{{ block.settings.custom_background }}"{% endif %}>
+                  {% if block.settings.custom_image != null %}
+                  	{% if section.settings.no_border == true %}
+                  	  {{ block.settings.custom_image | image_url: width: 600 | image_tag: loading: 'lazy', class: 'no-border' }}
+                  	{% else %}
+                  	  {{ block.settings.custom_image | image_url: width: 600 | image_tag: loading: 'lazy' }}
+                  	{% endif %}
+                  {% elsif block.settings.collection.featured_image != null %}
+                    {% if section.settings.no_border == true %}
+                  	  {{ block.settings.collection.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', class: 'no-border' }}
+                    {% else %}
+                  	  {{ block.settings.collection.featured_image | image_url: width: 600 | image_tag: loading: 'lazy' }}
+                  	{% endif %}
+                  {% else %}
+                  	{% if section.settings.no_border == true %}
+                      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg no-border' }}
+                    {% else %}
+					  {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {% endif %}
+                  {% endif %}
+                </div>
+                <div class="horizontally-scrollable-content-box-title">
+                  {% if block.settings.custom_text != '' %}
+                    {{ block.settings.custom_text }}
+                  {% else %}
+                    {{ block.settings.collection.title }}
+                  {% endif %}
+                </div>
+                <div class="horizontally-scrollable-content-box-arrow">
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="16" cy="16" r="16" fill="white"/>
+                    <path d="M9 17H20.17L15.29 21.88C14.9 22.27 14.9 22.91 15.29 23.3C15.68 23.69 16.31 23.69 16.7 23.3L23.29 16.71C23.68 16.32 23.68 15.69 23.29 15.3L16.71 8.69997C16.32 8.30997 15.69 8.30997 15.3 8.69997C14.91 9.08997 14.91 9.71997 15.3 10.11L20.17 15H9C8.45 15 8 15.45 8 16C8 16.55 8.45 17 9 17Z" fill="black"/>
+                  </svg>
+                </div>
+              </a>
+            </div>
+          {% elsif block.settings.product != '' %}
+            <div class="swiper-slide horizontally-scrollable-content-box{% if block.settings.background_overlay == false %} horizontally-scrollable-content-box-no-overlay{% endif %}">
+              <a href="{{ block.settings.product.url }}">
+                <div class="horizontally-scrollable-content-box-image" style="background:{{ block.settings.custom_background }}">
+                  {% if block.settings.custom_image != null %}
+                  	{% if section.settings.no_border == true %}
+                  	  {{ block.settings.custom_image | image_url: width: 600 | image_tag: loading: 'lazy', class: 'no-border' }}
+                  	{% else %}
+                  	  {{ block.settings.custom_image | image_url: width: 600 | image_tag: loading: 'lazy' }}
+                  	{% endif %}
+                  {% elsif block.settings.product.featured_image != null %}
+                  	{% if section.settings.no_border == true %}
+                  	  {{ block.settings.product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', class: 'no-border' }}
+                    {% else %}
+                  	  {{ block.settings.product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy' }}
+                  	{% endif %}
+                  {% else %}
+                    {% if section.settings.no_border == true %}
+                      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg no-border' }}
+                    {% else %}
+					  {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {% endif %}
+                  {% endif %}
+                </div>
+                <div class="horizontally-scrollable-content-box-title">
+                  {% if block.settings.custom_text != '' %}
+                    {{ block.settings.custom_text }}
+                  {% else %}
+                    {{ block.settings.product.title }}
+                  {% endif %}
+                </div>
+                <div class="horizontally-scrollable-content-box-arrow">
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="16" cy="16" r="16" fill="white"/>
+                    <path d="M9 17H20.17L15.29 21.88C14.9 22.27 14.9 22.91 15.29 23.3C15.68 23.69 16.31 23.69 16.7 23.3L23.29 16.71C23.68 16.32 23.68 15.69 23.29 15.3L16.71 8.69997C16.32 8.30997 15.69 8.30997 15.3 8.69997C14.91 9.08997 14.91 9.71997 15.3 10.11L20.17 15H9C8.45 15 8 15.45 8 16C8 16.55 8.45 17 9 17Z" fill="black"/>
+                  </svg>
+                </div>
+              </a>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="swiper-scrollbar"></div>
+    </div>
+  </div>
+  {% if section.settings.button_text != '' %}
+  	<div class="horizontally-scrollable-container horizontally-scrollable-container-mobile page-width">
+      <a href="{{ section.settings.button_url }}" class="button">{{ section.settings.button_text }}</a>
+    </div>
+  {% endif %}
+</section>
+
+<script>
+new Swiper('.horizontally-scrollable-content-scroller', {
+  slidesPerView: 'auto',
+  spaceBetween: 12,
+  freeMode: true,
+  mousewheel: {
+	forceToAxis: true
+  },
+  breakpoints: {
+    768: {
+      spaceBetween: 24
+    }
+  },
+  scrollbar: {
+	el: ".swiper-scrollbar",
+  }
+});
+</script>
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    background: {{ section.settings.background_color }};
+  }
+  #shopify-section-{{ section.id }} .horizontally-scrollable-container .horizontally-scrollable-title,
+  #shopify-section-{{ section.id }} .horizontally-scrollable-container .horizontally-scrollable-description {
+    color: {{ section.settings.text_color }};
+  }
+  #shopify-section-{{ section.id }} .horizontally-scrollable-container .horizontally-scrollable-title {
+	color: {{ section.settings.section_title_color }};
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Multipurpose Scrollable",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+	{
+	  "type": "select",
+	  "id": "title_type",
+	  "options": [
+		{
+		  "value": "h1",
+		  "label": "H1"
+		},
+		{
+		  "value": "h2",
+		  "label": "H2"
+		},
+		{
+		  "value": "h3",
+		  "label": "H3"
+		},
+		{
+		  "value": "h4",
+		  "label": "H4"
+		}
+	  ],
+	  "default": "h2",
+	  "label": "Title Type"
+	},
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+	{
+	  "type": "select",
+	  "id": "subtitle_type",
+	  "options": [
+		{
+		  "value": "h1",
+		  "label": "H1"
+		},
+		{
+		  "value": "h2",
+		  "label": "H2"
+		},
+		{
+		  "value": "h3",
+		  "label": "H3"
+		},
+		{
+		  "value": "h4",
+		  "label": "H4"
+		}
+	  ],
+	  "default": "h4",
+	  "label": "Subtitle Type"
+	},
+    {
+      "type": "image_picker",
+      "id": "subtitle_image",
+      "label": "Subtitle Image"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Buy Now"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "no_border",
+      "label": "Remove image border",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Color Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "section_title_color",
+      "label": "Section Title Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "section_subtitle_color",
+      "label": "Section Subtitle Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "boxes",
+      "name": "Product/Collection",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select Product"
+        },
+        {
+          "type": "header",
+          "content": "OR"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select Collection"
+        },
+        {
+          "type": "header",
+          "content": "Custom Options"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_image",
+          "label": "Select Custom Image"
+        },
+        {
+          "type": "text",
+          "id": "custom_text",
+          "label": "Custom Text"
+        },
+        {
+          "type": "color",
+          "id": "custom_background",
+          "label": "Custom Background Color",
+          "info": "Supported: HEX(#FFFFFF), RGB(rgb(255, 255, 255)), RGBA(rgba(255, 255, 255, 0.5))"
+        },
+        {
+          "type": "checkbox",
+          "id": "background_overlay",
+          "label": "Background Overlay",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Multipurpose Scrollable"
+    }
+  ]
+}
+{% endschema %}

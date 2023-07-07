@@ -1,0 +1,150 @@
+{% comment %}
+<div class="section-featured-collections spaced-section">
+  <div class="section-featured-collections-title {{ section.settings.title_type }}">{{ section.settings.title }}</div>
+  <div class="featured-collections-list">
+    <div class="swiper swiper-{{ section.id }}">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+        <div class="swiper-slide">
+          <div class="featured-collection">
+            <a href="{{ block.settings.collection.url }}">
+              <div class="featured-collection-image">
+                {% if block.settings.collection.featured_image != null %}
+                  {{ block.settings.collection.featured_image | image_url: height: 512 | image_tag: loading: 'lazy' }}
+                {% else %}
+                  {{ 'collection-1' | placeholder_svg_tag }}
+                {% endif %}
+              </div>
+              <div class="featured-collection-title">
+                {{ block.settings.collection.title }}
+              </div>
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% style %}
+  #shopify-section-{{ section.id }} .section-featured-collections .section-featured-collections-title {
+	text-align: {{ section.settings.title_text_align }};
+  }
+  @media (max-width: 767px) {
+	#shopify-section-{{ section.id }} .section-featured-collections .section-featured-collections-title {
+	  text-align: {{ section.settings.mobile_title_text_align }};
+	}
+  }
+{% endstyle %}
+
+<script>
+  const swiper = new Swiper('.swiper-{{ section.id }}', {
+    slidesPerView: 'auto',
+    spaceBetween: 20,
+    breakpoints: {
+      767: {
+        slidesPerView: 4,
+        spaceBetween: 28
+      }
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Instagram Stories",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Instagram Stories",
+      "label": "Section title"
+    },
+	{
+	  "type": "select",
+	  "id": "title_type",
+	  "options": [
+		{
+		  "value": "h1",
+		  "label": "H1"
+		},
+		{
+		  "value": "h2",
+		  "label": "H2"
+		},
+		{
+		  "value": "h3",
+		  "label": "H3"
+		},
+		{
+		  "value": "h4",
+		  "label": "H4"
+		}
+	  ],
+	  "default": "h1",
+	  "label": "Title Type"
+	},
+    {
+      "type": "select",
+      "id": "title_text_align",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "label": "Section title Aligment",
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "mobile_title_text_align",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "label": "(Mobile) Section title Aligment",
+      "default": "left"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Instagram Stories"
+    }
+  ]
+}
+{% endschema %}
+{% endcomment %}

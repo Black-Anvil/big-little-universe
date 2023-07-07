@@ -1,0 +1,410 @@
+{
+  "current": {
+    "age_gate_enabled": false,
+    "age_gate_title": "Are You Over 21?",
+    "age_gate_description": "<p>You must be 21 or older to enter. Please drink responsibly.<\/p>",
+    "age_gate_agree_button": "Yes, I’m over 21",
+    "age_gate_cancel_button": "No, I’m under 21",
+    "age_gate_invert_colors": false,
+    "sold_out_background_color": "#f3f3f3",
+    "sold_out_text_color": "#e6c057",
+    "sale_background_color": "#e6c057",
+    "sale_text_color": "#ffffff",
+    "cart_drawer_incentive_1_discount_threshold": -1,
+    "cart_drawer_incentive_1_text_color": "#5b5b5b",
+    "cart_drawer_incentive_2_discount_threshold": 100,
+    "cart_drawer_incentive_2_discount_type": "dollar",
+    "cart_drawer_incentive_2_discount_incentive": "Free Shipping",
+    "cart_drawer_incentive_2_text_color": "#5b5b5b",
+    "ymal_enabled": true,
+    "shopify_recommended_enabled": true,
+    "cart_drawer_background_color": "#ffffff",
+    "cart_drawer_text_color": "#5b5b5b",
+    "cart_drawer_progress_bar_color": "#e6c057",
+    "cart_drawer_progress_bar_background_color": "#f3f3f3",
+    "collection-description-bottom": false,
+    "colors_background_1": "#fafafa",
+    "gradient_background_1": "",
+    "primary_cta_background_color": "#e6c057",
+    "primary_cta_border_color": "#e6c057",
+    "secondary_cta_background_color": "#FFFFFF",
+    "secondary_cta_border_color": "#e6c057",
+    "secondary_cta_text_color": "#e6c057",
+    "currency_code_enabled": false,
+    "currency_selector_enabled": false,
+    "favicon": "shopify:\/\/shop_images\/Paddywax_Secondary_Black_476f9ef9-c853-4618-b7f2-bf391e78a3ca.png",
+    "gift_option": "specific_parameters",
+    "gift_triggers_collection": "adidas",
+    "gift_product": "alpine-candle-wild-fig-cedar",
+    "page_width": "1600",
+    "border_radius": 0,
+    "image-scale": "1 \/ 1",
+    "mobile_menu_enabled": false,
+    "enable_variant_selection": false,
+    "cta_buttons": "show_cta_buttons",
+    "social_twitter_link": "https:\/\/twitter.com\/biglittleunive1",
+    "social_facebook_link": "https:\/\/www.facebook.com\/biglittleuniverse.co",
+    "social_pinterest_link": "https:\/\/www.pinterest.com\/biglittleuniverse2021\/",
+    "social_instagram_link": "https:\/\/www.instagram.com\/biglittleuniverse\/?hl=en",
+    "social_tiktok_link": "https:\/\/www.tiktok.com\/@biglittleuniverse_co",
+    "type_h1_font": "rubik_n5",
+    "type_h2_font": "rubik_n4",
+    "h2_scale": 36,
+    "type_h3_font": "rubik_n4",
+    "h3_scale": 28,
+    "type_h4_font": "rubik_n4",
+    "h4_scale": 22,
+    "type_body_font": "rubik_n4",
+    "body_scale": 100,
+    "checkout_logo_image": "shopify:\/\/shop_images\/Paddywax_Primary_Black_1.png",
+    "checkout_logo_size": "small",
+    "checkout_accent_color": "#000000",
+    "checkout_button_color": "#000000",
+    "mobile-nav-add-to-cart": false,
+    "type_header_font": "poppins_n6",
+    "free_shipping": "70",
+    "free_shipping_success_message": "You got free shipping!",
+    "colors_text": "#ff0000",
+    "text_color_1": "#e22120",
+    "colors_solid_button_labels": "#FFFFFF",
+    "colors_accent_1": "#000000",
+    "colors_accent_2": "#3255a6",
+    "colors_outline_button_labels": "#000000",
+    "colors_background_2": "#F3F3F3",
+    "enable_variant_selector": true,
+    "product-images-grid": true,
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "blocks": {
+          "62aa558a-46a7-4523-8065-95efc3540390": {
+            "type": "announcement",
+            "disabled": true,
+            "settings": {
+              "text": "Free Shipping on Orders Over $100",
+              "link": "",
+              "background_color": "#5b5b5b",
+              "text_color": "#ffffff"
+            }
+          },
+          "c35f9460-5a6b-4a2e-bbb3-bd3bfec5599c": {
+            "type": "announcement",
+            "disabled": true,
+            "settings": {
+              "text": "Welcome to our store 2",
+              "link": "",
+              "background_color": "#000000",
+              "text_color": "#ffffff"
+            }
+          },
+          "cc785357-cd70-419a-a7be-1817672d475d": {
+            "type": "announcement",
+            "disabled": true,
+            "settings": {
+              "text": "Welcome to our store 3",
+              "link": "",
+              "background_color": "#000000",
+              "text_color": "#ffffff"
+            }
+          }
+        },
+        "block_order": [
+          "62aa558a-46a7-4523-8065-95efc3540390",
+          "c35f9460-5a6b-4a2e-bbb3-bd3bfec5599c",
+          "cc785357-cd70-419a-a7be-1817672d475d"
+        ],
+        "settings": {
+          "rotating_seconds": 5
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "mobile_menu_compact": false,
+          "logo": "shopify:\/\/shop_images\/biglittleuniverse-logo.png",
+          "logo_width": 200,
+          "logo_padding": 0,
+          "logo_position": "top-center",
+          "menu": "blu-primary-navigation-new-menu-7-18-22",
+          "enable_sticky_header": true,
+          "background_color": "#ffffff",
+          "text_color": "#6e6e6e"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-0": {
+            "type": "link_list",
+            "settings": {
+              "menu_title": "",
+              "menu": "",
+              "second_menu_title": "",
+              "second_menu": "",
+              "third_menu_title": "",
+              "third_menu": "",
+              "social": true
+            }
+          },
+          "215416c1-8779-4eff-9692-095f25330b18": {
+            "type": "link_list",
+            "settings": {
+              "menu_title": "Browse",
+              "menu": "footer-menu-1",
+              "second_menu_title": "",
+              "second_menu": "",
+              "third_menu_title": "",
+              "third_menu": "",
+              "social": false
+            }
+          },
+          "07998d1f-1a1d-42f6-a752-3cf2c06b58de": {
+            "type": "link_list",
+            "settings": {
+              "menu_title": "About Us",
+              "menu": "new-menu",
+              "second_menu_title": "",
+              "second_menu": "",
+              "third_menu_title": "",
+              "third_menu": "",
+              "social": false
+            }
+          },
+          "467c64a6-5a3e-4198-9614-e69cbec6f259": {
+            "type": "newsletter",
+            "settings": {
+              "newsletter_heading": "Sign Up!",
+              "newsletter_heading_alignment": "left",
+              "newsletter_heading_alignment_mobile": "left",
+              "newsletter_content": "",
+              "newsletter_content_alignment": "left",
+              "newsletter_content_alignment_mobile": "left",
+              "text_below_newsletter": "",
+              "text_below_newsletter_alignment": "left",
+              "text_below_newsletter_alignment_mobile": "left",
+              "show_logo": true,
+              "logo": "shopify:\/\/shop_images\/biglittleuniverse-logo.png",
+              "logo_width": 250,
+              "logo_alignment": "center",
+              "logo_alignment_mobile": "left"
+            }
+          }
+        },
+        "block_order": [
+          "footer-0",
+          "215416c1-8779-4eff-9692-095f25330b18",
+          "07998d1f-1a1d-42f6-a752-3cf2c06b58de",
+          "467c64a6-5a3e-4198-9614-e69cbec6f259"
+        ],
+        "settings": {
+          "heading_size": 18,
+          "text_size": 13,
+          "privacy_menu": "footer",
+          "logo_width": 50,
+          "enable_payment_methods": true,
+          "background_color": "#ffffff",
+          "text_color": "#6e6e6e"
+        }
+      },
+      "announcement-bar-progress-bar": {
+        "type": "announcement-bar-progress-bar",
+        "settings": {
+          "enable": true,
+          "background_color": "#8a8fe0",
+          "text_color": "#ffffff",
+          "progress_bar_color": "#e6c057",
+          "progress_bar_background_color": "#f3f3f3"
+        }
+      },
+      "faq": {
+        "type": "faq",
+        "blocks": {
+          "6da36347-646e-4837-bec3-014dd4ad86da": {
+            "type": "text",
+            "settings": {
+              "question": "What is The Candle Club?",
+              "answer": "<p>The Candle Club is a loyalty program that rewards members with points every time they shop on paddywax.com! All members can redeem points for discounts, plus have access to exclusive benefits like shipping discounts (U.S. only), birthday rewards, and special sales and offers. Members can also earn points for things like following us on social media, leaving us a review, and referring friends.<br\/><\/p>"
+            }
+          },
+          "a820c593-599d-43d6-a1f1-974d713fe5f9": {
+            "type": "text",
+            "settings": {
+              "question": "How do I earn points?",
+              "answer": "<p>Depending on which level of our program you’re in, you can earn 1x, 1.25x, or 1.5x points for every dollar you spend. There are also special actions you can take (see above for details)!<br\/><\/p>"
+            }
+          },
+          "764fa71d-ad65-47aa-b48b-73fd40883b8c": {
+            "type": "text",
+            "settings": {
+              "question": "How do I join?",
+              "answer": "<p>It’s simple! Just create an account with us (all we need is your email) and you’ll be part of The Candle Club and automatically receive <strong>25 points<\/strong>. If you’ve already got an account, you’re automatically enrolled and can start earning!<\/p>"
+            }
+          },
+          "fb9ca24b-396b-4540-a822-49615fd799bc": {
+            "type": "text",
+            "settings": {
+              "question": "How much are points worth?",
+              "answer": "<p>Every 100 points is redeemable for a $10 cash discount. You can redeem up to 400 points for $40 off. Only one reward can be applied per purchase and cannot be combined with another promo or discount code. <\/p>"
+            }
+          },
+          "dbcc9b0e-453f-4844-b8b5-0f9e801652f4": {
+            "type": "text",
+            "settings": {
+              "question": "How do I view my points balance?",
+              "answer": "<p>Sign in to see your points balance displayed on your <a href=\"https:\/\/paddywax.com\/account\" target=\"_blank\">account page<\/a> or at the top of The Candle Club <a href=\"https:\/\/paddywax.com\/pages\/rewards\" target=\"_blank\">dashboard<\/a>.<br\/><\/p>"
+            }
+          },
+          "c2ba6a86-bc8b-4700-9b30-2309d7fde7c9": {
+            "type": "text",
+            "settings": {
+              "question": "Do my points expire?",
+              "answer": "<p>Yes, points expire after 12 months of account inactivity. To remain active, you must earn or redeem points.<\/p>"
+            }
+          },
+          "90a7fba4-8a9d-4a59-97ee-3d317a6e985f": {
+            "type": "text",
+            "settings": {
+              "question": "How do I get to the next tier of The Candle Club?",
+              "answer": "<p>You are automatically enrolled in our Pal tier. In order to reach our Bestie tier, you must spend at least $200 within a 12 month period. In order to reach our Soulmate tier, you must spend $500 within a 12 month period. <\/p>"
+            }
+          },
+          "b984a043-bd14-4fa6-bef3-fbcdb5486572": {
+            "type": "text",
+            "settings": {
+              "question": "What does \"annual spend\" mean?",
+              "answer": "<p>This is the amount spent within a 12 month period, beginning when you enter a tier. To maintain your tier status, you must spend the minimum amount required for that tier within 12 months from when you first entered it. <\/p>"
+            }
+          },
+          "eaa13587-6ba7-47d0-b902-a6222d6631c7": {
+            "type": "text",
+            "settings": {
+              "question": "Can I earn points for buying Paddywax in stores?",
+              "answer": "<p>No, you can only earn rewards for paddywax.com purchases.<\/p>"
+            }
+          },
+          "a51306c2-1a5f-4fb5-bcbb-a1a426350e81": {
+            "type": "text",
+            "settings": {
+              "question": "When do I get my birthday reward?",
+              "answer": "<p>You will need to wait at least 30 days from the day you set your birthday to receive your birthday reward (this prevents fraudulent activity). If you sign up and your birthday is more than 30 days away, then there's no issue and you will receive your birthday reward! If you sign up and set your birthday to less than 30 days away, you will receive your reward after the 30-day waiting period is over. For example, if you sign up on January 1 and put your birthday as January 2, your birthday reward will be granted on January 31, which is 30 days after January 1 (your sign up date). <\/p>"
+            }
+          },
+          "7d7e782b-5977-4ec7-8842-712ea03fb959": {
+            "type": "text",
+            "settings": {
+              "question": "Are the shipping benefits available outside of the U.S.?",
+              "answer": "<p>Unfortunately, our free shipping thresholds only apply to orders within the U.S. We do not ship internationally at this time.<\/p>"
+            }
+          },
+          "fd75a102-51f2-4e11-9833-2f2d58084bc0": {
+            "type": "text",
+            "settings": {
+              "question": "What do I do if I have questions about my points, status, or account?",
+              "answer": "<p>We're here to help! Please contact our team <a href=\"https:\/\/paddywax.com\/pages\/contact\" target=\"_blank\">here<\/a>. <\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "6da36347-646e-4837-bec3-014dd4ad86da",
+          "a820c593-599d-43d6-a1f1-974d713fe5f9",
+          "764fa71d-ad65-47aa-b48b-73fd40883b8c",
+          "fb9ca24b-396b-4540-a822-49615fd799bc",
+          "dbcc9b0e-453f-4844-b8b5-0f9e801652f4",
+          "c2ba6a86-bc8b-4700-9b30-2309d7fde7c9",
+          "90a7fba4-8a9d-4a59-97ee-3d317a6e985f",
+          "b984a043-bd14-4fa6-bef3-fbcdb5486572",
+          "eaa13587-6ba7-47d0-b902-a6222d6631c7",
+          "a51306c2-1a5f-4fb5-bcbb-a1a426350e81",
+          "7d7e782b-5977-4ec7-8842-712ea03fb959",
+          "fd75a102-51f2-4e11-9833-2f2d58084bc0"
+        ],
+        "settings": {
+          "title": "",
+          "background_color": "#FFFFFF",
+          "section_title_color": "#000000",
+          "question_color": "#000000",
+          "answer_color": "#000000"
+        }
+      }
+    },
+    "content_for_index": [
+
+    ],
+    "blocks": {
+      "7570552984445421165": {
+        "type": "shopify:\/\/apps\/yotpo-product-reviews-photos\/blocks\/settings\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+        "disabled": false,
+        "settings": {
+        }
+      }
+    }
+  },
+  "presets": {
+    "Default": {
+      "colors_solid_button_labels": "#FFFFFF",
+      "colors_accent_1": "#121212",
+      "colors_accent_2": "#334FB4",
+      "colors_text": "#121212",
+      "colors_outline_button_labels": "#121212",
+      "colors_background_1": "#FFFFFF",
+      "colors_background_2": "#F3F3F3",
+      "type_header_font": "assistant_n4",
+      "type_body_font": "assistant_n4",
+      "sections": {
+        "announcement-bar": {
+          "type": "announcement-bar",
+          "blocks": {
+            "announcement-bar-0": {
+              "type": "announcement",
+              "settings": {
+                "background_color": "#000000",
+                "text_color": "#FFFFFF"
+              }
+            }
+          },
+          "block_order": [
+            "announcement-bar-0"
+          ],
+          "settings": {
+          }
+        }
+      }
+    },
+    "Craft": {
+      "colors_solid_button_labels": "#EFECEC",
+      "colors_accent_1": "#2A332F",
+      "colors_accent_2": "#476154",
+      "colors_text": "#1C1A1A",
+      "colors_outline_button_labels": "#7B8382",
+      "colors_background_1": "#EFECEC",
+      "colors_background_2": "#C1BCAE",
+      "type_header_font": "americana_n4",
+      "type_body_font": "quattrocento_sans_n4",
+      "sections": {
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "menu": {
+              "type": "link_list",
+              "settings": {
+              }
+            },
+            "text": {
+              "type": "text",
+              "settings": {
+              }
+            }
+          },
+          "block_order": [
+            "menu",
+            "text"
+          ],
+          "settings": {
+            "background_color": "#f6f6f6",
+            "text_color": "#333232"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,365 @@
+{%- liquid
+  assign sort_by = collection.sort_by | default: collection.default_sort_by
+  assign total_active_values = 0
+-%}
+{% capture filter_url %}{% for filter in collection.filters %}{%- if filter.min_value.value != nil or filter.max_value.value != nil -%}&filter.v.price.gte={{ filter.min_value.value | divided_by: 100 }}&filter.v.price.lte={{ filter.max_value.value | divided_by: 100 }}{% endif %}{% for value in filter.active_values %}&{{ value.param_name }}={{ value.value }}{% endfor %}{% endfor %}{% endcapture %}
+{%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
+  <script>var collection_uri = '{{ collection.url }}';</script>
+  <div class="collection-line">
+    <div class="page-width">
+      <div class="collection-filters">
+        <a href="#">
+          Filter
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 9H7V8H5V9ZM1.5 3V4H10.5V3H1.5ZM3 6.5H9V5.5H3V6.5Z" fill="white"/>
+          </svg>
+        </a>
+      </div>
+      <div class="collection-sort">
+        <a href="#">
+          Sort By 
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.295 4.29517L6 6.58517L3.705 4.29517L3 5.00017L6 8.00017L9 5.00017L8.295 4.29517Z" fill="white"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="collection-filters-bar">
+      <div class="collection-filters-tabs">
+        {%- for filter in collection.filters -%}
+          {% case filter.type %}
+            {% when 'price_range' %}
+        	{%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+        	  {%- assign total_active_values = total_active_values | plus: 1 -%}
+        	{%- endif -%}
+            <div class="collection-filters-tab">
+              <div class="collection-filters-tab-heading">
+                <div>
+                  <span>{{ filter.label | escape }}</span>
+                </div>
+                <div>
+                  <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 0.666748L0 5.66675L1.175 6.84175L5 3.02508L8.825 6.84175L10 5.66675L5 0.666748Z" fill="black"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="collection-filters-tab-content">
+                {%- assign max_price_amount = filter.range_max | money_without_currency -%}
+                <div id="price-range" data-min="0" data-max="{{ max_price_amount }}" data-current-min="{{ filter.min_value.value | divided_by: 100 }}" data-current-max="{% if filter.max_value.value > 0 %}{{ filter.max_value.value | divided_by: 100 }}{% else %}{{ max_price_amount }}{% endif %}"></div>
+                <div class="collection-filters-prices">
+                  <div class="collection-filters-prices-input">
+                    <div>$</div>
+                    <div>
+                      <input type="text" value="0" class="filter-min-price">
+                    </div>
+                  </div>
+                  <div class="collection-filters-prices-between">-</div>
+                  <div class="collection-filters-prices-input">
+                    <div>$</div>
+                    <div>
+                      <input type="text" value="0" class="filter-max-price">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {% when 'list' %}
+        	{%- assign total_active_values = total_active_values | plus: filter.active_values.size -%}
+            <div class="collection-filters-tab">
+              <div class="collection-filters-tab-heading">
+                <div>
+                  <span>{{ filter.label | escape }}</span>
+                </div>
+                <div>
+                  <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 0.666748L0 5.66675L1.175 6.84175L5 3.02508L8.825 6.84175L10 5.66675L5 0.666748Z" fill="black"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="collection-filters-tab-content">
+                {% if section.settings.enable_color_swatchees == true and filter.label == 'Color' or filter.label == 'Colour' %}
+                  {%- for value in filter.values -%}
+                    <div class="collection-filters-tab-content-value collection-filters-tab-content-value-color" data-param="{{ value.param_name }}" data-value="{{ value.value }}">
+                      <div>
+                        <span class="color-picker checkbox{% if value.active %} checked{% endif %}" data-color="{{ value.value | escape }}">
+                          <span data-color="{{ value.value | escape }}"></span>
+                        </span>
+                      </div>
+                    </div>
+                  {%- endfor -%}
+                {% else %}
+                  {%- for value in filter.values -%}
+                    <div class="collection-filters-tab-content-value" data-param="{{ value.param_name }}" data-value="{{ value.value }}">
+                      <div>
+                        <span class="checkbox{% if value.active %} checked{% endif %}"></span>
+                      </div>
+                      <div>
+                        <label>{{ value.label | escape }} ({{ value.count }})</label>
+                      </div>
+                    </div>
+                  {%- endfor -%}
+                {% endif %}
+              </div>
+            </div>
+          {% endcase %}
+        {%- endfor -%}
+      </div>
+      <button type="button" class="button apply-filters">Apply Filters</button>
+    </div>
+    <div class="collection-sort-bar">
+      {%- for option in collection.sort_options -%}
+        <a href="{{ collection.url }}?sort_by={{ option.value }}{{ filter_url }}"{% if option.value == sort_by %} class="active"{% endif %}>{{ option.name | escape }}</a>
+      {%- endfor -%}
+    </div>
+  </div>
+
+  {% comment %}
+  <div class="page-width" id="main-collection-filters" data-id="{{ section.id }}">
+    {% render 'facets', results: collection, enable_filtering: section.settings.enable_filtering, enable_sorting: section.settings.enable_sorting, collapse_on_larger_devices: section.settings.collapse_on_larger_devices %}
+  </div>
+  {% endcomment %}
+{%- endif -%}
+
+<div id="ProductGridContainer">
+  {%- paginate collection.products by section.settings.products_per_page -%}
+    {%- if collection.products.size == 0 -%}
+      <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
+        <div class="title-wrapper center">
+          <h2 class="title title--primary">
+            {{ 'sections.collection_template.empty' | t }}<br>
+            {{ 'sections.collection_template.use_fewer_filters_html' | t: link: collection.url, class: "underlined-link link" }}
+          </h2>
+        </div>
+      </div>
+    {%- else -%}
+      <div class="collection page-width">
+        {% if total_active_values > 0 %}
+          <div class="facets">
+            {% for filter in collection.filters %}
+              {% if filter.type == "price_range" %}
+                {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+                  <facet-remove>
+                    <a href="{{ filter.url_to_remove }}">
+                      <span class="button button--tertiary">
+                        {%- if filter.min_value.value -%}{{ filter.min_value.value | money }}{%- else -%}{{ 0 | money }}{%- endif -%}-{%- if filter.max_value.value -%}{{ filter.max_value.value | money }}{%- else -%}{{ filter.range_max | money }}{%- endif -%}
+                        {% render 'icon-close-small' %}
+                        <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
+                      </span>
+                    </a>
+                  </facet-remove>
+                {%- endif -%}
+              {% endif %}
+              {% for value in filter.active_values %}
+                <facet-remove>
+                  <a href="{{ value.url_to_remove }}">
+                    <span class="button button--tertiary">
+                      {{ value.label | escape }}
+                      {% render 'icon-close-small' %}
+                      <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
+                    </span>
+                  </a>
+                </facet-remove>
+              {% endfor %}
+            {% endfor %}
+            <a href="{{ collection.url }}" class="clear_filters">
+              {{ 'products.facets.clear_all' | t }}
+            </a>
+          </div>
+        {% endif %}
+
+        <ul id="product-grid" data-id="{{ section.id }}" class="grid grid--2-col negative-margin product-grid grid--3-col-tablet grid--one-third-max grid--4-col-desktop grid--quarter-max">
+          {%- for product in collection.products -%}
+            <li class="grid__item">
+              {% render 'product-card',
+                product_card_product: product, 
+              	no_border: section.settings.no_border
+              %}
+            </li>
+          {%- endfor -%}
+        </ul>
+
+        {%- if paginate.pages > 1 -%}
+          {% render 'pagination', paginate: paginate, anchor: '' %}
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  {%- endpaginate -%}
+</div>
+
+{% if settings.collection-description-bottom == true %}
+<div class="collection-description-bottom page-width">
+  <div class="collection-description-bottom-box">
+  	{{ collection.description }}
+  </div>
+</div>
+{% endif %}
+
+{% style %}
+  .collection-line {
+    background: {{ section.settings.filter_bar_background_color }};
+  }
+  .collection-line .collection-filters a, 
+  .collection-line .collection-filters a:hover, 
+  .collection-line .collection-filters a:focus, 
+  .collection-line .collection-sort a, 
+  .collection-line .collection-sort a:hover, 
+  .collection-line .collection-sort a:focus {
+    color: {{ section.settings.filter_bar_text_color }};
+  }
+  .collection-line .collection-filters a svg path, 
+  .collection-line .collection-sort a svg path {
+    fill: {{ section.settings.filter_bar_text_color }};
+  }
+  .collection-line .collection-filters-bar, 
+  .collection-line .collection-sort-bar {
+    background: {{ section.settings.filter_background_color }};
+  }
+  .collection-line .collection-filters-bar .collection-filters-tab .collection-filters-tab-heading span, 
+  .collection-line .collection-filters-bar .collection-filters-tab .collection-filters-tab-content .collection-filters-tab-content-value label,
+  .collection-line .collection-filters-bar .collection-filters-tab .collection-filters-tab-content .collection-filters-prices-between, 
+  .collection-line .collection-filters-bar .collection-filters-tab .collection-filters-tab-content .collection-filters-prices .collection-filters-prices-input, 
+  .collection-line .collection-filters-bar .collection-filters-tab .collection-filters-tab-content .collection-filters-prices .collection-filters-prices-input input, 
+  .collection-line .collection-filters-bar .collection-filters-tab .collection-filters-tab-content .collection-filters-prices .collection-filters-prices-input input:focus, 
+  .collection-line .collection-filters-bar .collection-filters-tab .collection-filters-tab-content .collection-filters-prices .collection-filters-prices-input input:focus-visible, 
+  .collection-line .collection-sort-bar a {
+    color: {{ section.settings.filter_text_color }};
+  }
+  .collection-line .collection-filters-bar .collection-filters-tab .collection-filters-tab-content .collection-filters-tab-content-value:not(..collection-filters-tab-content-value-color) .checkbox, 
+  .collection-line .collection-filters-bar .collection-filters-tab .collection-filters-tab-content .collection-filters-prices .collection-filters-prices-input {
+    border-color: {{ section.settings.filter_text_color }};
+  }
+  .collection-line .collection-filters-bar .collection-filters-tab .collection-filters-tab-heading svg path {
+    fill: {{ section.settings.filter_text_color }};
+  }
+  .ui-state-default, 
+  .ui-widget-content .ui-state-default, 
+  .ui-widget-header .ui-state-default, 
+  .ui-button, 
+  html .ui-button.ui-state-disabled:hover, 
+  html .ui-button.ui-state-disabled:active {
+    border-color: {{ section.settings.filter_text_color }};
+    background: {{ section.settings.filter_text_color }};
+    color: {{ section.settings.filter_text_color }};
+  }
+  .ui-slider .ui-slider-range {
+    background: {{ section.settings.filter_text_color }};
+  }
+  .collection-line .collection-filters-bar, 
+  .collection-line .collection-filters-bar .collection-filters-tab .collection-filters-tab-heading,
+  .ui-widget.ui-widget-content, 
+  .collection-line .collection-sort-bar {
+    border-color: {{ section.settings.filter_border_color }};
+  }
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) {
+	background: {{ section.settings.product_modal_background_color }};
+  }
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) a, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .card-wrapper-option select, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .select .icon-caret, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .product-form__input label.color-picker.load-more, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .require-select-variant {
+	color: {{ section.settings.product_modal_text_color }};
+  }
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .require-select-variant svg path {
+	fill: {{ section.settings.product_modal_text_color }};
+  }
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .card-wrapper-option .product-form__input input[type=radio]:hover+label.color-picker, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .card-wrapper-option .product-form__input input[type=radio]:checked+label.color-picker, 
+  #shopify-section-{{ section.id }} .card-wrapper:not(.cart--drawer-product-big) .card-wrapper-option .product-form__input label.color-picker.load-more:hover {
+	border-color: {{ section.settings.product_modal_text_color }};
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "t:sections.main-collection-product-grid.name",
+  "class": "collection-grid-section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 24,
+      "step": 4,
+      "default": 16,
+      "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-collection-product-grid.settings.header__1.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_filtering",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.enable_filtering.label",
+      "info": "t:sections.main-collection-product-grid.settings.enable_filtering.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_color_swatchees",
+      "default": true,
+      "label": "Enable Color Swatches"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.enable_sorting.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "no_border",
+      "label": "Remove image border",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Color Settings"
+    },
+	{
+      "type": "color",
+      "id": "filter_bar_background_color",
+      "default": "#000000",
+      "label": "Filter Bar Background Color"
+    },
+	{
+      "type": "color",
+      "id": "filter_bar_text_color",
+      "default": "#ffffff",
+      "label": "Filter Bar Text Color"
+    },
+	{
+      "type": "color",
+      "id": "filter_background_color",
+      "default": "#ffffff",
+      "label": "Filter Background Color"
+    },
+	{
+      "type": "color",
+      "id": "filter_text_color",
+      "default": "#000000",
+      "label": "Filter Text Color"
+    },
+	{
+      "type": "color",
+      "id": "filter_border_color",
+      "default": "#f9f9f9",
+      "label": "Filter Borders Color"
+    },
+    {
+      "type": "color",
+      "id": "product_modal_background_color",
+      "label": "Product Modal Background Color",
+      "default": "#FAFAFA"
+    },
+    {
+      "type": "color",
+      "id": "product_modal_text_color",
+      "label": "Product Modal Text Color",
+      "default": "#000000"
+    }
+  ]
+}
+{% endschema %}
