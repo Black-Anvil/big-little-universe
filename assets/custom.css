@@ -130,3 +130,19 @@ border-radius: 0;
 .card-wrapper:not(.cart--drawer-product-big) .card-wrapper-image .card-wrapper-badges span.sold-out, .product--page-you-may-also-like .product-grid .product-badges span.sold-out, .product__images-slider .swiper-media .product-badges span.sold-out {
   color: #989898!important;
 }
+
+/* 'RETAILERS' PAGE */
+.page-container {
+  margin: 40px;
+}
+.store-columns {
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: 50px;
+}
+.store-row {
+  display: flex;
+}
+.store-name {
+  width: 200px;
+}
