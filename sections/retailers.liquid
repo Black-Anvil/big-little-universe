@@ -1,33 +1,78 @@
 {% assign retailStores = section.settings.retail_stores | split: ', ' %}
+{% assign eComStores = section.settings.ecom_stores | split: ', ' %}
 
-<h2>{{ retailStores.size }} Retail Stores</h2>
-    <ol>
-        {% for store in retailStores %}
-            {% assign storeName = store | split: '\' | first %}
-            {% assign storeDetails = store | split: '\' | last %}
-            {% assign storeLocation = storeDetails | split: '^' | first %}
-            {% assign storeLink = storeDetails | split: '^' | last %}
-            {% if storeLink contains 'http' %}
-                <a href="{{ storeLink }}" target="blank">
-            {% endif %}
+<div class="page-container">
+    <h2 class="retailers__header">{{ retailStores.size }} Retail Stores</h2>
+        <ol class="store-columns retail">
+            {% for store in retailStores %}
+                {% assign storeName = store | split: '\' | first %}
+                {% assign storeDetails = store | split: '\' | last %}
+                {% assign storeLocation = storeDetails | split: '^' | first %}
+                {% assign storeLink = storeDetails | split: '^' | last %}
                 <li>
-                    <div class="store-name">
-                        {{ storeName }}
-                    </div>
-                    <div class="store-location">
-                        {{ storeLocation }}
+                    <div class="store-row">
+                        {% if storeLink contains 'http' %}
+                            <a href="{{ storeLink }}" target="blank">
+                        {% endif %}
+                        <div class="store-name">
+                            {{ storeName }}
+                        </div>
+                        {% if storeLink contains 'http' %}
+                            </a>
+                        {% endif %}
+                        <div class="store-location">
+                            {{ storeLocation }}
+                        </div>
                     </div>
                 </li>
-            {% if storeLink contains 'http' %}
-                </a>
-            {% endif %}
+            {% endfor %}
+        </ol>
+    <h2 class="retailers__header">{{ eComStores.size }} E-Comm Retailers</h2>
+    <ol class="store-columns ecom">
+        {% for store in eComStores %}
+            {% assign storeName = store | split: '^' | first %}
+            {% assign storeLink = store | split: '^' | last %}
+            <li>
+                {% if storeLink contains 'http' %}
+                    <a href="{{ storeLink }}" target="blank">
+                {% endif %}
+                <div class="store-name">
+                    {{ storeName }}
+                </div>
+                {% if storeLink contains 'http' %}
+                    </a>
+                {% endif %}
+            </li>
         {% endfor %}
     </ol>
-<h2>E-Comm Retailer</h2>
+</div>
 
 <style>
-    .store-row {
-        display: flex;
+    .retailers {
+        background-color: {{ section.settings.bg_color }};
+    }
+    .retailers__header {
+        color: {{ section.settings.header_color }};
+    }
+    .store-columns li {
+        color: {{ section.settings.color }};
+    }
+    .retail {
+        grid-template-rows: repeat({{ retailStores.size | divided_by: 3 | plus: 1 }}, 30px);
+    }
+    .ecom {
+        grid-template-rows: repeat({{ eComStores.size }}, 30px);
+    }
+    
+    @media screen and (max-width: 1024px) {
+        .retail {
+            grid-template-rows: repeat({{ retailStores.size | divided_by: 2 | plus: 1 }}, 30px);
+        }
+    }
+    @media screen and (max-width: 768px) {
+        .retail {
+            grid-template-rows: repeat({{ retailStores.size }}, 30px);
+        }
     }
 </style>
 
@@ -40,6 +85,27 @@
                 "id": "retail_stores",
                 "label": "Retail Stores",
                 "info": "Enter store data in this format: '[STORE NAME]\\[STORE LOCATION]^[STORE LINK], '"
+            },
+            {
+                "type": "textarea",
+                "id": "ecom_stores",
+                "label": "E-Comm Retailers",
+                "info": "Enter store data in this format: '[STORE NAME]^[STORE LINK], '"
+            },
+            {
+                "type": "color",
+                "id": "bg_color",
+                "label": "Page background color"
+            },
+            {
+                "type": "color",
+                "id": "header_color",
+                "label": "Header font color"
+            },
+            {
+                "type": "color",
+                "id": "color",
+                "label": "Text font color"
             }
         ]
     }

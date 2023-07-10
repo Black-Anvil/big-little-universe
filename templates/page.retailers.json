@@ -3,7 +3,8 @@
     "main": {
       "type": "retailers",
       "settings": {
-        "retail_stores": "Alys Shoppe\\FL^https:\/\/google.com, Broomtail\\CO^https:\/\/google.com,  Code Blue NY\\NY^, Cumbrae Customs\\UK^, \nCurious Clothing\\ND^, Delera Boutique\\TN^, Eli and Ella\\CA^, Fort\\VA^, Happy Gift Co.\\CA^, Henry Bear Park\\MA^, Huset\\CA^, Inner Beach Co.\\ON^, Jamison and Bexley\\OH^, Kindred Play Co.\\CA^, Kinokuniya\\NY^, LaLaLing\\CA^, Little Bipsy\\WA^, Little Love\\WI^, Lulie Kids\\MN^, Marquet\\ISRAEL^, Milk and Honey Baby\\CA^, MinnowSwim\\CA^, Owen + Sage\\MA^, Once Upon A Time\\BELGIUM^, Open Mart OC\\CA^, Pacifier Kids\\MN^, Paper Heart Dixie\\NY^FRANCE, Pourquoi Pas\\FRANCE^, Sweet Bean Collective\\IL^, The Artsy Bookworm\\ IL^, The Seaside Style\\FL^"
+        "retail_stores": "Alys Shoppe\\FL^https:\/\/google.com, Broomtail\\CO^,  Code Blue NY\\NY^, Cumbrae Customs\\UK^, \nCurious Clothing\\ND^, Delera Boutique\\TN^, Eli and Ella\\CA^, Fort\\VA^, Happy Gift Co.\\CA^, Henry Bear Park\\MA^, Huset\\CA^, Inner Beach Co.\\ON^, Jamison and Bexley\\OH^, Kindred Play Co.\\CA^, Kinokuniya\\NY^, LaLaLing\\CA^, Little Bipsy\\WA^, Little Love\\WI^, Lulie Kids\\MN^, Marquet\\ISRAEL^, Milk and Honey Baby\\CA^, MinnowSwim\\CA^, Owen + Sage\\MA^, Once Upon A Time\\BELGIUM^, Open Mart OC\\CA^, Pacifier Kids\\MN^, Paper Heart Dixie\\NY^FRANCE, Pourquoi Pas\\FRANCE^, Sweet Bean Collective\\IL^, The Artsy Bookworm\\ IL^, The Seaside Style\\FL^",
+        "ecom_stores": "Maisonette^https:\/\/google.com, Guru Guru^, Bulletin^"
       }
     }
   },
