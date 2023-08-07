@@ -133,16 +133,46 @@ border-radius: 0;
 
 /* 'RETAILERS' PAGE */
 .page-container {
-  margin: 40px;
+  margin: 40px auto;
+  max-width: 1200px;
+  padding: 0 15px;
+}
+.stores-section {
+  margin-bottom: 60px;
+}
+.retailers__header {
+  font-size: 34px;
+  margin-bottom: 20px;
 }
 .store-columns {
   display: grid;
   grid-auto-flow: column;
   column-gap: 50px;
+  font-size: 20px;
 }
 .store-row {
   display: flex;
+  justify-content: space-between;
 }
-.store-name {
-  width: 200px;
+.store-location {
+  width: 25%;
+  margin-left: 10px;
+}
+@media screen and (max-width: 1400px) {
+  .page-container {
+
+  }
+}
+@media screen and (max-width: 768px) {
+  .page-container {
+    width: 400px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .page-container {
+    width: 350px;
+  }
+  .store-columns {
+    font-size: 18px;
+  }
 }
