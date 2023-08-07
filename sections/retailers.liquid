@@ -2,14 +2,14 @@
 {% assign eComStores = section.settings.ecom_stores | split: ', ' %}
 
 <div class="page-container">
-    <h2 class="retailers__header">{{ retailStores.size }} Retail Stores</h2>
-        <ol class="store-columns retail">
+    <div class="stores-section">
+        <h2 class="retailers__header">Retail Stores</h2>
+        <div class="store-columns retail">
             {% for store in retailStores %}
                 {% assign storeName = store | split: '\' | first %}
                 {% assign storeDetails = store | split: '\' | last %}
                 {% assign storeLocation = storeDetails | split: '^' | first %}
                 {% assign storeLink = storeDetails | split: '^' | last %}
-                <li>
                     <div class="store-row">
                         {% if storeLink contains 'http' %}
                             <a href="{{ storeLink }}" target="blank">
@@ -24,27 +24,29 @@
                             {{ storeLocation }}
                         </div>
                     </div>
-                </li>
             {% endfor %}
-        </ol>
-    <h2 class="retailers__header">{{ eComStores.size }} E-Comm Retailers</h2>
-    <ol class="store-columns ecom">
-        {% for store in eComStores %}
-            {% assign storeName = store | split: '^' | first %}
-            {% assign storeLink = store | split: '^' | last %}
-            <li>
-                {% if storeLink contains 'http' %}
-                    <a href="{{ storeLink }}" target="blank">
-                {% endif %}
-                <div class="store-name">
-                    {{ storeName }}
+        </div>
+    </div>
+    <div class="stores-section">
+        <h2 class="retailers__header">E-Comm Retailers</h2>
+        <div class="store-columns ecom">
+            {% for store in eComStores %}
+                {% assign storeName = store | split: '^' | first %}
+                {% assign storeLink = store | split: '^' | last %}
+                <div>
+                    {% if storeLink contains 'http' %}
+                        <a href="{{ storeLink }}" target="blank">
+                    {% endif %}
+                    <div class="store-name">
+                        {{ storeName }}
+                    </div>
+                    {% if storeLink contains 'http' %}
+                        </a>
+                    {% endif %}
                 </div>
-                {% if storeLink contains 'http' %}
-                    </a>
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ol>
+            {% endfor %}
+        </div>
+    </div>
 </div>
 
 <style>
